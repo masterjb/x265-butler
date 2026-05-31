@@ -1,0 +1,2699 @@
+{
+  "common": {
+    "confirm": {
+      "cancel": "Cancel",
+      "undo": "Undo",
+      "armedAriaLabel": "Confirm action (2nd click)",
+      "cooldownAriaLabel": "Waiting for activation",
+      "undoCountdownAriaLabel": "Undo in {seconds}s"
+    }
+  },
+  "app": {
+    "title": "x265-butler",
+    "skipLink": "Skip to main content",
+    "openNav": "Open navigation",
+    "closeNav": "Close navigation",
+    "themeToggle": {
+      "label": "Toggle theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "langSwitch": {
+      "label": "Language",
+      "en": "English",
+      "de": "Deutsch"
+    }
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "stats": "Stats",
+    "bench": "Bench",
+    "storage": "Storage",
+    "library": "Library",
+    "queue": "Queue",
+    "trash": "Trash",
+    "blocklist": "Blocklist",
+    "scanEstimate": "Estimate",
+    "settings": "Settings",
+    "diagnostics": "Diagnostics",
+    "logs": "Logs"
+  },
+  "empty": {
+    "queue": {
+      "pageTitle": "Queue",
+      "pageSubhead": "Active and pending encoding jobs.",
+      "title": "Queue is empty",
+      "body": "Once encoding is wired, queued and running jobs will appear here.",
+      "phaseHint": "Available in v1.2",
+      "cta": "Browse library"
+    },
+    "trash": {
+      "pageTitle": "Trash",
+      "pageSubhead": "Originals removed after a successful encode.",
+      "title": "Trash is empty",
+      "body": "Source files moved aside during encoding will appear here, with a configurable retention.",
+      "phaseHint": "Available in v1.2",
+      "cta": "Browse library"
+    },
+    "logs": {
+      "pageTitle": "Logs",
+      "pageSubhead": "Per-job ffmpeg output and container logs.",
+      "title": "No logs yet",
+      "body": "Once encoding is wired, per-job logs and a container log tail land here.",
+      "phaseHint": "Available in v1.5",
+      "cta": "Browse library"
+    },
+    "home": {
+      "title": "x265-butler",
+      "body": "Open the library to browse scanned files."
+    }
+  },
+  "notfound": {
+    "routeUnknown": {
+      "title": "Unknown route",
+      "body": "There is no '{route}' section. Did you mean '{candidate}'?",
+      "primaryCta": "Go to {candidate}",
+      "candidatesLabel": "Closest matches"
+    },
+    "localeUnknown": {
+      "title": "Language not supported",
+      "body": "This URL uses a language code that is not configured. Falling back to English.",
+      "primaryCta": "Continue in English"
+    },
+    "localeMissing": {
+      "title": "Language prefix missing",
+      "body": "URLs in x265-butler always begin with a language code (e.g. /en/library).",
+      "primaryCta": "Open the localized version"
+    },
+    "fallback": {
+      "title": "Page not found",
+      "body": "The page you are looking for does not exist or has been moved.",
+      "primaryCta": "Back to library"
+    },
+    "onboardingIncomplete": {
+      "title": "Onboarding not completed",
+      "body": "Some core settings are still missing. Finish the onboarding to unlock the library.",
+      "primaryCta": "Start onboarding"
+    },
+    "actionCluster": {
+      "diagnostics": "Diagnostics",
+      "library": "Back to library",
+      "forum": "Report on the forum",
+      "onboarding": "Start onboarding"
+    }
+  },
+  "error": {
+    "staleCache": {
+      "title": "Stale browser cache",
+      "body": "Your browser is rendering an older application bundle than the server expects. A hard refresh usually resolves this: press Ctrl+Shift+R (or Cmd+Shift+R on macOS).",
+      "primaryCta": "Hard refresh"
+    },
+    "unknown": {
+      "title": "Something went wrong",
+      "body": "An unexpected error occurred. Please retry, or share the diagnostic report on the forum.",
+      "primaryCta": "Try again"
+    },
+    "actionCluster": {
+      "retry": "Try again",
+      "diagnostics": "Diagnostics",
+      "library": "Back to library",
+      "forum": "Report on the forum",
+      "onboarding": "Start onboarding"
+    },
+    "cause": {
+      "cachePoolUnavailable": "Cache pool unavailable"
+    }
+  },
+  "logs": {
+    "title": "Logs",
+    "tab": {
+      "perJob": "Per Job",
+      "container": "Container"
+    },
+    "perJob": {
+      "list": {
+        "aria": "Recent jobs",
+        "empty": {
+          "title": "No jobs with logs yet",
+          "body": "Start an encode from the library to capture per-job ffmpeg output here."
+        }
+      },
+      "viewer": {
+        "regionAria": "Job log viewer",
+        "empty": {
+          "title": "Select a job",
+          "body": "Pick an entry from the list to view its captured ffmpeg log.",
+          "noLines": "No log content yet."
+        },
+        "loading": "Loading…",
+        "lineCount": "{count, plural, one {# line} other {# lines}}",
+        "liveLabel": "Live",
+        "reconnectingLabel": "Reconnecting",
+        "staticLabel": "Static"
+      },
+      "action": {
+        "download": "Download",
+        "downloadAria": "Download log file"
+      }
+    },
+    "container": {
+      "regionAria": "Container log tail",
+      "empty": "No log lines available.",
+      "format": {
+        "raw": "Raw",
+        "json": "JSON"
+      },
+      "lines": {
+        "aria": "Lines to show",
+        "option": "{count} lines"
+      },
+      "action": {
+        "refresh": "Refresh",
+        "refreshAria": "Refresh container log",
+        "autoRefresh": "Auto-refresh",
+        "download": "Download"
+      },
+      "note": {
+        "dockerLogs": "Container logs are also available from the host shell via `docker logs x265-butler`."
+      }
+    },
+    "loadError": "Failed to load logs ({detail}).",
+    "retry": "Retry",
+    "clear": {
+      "label": "Clear log",
+      "success": "Log cleared",
+      "error": "Failed to clear log",
+      "warning": "Also clears Diagnostics recent-errors, slow-requests and slow-queries (shared log store)."
+    }
+  },
+  "storage": {
+    "title": "Storage Analyzer",
+    "subtitle": "Where is disk space going?",
+    "toolbar": {
+      "toolbarAria": "Storage filters",
+      "depthLabel": "Depth",
+      "depthAria": "Folder depth: {depth}",
+      "depthOption": "{depth, select, 1 {Depth 1 (top-level)} 2 {Depth 2} 3 {Depth 3} 4 {Depth 4} 5 {Depth 5 (deep)} other {Depth {depth}}}",
+      "asOfLabel": "As of {time}",
+      "asOfPending": "Loading…"
+    },
+    "kpi": {
+      "totalSize": {
+        "label": "Total Size",
+        "empty": "—",
+        "tooltip": "{bytes} bytes total across all files."
+      },
+      "largestFolder": {
+        "label": "Largest Folder",
+        "empty": "No folders yet",
+        "rowAria": "Open {path} in Library"
+      },
+      "mostOptimizedShare": {
+        "label": "Most Optimized Share",
+        "crossShareNote": "across all shares",
+        "empty": "No HEVC data yet"
+      },
+      "legacyCodecPercent": {
+        "label": "Legacy Codec %",
+        "aria": "Legacy codec share: {pct} percent, status {zone}",
+        "threshold": {
+          "healthy": "Healthy",
+          "attention": "Elevated",
+          "critical": "Critical"
+        },
+        "tooltip": {
+          "healthy": "Healthy: below 20% legacy codecs.",
+          "attention": "Elevated: 20–50% legacy codecs still on disk.",
+          "critical": "Critical: more than 50% of bytes use legacy codecs."
+        }
+      }
+    },
+    "buckets": {
+      "title": "Size Distribution",
+      "listAria": "File-size buckets",
+      "barAria": "{bucket}: {pct}% of total bytes",
+      "tooltip": "{bucket}: {fileCount} files, {bytes}",
+      "rowSummary": "{fileCount} files · {bytes}",
+      "bucket": {
+        "lt100MB": "< 100 MB",
+        "100MBto1GB": "100 MB – 1 GB",
+        "1to10GB": "1 – 10 GB",
+        "gt10GB": "> 10 GB"
+      }
+    },
+    "codecPie": {
+      "title": "Codec Distribution",
+      "noteAria": "About this chart",
+      "legendAria": "Codec legend",
+      "legendValue": "{fileCount} files · {bytes}",
+      "unknown": "unknown",
+      "empty": "No codec data yet."
+    },
+    "sharesTable": {
+      "title": "Shares Comparison",
+      "empty": "Configure shares to compare them here.",
+      "orphan": "Orphan files",
+      "orphanTooltip": "Files without a configured share",
+      "largestFolderAria": "Open {path} in Library",
+      "cols": {
+        "share": "Share",
+        "totalSize": "Total Size",
+        "hevcPercent": "HEVC %",
+        "savings": "Savings",
+        "largestFolder": "Largest Folder"
+      }
+    },
+    "topFolders": {
+      "title": "Top Folders by Size",
+      "empty": "No folders to rank yet.",
+      "rowClickAria": "View files in {path}",
+      "pathTooLong": "Path is too long to deep-link safely.",
+      "truncatedBadge": "Results limited (50k row cap reached)",
+      "truncatedTooltip": "The aggregation hit the 50 000-row safety cap. Filter by share or reduce depth for a tighter view.",
+      "cols": {
+        "rank": "#",
+        "path": "Path",
+        "size": "Size",
+        "fileCount": "Files"
+      }
+    },
+    "empty": {
+      "noShares": {
+        "headline": "No shares configured",
+        "body": "Configure paths in Settings to start analyzing disk usage.",
+        "cta": "Go to Settings → Paths"
+      },
+      "noFiles": {
+        "headline": "No files scanned yet",
+        "body": "Run a scan to populate the storage analyzer.",
+        "cta": "Run scan"
+      },
+      "noFilesForShare": {
+        "headline": "No files in this share",
+        "body": "Pick another share from the toolbar or scan this one to populate it."
+      }
+    },
+    "unknownShare": {
+      "warning": "Share {id} not found.",
+      "back": "Back to All Shares"
+    },
+    "errors": {
+      "loadFailed": "Failed to load {endpoint}",
+      "tryAgain": "Try again",
+      "code": {
+        "internal_error": "Internal server error",
+        "http_error": "Network error",
+        "invalid_query": "Invalid query parameters",
+        "auth_required": "Authentication required",
+        "unknown": "Unexpected error"
+      }
+    }
+  },
+  "library": {
+    "header": {
+      "title": "Library",
+      "subhead": "{total, plural, =0 {No files indexed yet} one {# file indexed} other {# files indexed}}"
+    },
+    "selection": {
+      "header": {
+        "aria": "Select all on this page"
+      },
+      "row": {
+        "aria": "Select {filename}"
+      },
+      "bar": {
+        "label_count": "{count, plural, =0 {Nothing selected} one {# selected} other {# selected}}",
+        "clear": "Clear selection",
+        "max_warning_over": "Selection: {count} of max 500 — please reduce by {overflow}"
+      }
+    },
+    "bulk": {
+      "blocklist": {
+        "label": "Blocklist ({count})",
+        "undo": {
+          "toastBody": "Adding {count, plural, one {# file} other {# files}} to blocklist — Undo?"
+        },
+        "network_error": "Network error — selection preserved, please retry"
+      },
+      "retry": {
+        "label": "Retry ({count})",
+        "undo": {
+          "toastBody": "Retrying {count, plural, one {# file} other {# files}} — Undo?"
+        },
+        "network_error": "Network error — selection preserved, please retry"
+      }
+    },
+    "search": {
+      "placeholder": "Search path…",
+      "clear": "Clear search"
+    },
+    "filter": {
+      "all": "All",
+      "aria": "Filter by status",
+      "includeVanishedLabel": "Show missing files",
+      "includeVanishedAria": "Show files no longer present on disk"
+    },
+    "shareFilter": {
+      "aria": "Filter by share",
+      "all": "All",
+      "triggerLabelAll": "Share: All",
+      "triggerLabelOrphan": "Share: Orphaned",
+      "triggerLabel": "Share: {name}",
+      "orphan": "Orphaned ({count})",
+      "announceChange": "{type, select, all {Filter cleared, showing all shares} orphan {Filter set to orphaned files} share {Filter set to share {name}} other {}}"
+    },
+    "pathPrefixPill": {
+      "label": "Folder",
+      "clear": "Clear folder filter",
+      "aria": "Filter active: folder {path}"
+    },
+    "status": {
+      "pending": "Pending",
+      "queued": "Queued",
+      "encoding": "Encoding",
+      "doneSmaller": "Done (smaller)",
+      "doneLarger": "Done (larger)",
+      "doneNotWorth": "Not worth re-encoding",
+      "doneAlreadyEvaluated": "Already evaluated",
+      "skippedCodec": "Skipped (codec)",
+      "skippedBitrate": "Skipped (bitrate)",
+      "skippedSuffix": "Skipped (suffix)",
+      "skippedTag": "Skipped (tag)",
+      "skippedSidecar": "Skipped (sidecar)",
+      "skippedBlocklist": "Skipped (blocked)",
+      "failed": "Failed",
+      "blocklisted": "Blocklisted",
+      "interrupted": "Interrupted",
+      "vanished": "Missing on disk"
+    },
+    "column": {
+      "id": "ID",
+      "path": "Path",
+      "codec": "Codec",
+      "bitrate": "Bitrate",
+      "duration": "Duration",
+      "size": "Size",
+      "status": "Status",
+      "scanned": "Scanned"
+    },
+    "empty": {
+      "headline": "No files scanned yet",
+      "helper": "Run a scan to populate the library.",
+      "helperMissingRoot": "The configured scan path does not exist on disk.",
+      "scanCta": "Scan now",
+      "configurePathCta": "Configure scan path"
+    },
+    "filteredByFile": {
+      "banner": "Filtered to file #{id}",
+      "clearLink": "clear filter"
+    },
+    "filteredEmpty": {
+      "headline": "No matches",
+      "helper": "Try a different search term or filter.",
+      "clearCta": "Clear filters"
+    },
+    "error": {
+      "message": "Couldn't load library. Try again.",
+      "retry": "Retry"
+    },
+    "detail": {
+      "title": "File details",
+      "path": "Path",
+      "hash": "Content hash",
+      "resolution": "Resolution",
+      "container": "Container",
+      "mtime": "Modified",
+      "lastScanned": "Last scanned",
+      "created": "Added",
+      "encodeInfo": {
+        "title": "Encoded with",
+        "encoder": "Encoder",
+        "crf": "CRF",
+        "preset": "Preset",
+        "finishedAt": "Finished"
+      },
+      "containerOverride": {
+        "label": "Container Override",
+        "hint": "Applies to this file only. Global: {global}",
+        "save": "Save",
+        "saving": "Saving…",
+        "saved": "Saved",
+        "saveError": "Save failed",
+        "saveAria": "Save container override for this file",
+        "options": {
+          "inherit": "Inherit (global: {global})",
+          "mkv": "MKV",
+          "mp4": "MP4",
+          "matchSource": "Match source"
+        }
+      },
+      "containerFallback": {
+        "title": "Container Fallback",
+        "description": "This file was encoded to MKV because the source format is not fully compatible with MP4.",
+        "from": "From",
+        "to": "To",
+        "reason": {
+          "audio": "Audio codec incompatible with MP4 (e.g. TrueHD, DTS)",
+          "subtitle": "Subtitle codec incompatible with MP4",
+          "preflight_unavailable": "Format analysis failed — fell back to MKV as safe default"
+        },
+        "forceRetryButton": {
+          "label": "Retry as MP4",
+          "confirmLabel": "Confirm retry as MP4",
+          "cancelLabel": "Cancel",
+          "successToast": "Force-retry queued as MP4",
+          "errorToast": {
+            "network": "Retry failed — network error",
+            "validation": "Retry rejected — file status changed"
+          }
+        },
+        "aria": {
+          "card": "Container fallback details",
+          "fromBadge": "Source container: {from}",
+          "toBadge": "Output container: {to}",
+          "reasonLabel": "Fallback reason",
+          "retryButton": "Force-retry this file as MP4"
+        }
+      },
+      "copyAria": "Copy {label}",
+      "copyFallback": "Press Ctrl-C / Cmd-C to copy",
+      "copied": {
+        "path": "Path copied",
+        "hash": "Hash copied"
+      }
+    },
+    "pagination": {
+      "showing": "Showing {from}–{to} of {total}",
+      "prev": "Previous page",
+      "next": "Next page",
+      "pageSize": "Page size",
+      "aria": "Pagination"
+    },
+    "rescan": {
+      "buttonIdle": "Scan now",
+      "buttonScanning": "Scanning…",
+      "toastSuccess": "Scan complete",
+      "toastError": "Scan failed",
+      "toastInProgress": "A scan is already in progress"
+    },
+    "export": {
+      "button": {
+        "idle": "Export CSV",
+        "busy": "Exporting…",
+        "aria": "Export the current library view as a CSV file"
+      },
+      "error": {
+        "message": "Couldn't export library. Try again.",
+        "message_partial": "Export interrupted mid-download. Try again.",
+        "retry": "Retry"
+      },
+      "empty": {
+        "tooltip": "Nothing to export — library is empty"
+      }
+    },
+    "aria": {
+      "resultsCount": "{count, plural, one {# result} other {# results}}",
+      "noResults": "No results"
+    },
+    "encodeNow": {
+      "button": "Encode now",
+      "toastQueued": "Queued",
+      "toastAlreadyQueued": "Already in queue",
+      "toastStatusChanged": "File status changed — try again",
+      "toastError": "Enqueue failed. Try again."
+    },
+    "retry": {
+      "actions": {
+        "retry": "Retry"
+      },
+      "confirm": {
+        "retry": "Confirm retry"
+      },
+      "toast": {
+        "success": "Retry queued. File reset to pending.",
+        "notEligible": "File cannot be retried in its current state.",
+        "error": "Could not retry. Try again later."
+      },
+      "undo": {
+        "toastBody": "Retry scheduled for {filename} — Undo?"
+      }
+    },
+    "delete": {
+      "actions": {
+        "delete": "Delete entry"
+      },
+      "toast": {
+        "success": "Entry forgotten. The file on disk was not touched.",
+        "error": "Could not delete the entry. Try again later.",
+        "activeJob": "This entry is being encoded — stop the job before deleting.",
+        "benchRef": "This entry is referenced by a benchmark and cannot be deleted."
+      },
+      "undo": {
+        "toastBody": "Deleting entry for {filename} — Undo?"
+      }
+    },
+    "skip": {
+      "button": "Skip",
+      "confirm": {
+        "skip": "Confirm skip",
+        "countdown": "Confirm ({seconds}s)"
+      },
+      "toast": {
+        "success": "Skipped — file returned to wait state.",
+        "error": "Could not skip. Try again."
+      },
+      "undo": {
+        "toastBody": "Skip scheduled — Undo?"
+      }
+    },
+    "estimate": {
+      "button": "Estimate folder"
+    }
+  },
+  "queue": {
+    "title": "Queue",
+    "controls": {
+      "activeCount": "{active} active · {pending} queued"
+    },
+    "skip": {
+      "button": "Skip",
+      "tooltip": "Skip this file. Encoding stops immediately and the file returns to the library wait state.",
+      "confirm": {
+        "skip": "Confirm skip",
+        "countdown": "Confirm ({seconds}s)"
+      },
+      "toast": {
+        "success": "Skipped — file returned to wait state.",
+        "error": "Could not skip. Try again."
+      },
+      "undo": {
+        "toastBody": "Skip scheduled — Undo?"
+      }
+    },
+    "cancel_all": {
+      "button": "Reset all",
+      "tooltip": "Cancel the active encode and clear the queue. All affected files return to the library wait state.",
+      "confirm": {
+        "title": "Reset queue?",
+        "message": "{count, plural, =0 {No jobs in queue.} one {One file will be reset to the wait state.} other {# files will be reset to the wait state.}}",
+        "confirm": "Reset all",
+        "cancel": "Keep queue"
+      },
+      "empty": {
+        "tooltip": "Nothing to reset — queue is empty."
+      },
+      "toast": {
+        "success": "Reset complete — {skipped} encoding stopped, {cancelled} removed from queue.",
+        "error": "Could not reset the queue. Try again."
+      },
+      "undo": {
+        "toastBody": "{count, plural, =1 {# job cancelling} other {# jobs cancelling}} — Undo?"
+      }
+    },
+    "active": {
+      "idleHeadline": "Encoder idle",
+      "idleHelper": "No jobs in flight. Enqueue from Library.",
+      "statProgress": "Progress",
+      "statFps": "FPS",
+      "statEta": "ETA",
+      "statBytes": "{processed} / {total}",
+      "encoderBadge": "Encoder",
+      "jobIdBadge": "#{jobId}"
+    },
+    "pending": {
+      "title": "Queue",
+      "empty": {
+        "title": "Queue empty",
+        "helper": "No jobs pending. Encoder is idle or all eligible files are pinned."
+      }
+    },
+    "completed": {
+      "title": "Completed",
+      "filter": {
+        "aria": "Filter completed jobs",
+        "done": "Done",
+        "failed": "Failed",
+        "cancelled": "Cancelled"
+      },
+      "empty": {
+        "helper": "No completed jobs yet."
+      },
+      "toggle": {
+        "show": "Show completed",
+        "hide": "Hide completed"
+      }
+    },
+    "reorder": {
+      "handle": {
+        "label": "Drag to reorder {filename}",
+        "roledescription": "Drag handle. Press Space to pick up, Arrow keys to move, Space to drop, Escape to cancel."
+      },
+      "announce": "Moved {filename} to position {position} of {total}",
+      "announceStart": "Picked up {filename}. Use arrow keys to move, Space to drop, Escape to cancel.",
+      "announceOver": "{filename} is over position {position}",
+      "announceEnd": "{filename} dropped at position {position} of {total}",
+      "announceCancel": "Move cancelled. {filename} returned to its position.",
+      "toast": {
+        "success": "Queue order updated",
+        "undo": "Undo",
+        "conflict": "Queue changed during your edit — refreshed",
+        "error": "Could not save the new order",
+        "retry": "Retry",
+        "idempotent": "Queue order already saved"
+      },
+      "undo": {
+        "disabled": {
+          "tooltip": "Cannot undo — queue has changed"
+        }
+      }
+    },
+    "recent": {
+      "title": "Recent",
+      "filter": {
+        "aria": "Filter recent jobs by status",
+        "all": "All",
+        "active": "Active",
+        "done": "Done",
+        "failed": "Failed"
+      },
+      "column": {
+        "file": "File",
+        "status": "Status",
+        "encoder": "Encoder",
+        "bytes": "Bytes",
+        "savings": "Savings",
+        "duration": "Duration",
+        "finished": "Finished",
+        "skip": "Skip"
+      },
+      "empty": {
+        "headline": "No jobs yet",
+        "helper": "Enqueue a file from Library to start.",
+        "openLibraryCta": "Open Library"
+      }
+    },
+    "row": {
+      "fileLabel": "File",
+      "pathLabel": "Path",
+      "atRoot": "(root)"
+    },
+    "disconnected": {
+      "banner": "Live updates paused — reconnecting…"
+    },
+    "error": {
+      "message": "Couldn't load queue status. Try again.",
+      "retry": "Retry"
+    },
+    "status": {
+      "queued": "Queued",
+      "encoding": "Encoding",
+      "done": "Done",
+      "failed": "Failed",
+      "cancelled": "Cancelled",
+      "interrupted": "Interrupted"
+    },
+    "toast": {
+      "actionFailed": "Action failed — try again"
+    }
+  },
+  "trash": {
+    "title": "Trash",
+    "summary": {
+      "reclaimed": "{bytesReclaimed} reclaimed across {count} files"
+    },
+    "selection": {
+      "header": {
+        "aria": "Select all on this page"
+      },
+      "row": {
+        "aria": "Select {filename}"
+      },
+      "bar": {
+        "label_count": "{count, plural, =0 {Nothing selected} one {# selected} other {# selected}}",
+        "clear": "Clear selection",
+        "max_warning_over": "Selection: {count} of max 500 — please reduce by {overflow}"
+      }
+    },
+    "bulk": {
+      "restore": {
+        "label": "Restore ({count})",
+        "network_error": "Network error — selection preserved, please retry"
+      },
+      "delete": {
+        "label": "Delete permanently ({count})",
+        "network_error": "Network error — selection preserved, please retry"
+      }
+    },
+    "column": {
+      "path": "Path",
+      "size": "Size",
+      "trashed": "Trashed",
+      "expires": "Expires",
+      "actions": "Actions"
+    },
+    "expiry": {
+      "safeLabel": "{days} days",
+      "soonLabel": "{days} days",
+      "urgentLabel": "{hours} hours",
+      "tooltipDetail": "Set by retention_days={retentionDays}"
+    },
+    "restore": {
+      "button": "Restore",
+      "confirmHeadline": "Restore this file?",
+      "confirmHelper": "{originalPath} will be moved back. The trash entry will be marked restored.",
+      "confirmCancel": "Cancel",
+      "confirmConfirm": "Restore",
+      "inProgress": "Restoring…",
+      "success": "{filename} restored",
+      "alreadyRestored": "This entry was already restored.",
+      "collisionError": "Couldn't restore — a file already exists at the original path. Move or rename it first.",
+      "missingError": "Trash file missing — investigate file system.",
+      "genericError": "Restore failed. Try again."
+    },
+    "empty": {
+      "headline": "Trash is empty",
+      "helper": "Files removed by completed encodes appear here for {retentionDays} days.",
+      "openSettingsCta": "Adjust retention"
+    },
+    "error": {
+      "message": "Couldn't load trash. Try again.",
+      "retry": "Retry"
+    },
+    "detailPopover": {
+      "originalPath": "Original path",
+      "trashPath": "Trash path",
+      "sizeBytes": "Size (bytes)",
+      "retentionDays": "Retention days"
+    }
+  },
+  "notification": {
+    "bell": {
+      "aria": "Driver warnings",
+      "title": "{count, plural, one {# driver warning} other {# driver warnings}}",
+      "empty": "No driver warnings",
+      "dismissAria": "Dismiss notification: {title}"
+    },
+    "detection": {
+      "dri_present_no_driver": {
+        "title": "DRI device present without driver",
+        "detail": "vainfo could not enumerate VA-API entrypoints",
+        "remediation": {
+          "title": "Check GPU device pass-through",
+          "steps": [
+            "Confirm the host has a working iGPU/dGPU driver",
+            "Pass `--device /dev/dri:/dev/dri` to the container",
+            "Restart the container and refresh detection"
+          ]
+        }
+      },
+      "qsv_only_legacy_intel": {
+        "title": "Legacy Intel iGPU detected",
+        "detail": "Only the i965 driver is available; AV1 hardware encode is unavailable",
+        "remediation": {
+          "title": "Legacy iGPU — informational",
+          "body": "Your Intel iGPU uses the legacy i965 path. HEVC encode works; AV1 hardware encode is unavailable. No action required unless you need AV1."
+        }
+      },
+      "vainfo_binary_missing": {
+        "title": "vainfo binary missing",
+        "detail": "vainfo is not installed in this container image",
+        "remediation": {
+          "title": "Re-pull the container image",
+          "body": "x265-butler ≥ v2.15.0 ships vainfo + VAAPI drivers by default. Pull the latest image and recreate the container."
+        }
+      },
+      "nvenc_no_runtime": {
+        "title": "NVIDIA GPU detected without runtime",
+        "detail": "/dev/nvidia* devices present but nvidia-smi is missing",
+        "remediation": {
+          "title": "Enable NVIDIA NVENC",
+          "steps": [
+            "Install the unRAID NVIDIA-Driver-Plugin from Community Apps",
+            "Set the Extra Parameter --runtime=nvidia",
+            "Add the Variables NVIDIA_VISIBLE_DEVICES and NVIDIA_DRIVER_CAPABILITIES",
+            "Restart the container and click Test now"
+          ],
+          "copyToast": "Copied to clipboard",
+          "pluginLinkLabel": "Open NVIDIA-Driver-Plugin (Community Apps)",
+          "copyExtraParam": "Copy extra parameter {value}",
+          "copyName": "Copy variable name {value}",
+          "copyValue": "Copy variable value {value}"
+        }
+      },
+      "encoder_runtime_broken": {
+        "title": "Hardware encoder failed its runtime check",
+        "detail": "A compiled-in encoder could not complete a 1-frame test encode and was removed from the available list",
+        "remediation": {
+          "title": "Recover the broken encoder",
+          "steps": [
+            "Re-pull the latest x265-butler image (it ships the matching GPU runtime libraries)",
+            "Confirm the GPU driver and runtime are present in the diagnostics report (Container Image section)",
+            "Select a different encoder for now (libx265 always works)",
+            "File a bug report and include the diagnostics excerpt for the failing encoder"
+          ]
+        }
+      }
+    }
+  },
+  "topbar": {
+    "queueStop": {
+      "label": "Toggle queue stop"
+    },
+    "activeJobsBadge": {
+      "label": "encoding",
+      "aria": "{count} jobs currently encoding. Open dashboard."
+    },
+    "user": {
+      "tooltipUsername": "Signed in as {username}",
+      "logout": "Logout",
+      "logoutAria": "Logout",
+      "logoutSuccess": "Signed out.",
+      "logoutError": "Logout failed.",
+      "logoutRetry": "Retry"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subhead": "At-a-glance overview of the encoding pipeline.",
+    "kpi": {
+      "totalSaved": {
+        "label": "Total saved",
+        "subtext": "{count} files",
+        "hint": "Total bytes saved across all completed encode jobs — original size minus encoded size."
+      },
+      "filesProcessed": {
+        "label": "Files processed",
+        "subtext": "last 30 days",
+        "hint": "Number of files successfully encoded in the last 30 days."
+      },
+      "avgSavings": {
+        "label": "Avg savings",
+        "subtext": "over completed encodes",
+        "hint": "Average size reduction across completed encodes. 40% means the output file is 40% smaller than the original."
+      },
+      "activeEncoder": {
+        "label": "Active encoder",
+        "subtext": {
+          "auto": "auto",
+          "override": "override",
+          "fallback": "fallback"
+        },
+        "hint": "The hardware or software encoder currently selected. Fallback means the requested encoder was unavailable and a substitute is in use."
+      },
+      "queueDepth": {
+        "label": "Queue depth",
+        "subtext": "{encoding} encoding · {pending} queued",
+        "hint": "Total files waiting to be processed — jobs actively encoding plus files pending in queue."
+      },
+      "throughput": {
+        "label": "Cumulative throughput",
+        "subtext": "/day over 30d",
+        "hint": "Average bytes processed per day over the last 30 days. A rough gauge of pipeline velocity."
+      }
+    },
+    "chart": {
+      "title": "Savings trend",
+      "hint": "Daily bytes saved over the last 30 days. Each point represents bytes saved by completed encodes on that UTC day. Gaps indicate days with no finished jobs.",
+      "empty": {
+        "title": "No encodes yet",
+        "body": "Encode a file from the Library to start tracking savings."
+      },
+      "tooltip": {
+        "savings": "Savings: {value}",
+        "bytesIn": "In: {value}",
+        "bytesOut": "Out: {value}",
+        "dateUtc": "{date} (UTC)"
+      },
+      "aria": "Savings trend over last 30 days (UTC days). Total saved: {total}. Peak day: {date}, {peak}."
+    },
+    "liveQueue": {
+      "title": "Live queue",
+      "hint": "Real-time view of the currently encoding job. Refreshes automatically every 30 seconds.",
+      "idle": "Idle — {count} jobs queued",
+      "empty": "Queue empty"
+    },
+    "recentActivity": {
+      "title": "Recent activity",
+      "hint": "The 10 most recently finished jobs. Click any row to open the file in the library.",
+      "empty": "No activity yet",
+      "openInLibrary": "{filename} (#{id})",
+      "fileMissing": "(deleted file)",
+      "idBadge": "#{id}",
+      "col": {
+        "file": "File",
+        "outcome": "Outcome",
+        "encoder": "Encoder",
+        "savings": "Savings",
+        "time": "Time"
+      }
+    },
+    "system": {
+      "title": "System",
+      "hint": "Runtime environment — encoder toolchain, CPU count, concurrency limits, and database size.",
+      "cpuCount": "CPU cores",
+      "ffmpegVersion": "ffmpeg version",
+      "detectedEncoders": "Detected encoders",
+      "activeConcurrency": "Active concurrency",
+      "cachePool": "Cache pool",
+      "dbSize": "Database size"
+    },
+    "error": {
+      "statsFailed": {
+        "title": "Could not load stats",
+        "body": "Try again — the server might be busy.",
+        "retry": "Retry loading stats"
+      }
+    },
+    "codecDistribution": {
+      "title": "Codec Distribution",
+      "hint": "Breakdown of all scanned files by video codec and container format. HEVC share shows how much of the library is already optimised.",
+      "subtitle": "{count, plural, one {# file} other {# files}} · {bytes}",
+      "chartAria": "Library codec distribution: {breakdown} — {totalFiles} files total, {totalBytes}",
+      "hevcCallout": "HEVC: {count, plural, one {# file} other {# files}} · {percent}% of Library",
+      "legendRow": "{label} {count} ({percent}%)",
+      "kpi": {
+        "files": "Files",
+        "total": "Total Size",
+        "hevcShare": "HEVC",
+        "mkvShare": "MKV"
+      },
+      "section": {
+        "codecs": "Codecs",
+        "containers": "Containers"
+      },
+      "bucket": {
+        "hevc": "HEVC",
+        "h264": "H.264",
+        "av1": "AV1",
+        "vp9": "VP9",
+        "other": "Other",
+        "unknown": "Unknown"
+      },
+      "container": {
+        "mkv": "MKV",
+        "mp4": "MP4",
+        "other": "Other"
+      },
+      "empty": {
+        "title": "No files indexed yet",
+        "body": "Run a scan from the Library page to populate codec stats"
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subhead": "Configure how x265-butler discovers and processes your media.",
+    "tab": {
+      "paths": "Paths",
+      "encoder": "Encoder",
+      "auth": "Auth",
+      "general": "General",
+      "bench": "Bench"
+    },
+    "auth": {
+      "heading": "Authentication",
+      "helper": "Off-by-default. LAN-only deployment assumed.",
+      "toggle": {
+        "label": "Enable login",
+        "helper": "Require username + password to access the dashboard.",
+        "disableConfirm": {
+          "title": "Disable login?",
+          "body": "The dashboard will become accessible without authentication.",
+          "cancel": "Cancel",
+          "confirm": "Disable"
+        }
+      }
+    },
+    "setup": {
+      "heading": "One-time setup",
+      "field": {
+        "username": {
+          "label": "Username",
+          "helper": "3–64 chars · letters, digits, _ and - only.",
+          "placeholder": "admin"
+        },
+        "password": {
+          "label": "Password",
+          "show": "Show password",
+          "hide": "Hide password",
+          "helper": "Minimum 12 characters · mix letters, digits, symbols."
+        },
+        "confirmPassword": {
+          "label": "Confirm password"
+        }
+      },
+      "action": {
+        "submit": "Create account",
+        "submitting": "Creating…"
+      },
+      "error": {
+        "passwordsDontMatch": "Passwords do not match.",
+        "usernameTaken": "Username already exists.",
+        "passwordTooWeak": "Password is too weak — needs ≥12 chars and a mix of character classes.",
+        "usernameInvalid": "Username may contain only letters, digits, _ and -.",
+        "usernameTooShort": "Username must be at least 3 characters."
+      },
+      "success": "Account created."
+    },
+    "advanced": {
+      "heading": "Advanced",
+      "sessionTtl": {
+        "label": "Session lifetime",
+        "helper": "How long a logged-in session stays valid before re-auth.",
+        "preset": {
+          "1h": "1 hour",
+          "6h": "6 hours",
+          "1d": "1 day",
+          "3d": "3 days",
+          "7d": "7 days",
+          "14d": "14 days",
+          "30d": "30 days"
+        }
+      },
+      "trustProxyXff": {
+        "label": "Trust X-Forwarded-For header",
+        "helperWarning": "Only enable when behind a reverse proxy that strips client-supplied XFF. Otherwise IP rate-limit can be spoofed."
+      },
+      "bcryptCost": {
+        "label": "Bcrypt cost factor",
+        "helper": "Higher = slower login + stronger against brute force. Default 12 is recommended.",
+        "helperWarning14": "Login will take ~1 second per attempt. Operator-only LAN box: this is acceptable; high-traffic deployments would not.",
+        "estimate": "Cost factor: {cost} (≈{ms}ms hash)"
+      }
+    },
+    "danger": {
+      "heading": "Danger zone",
+      "disableAndDelete": {
+        "label": "Disable + delete user",
+        "body": "Removes the user account, clears the session secret, and turns auth off. Reversible only by re-creating the user.",
+        "confirmTitle": "Disable login + delete user?",
+        "confirmBody": "Sure? This deletes your user account and turns off authentication.",
+        "cancel": "Cancel",
+        "confirm": "Disable + delete",
+        "success": "Login disabled and user deleted.",
+        "armedLabel": "Confirm: irreversible"
+      }
+    },
+    "section": {
+      "scanPath": {
+        "title": "Scan path",
+        "description": "Where x265-butler looks for media files."
+      },
+      "filter": {
+        "title": "Filter",
+        "description": "What counts as a candidate for processing."
+      },
+      "preferences": {
+        "title": "Preferences",
+        "description": "Language and appearance — applied immediately on save."
+      },
+      "encoder": {
+        "title": "Encoder selection",
+        "description": "Choose which ffmpeg encoder to use and how many concurrent jobs to run."
+      },
+      "crf": {
+        "title": "Per-encoder CRF defaults",
+        "description": "Quality target per encoder. 0 = lossless, 23 ≈ libx265 default, 51 = worst. Lower numbers mean larger files with better quality.",
+        "preset": {
+          "label": "Preset",
+          "helper": {
+            "libx265": "Speed-vs-quality tradeoff. Slower presets shrink files further at the same CRF.",
+            "nvenc": "NVENC preset (p1 = fastest, p7 = slowest+highest quality at same QP).",
+            "qsv": "QSV preset. Slower = better compression at the same global_quality.",
+            "vaapi": "VAAPI preset. Driver may ignore this flag — compression_level is the authoritative knob."
+          },
+          "option": {
+            "libx265": {
+              "ultrafast": "ultrafast",
+              "superfast": "superfast",
+              "veryfast": "veryfast",
+              "faster": "faster",
+              "fast": "fast",
+              "medium": "medium",
+              "slow": "slow",
+              "slower": "slower",
+              "veryslow": "veryslow",
+              "placebo": "placebo"
+            },
+            "nvenc": {
+              "p1": "p1 (fastest)",
+              "p2": "p2",
+              "p3": "p3",
+              "p4": "p4",
+              "p5": "p5",
+              "p6": "p6",
+              "p7": "p7 (slowest)"
+            },
+            "qsv": {
+              "veryfast": "veryfast",
+              "faster": "faster",
+              "fast": "fast",
+              "medium": "medium",
+              "slow": "slow",
+              "slower": "slower",
+              "veryslow": "veryslow"
+            },
+            "vaapi": {
+              "fast": "fast",
+              "medium": "medium",
+              "slow": "slow"
+            }
+          }
+        },
+        "applyFromBench": {
+          "label": "Apply from bench",
+          "loading": "Applying…",
+          "initialLoading": "Loading…",
+          "tooltipNoBench": "Run a benchmark first to enable this action.",
+          "tooltipAuthRequired": "Sign in to access bench recommendation.",
+          "tooltipFetchError": "Could not load bench recommendation — try again later.",
+          "tooltipInitialLoading": "Checking for bench recommendation…",
+          "tooltipNoRecommendationsForMode": "No recommendations available for this run × mode.",
+          "aria": {
+            "label": "Apply CRF values from latest completed bench recommendation"
+          },
+          "success": {
+            "toast": "Applied {crfCount} CRF + {presetCount} Preset from Run #{runId}"
+          },
+          "error": {
+            "toast": "Could not apply bench recommendation — try again."
+          },
+          "labelWithRunAndMode": "Apply from Run #{runId} ({modeLabel})",
+          "runPicker": {
+            "label": "Source run",
+            "optionPattern": "Run #{runId} · {relativeTime} ago · {encoders} encoders",
+            "defaultHint": "(latest)",
+            "loading": "Loading runs…",
+            "empty": "No completed bench-runs yet",
+            "error": "Could not load runs"
+          },
+          "mode": {
+            "label": "Mode",
+            "defaultHint": "default",
+            "quality": {
+              "label": "Quality",
+              "description": "Highest VMAF; larger files"
+            },
+            "balanced": {
+              "label": "Balanced",
+              "description": "Best size/quality tradeoff"
+            },
+            "size": {
+              "label": "Size",
+              "description": "Smallest files at acceptable VMAF"
+            }
+          }
+        }
+      },
+      "minSavings": {
+        "title": "Minimum savings threshold",
+        "description": "Encoded outputs are only kept when smaller than the source by at least this percentage. Below the threshold the source is preserved and a forensic record is written."
+      },
+      "outputContainer": {
+        "title": "Output container",
+        "description": "Choose the container format for encoded files. MKV preserves all subtitle and audio tracks; MP4 broadens device compatibility but may drop incompatible tracks."
+      }
+    },
+    "field": {
+      "scanRoot": {
+        "label": "Scan path",
+        "helper": "Absolute path to your media share, e.g. /media.",
+        "placeholder": "/media",
+        "warningMissing": "Path does not currently exist on disk."
+      },
+      "extensions": {
+        "label": "File extensions",
+        "helper": "File extensions to scan, comma-separated. Example: mp4, mkv.",
+        "placeholder": "mp4, mkv",
+        "removeAria": "Remove {ext}"
+      },
+      "minSizeMb": {
+        "label": "Minimum file size (MB)",
+        "helper": "Files smaller than this are ignored. 50 MB filters samples and thumbnails.",
+        "suffix": "MB"
+      },
+      "maxDepth": {
+        "label": "Maximum scan depth",
+        "helper": "How deep into subdirectories to scan. Default 12 covers most libraries."
+      },
+      "language": {
+        "label": "Language"
+      },
+      "theme": {
+        "label": "Theme",
+        "system": "System",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "autoEnqueueAfterScan": {
+        "label": "Auto-encode pending after scan",
+        "helper": "When enabled, every scan complete triggers libx265 encode jobs for all files in pending status."
+      },
+      "deleteOriginalAfterEncode": {
+        "label": "Delete original after successful encode",
+        "helper": "When enabled, the original file is hard-deleted after a successful encode (skips trash). Default: original moves to trash with retention. Cannot be undone."
+      },
+      "outputSuffix": {
+        "label": "Output filename suffix",
+        "helper": {
+          "mkv": "Free-form label appended to the base filename. If the value does not already end in .mkv, .mkv is appended automatically. Example: -x265 → movie-x265.mkv. No path separators or control characters.",
+          "mp4": "Free-form label appended to the base filename. If the value does not already end in .mp4, .mp4 is appended automatically. Example: -x265 → movie-x265.mp4. No path separators or control characters.",
+          "matchSource": "Free-form label appended to the base filename. The trailing extension follows the source file's extension at encode time (.mp4 source → .mp4 output; everything else → .mkv). Example: -x265 → movie-x265.mkv (or movie-x265.mp4 if source was .mp4). No path separators or control characters."
+        }
+      },
+      "outputContainer": {
+        "label": "Output container",
+        "description": "MP4 trades subtitle and exotic-audio coverage for broader device playback. MKV is the safe default and preserves every track. Match source picks per source extension and falls back to MKV on incompatible audio or subtitles.",
+        "options": {
+          "mkv": "MKV (full coverage)",
+          "mp4": "MP4 (broad compatibility)",
+          "matchSource": "Match source"
+        },
+        "warning": {
+          "mp4": "MP4 cannot mux every subtitle and audio codec. Incompatible subtitle streams are dropped automatically and exotic audio codecs (TrueHD, DTS, FLAC, raw PCM) cause the affected job to fail with an actionable error.",
+          "dismiss": "Dismiss warning"
+        },
+        "advisory": {
+          "queueSemantic": "This setting applies to jobs dispatched after save — including jobs already in the queue.",
+          "matchSource": "Picks MKV or MP4 based on the source file extension. Auto-falls back to MKV if the MP4 muxer cannot handle the audio or subtitle codecs — the encoded filename reflects the resolved container."
+        },
+        "aria": {
+          "label": "Output container",
+          "warning": "Output container compatibility warning"
+        },
+        "tooltip": {
+          "trigger": "More information about output container"
+        }
+      },
+      "cachePoolPath": {
+        "label": "Cache pool path",
+        "placeholder": "/mnt/cache/x265-butler",
+        "helper": "Working directory for staged encodes. Should live on fast storage and must NOT overlap the scan root.",
+        "hintWillCreate": "Path does not exist yet — will be created automatically on first encode."
+      },
+      "encoder": {
+        "label": "Encoder",
+        "helper": "auto resolves to the best detected encoder per job. Override to pin a specific encoder.",
+        "option": {
+          "auto": "auto",
+          "nvenc": "NVENC",
+          "qsv": "QuickSync (QSV)",
+          "vaapi": "VAAPI",
+          "libx265": "libx265 (software)"
+        }
+      },
+      "concurrency": {
+        "label": "Concurrency",
+        "helper": "auto: cores/4 for libx265 (max 8); 1 for HW encoders. Override applies to ALL encoders uniformly.",
+        "option": {
+          "auto": "auto"
+        }
+      },
+      "crf_libx265": {
+        "label": "CRF — libx265",
+        "helper": "0 = lossless, 23 = default, 51 = worst. Lower means larger file with better quality."
+      },
+      "crf_nvenc": {
+        "label": "CRF — NVENC",
+        "helper": "NVENC QP scale 0-51. 23 ≈ libx265 default quality."
+      },
+      "crf_qsv": {
+        "label": "CRF — QSV",
+        "helper": "QSV global_quality 0-51. 22 = community-default for HEVC."
+      },
+      "crf_vaapi": {
+        "label": "CRF — VAAPI",
+        "helper": "VAAPI QP scale 0-51. 22 = community-default for HEVC."
+      },
+      "minSavings": {
+        "label": "Minimum savings threshold",
+        "helper": {
+          "template": "Output kept only when ≥ {value}% smaller than source. Below threshold → status 'Not worth re-encoding'."
+        },
+        "aria": {
+          "valuetext": "{value} percent threshold"
+        }
+      }
+    },
+    "encoder": {
+      "detected": {
+        "heading": "Detected encoders",
+        "pill": {
+          "available": "{encoder}, available",
+          "unavailable": "{encoder}, not detected on this host",
+          "libx265": "libx265, available (always)"
+        }
+      },
+      "active": {
+        "line": "Active: {encoder} ({resolution})",
+        "aria": "Active encoder: {encoder} ({resolution})",
+        "fallbackLine": "Falling back to libx265 — chosen encoder ({requested}) not detected on this host"
+      },
+      "warningsBadge": {
+        "label": "{count, plural, one {# warning} other {# warnings}}",
+        "aria": "Open driver warnings"
+      },
+      "warningsPopover": {
+        "remediationLink": "See README HW-Accel section"
+      }
+    },
+    "action": {
+      "save": "Save",
+      "saving": "Saving…",
+      "saved": "Settings saved",
+      "savedEncoder": "Encoder settings saved",
+      "savedEncoderActive": "Active encoder: {encoder}",
+      "cancel": "Cancel",
+      "discard": "Discard"
+    },
+    "unsavedChanges": {
+      "title": "Discard changes?",
+      "body": "Your unsaved changes will be lost.",
+      "action": {
+        "save": "Save and switch",
+        "discard": "Discard",
+        "cancel": "Cancel"
+      },
+      "error": {
+        "validation": "Some fields have errors. Fix them before saving.",
+        "network": "Couldn't save settings. Check your connection and try again."
+      }
+    },
+    "error": {
+      "load": "Couldn't load settings",
+      "save": "Couldn't save settings. Try again.",
+      "retry": "Retry"
+    },
+    "fieldErrors": {
+      "cachePoolPathNotWritable": "Path is not writable. Check that the directory exists and the container user has write permission."
+    },
+    "validation": {
+      "required": "This field is required.",
+      "pathAbsolute": "Path must be absolute.",
+      "min": "Value too small.",
+      "max": "Value too large.",
+      "extensionsRequired": "At least one extension is required.",
+      "cachePathCollidesWithScanRoot": "Cache pool path must not equal the scan root.",
+      "crfRange": "Must be 0-51",
+      "outputSuffixFormat": "Must not contain '/', '\\\\' or control characters",
+      "minSavingsRange": "Must be 0-50"
+    },
+    "paths": {
+      "shares": {
+        "title": "Shares",
+        "emptyState": "No shares yet — add your first one below",
+        "summary": "{name} · {path} · min {minMb, number} MB · {extCount, plural, one {# ext} other {# ext}} · depth {depth}",
+        "depthUnlimited": "∞",
+        "card": {
+          "editAria": "Edit share {name}",
+          "deleteAria": "Delete share {name}"
+        },
+        "form": {
+          "label": {
+            "name": "Name",
+            "path": "Path",
+            "minSizeMb": "Min Size (MB)",
+            "extensions": "Extensions",
+            "maxDepth": "Max Depth"
+          },
+          "helper": {
+            "maxDepthEmpty": "Leave empty for unlimited",
+            "extensions": "Comma-separated, e.g. mkv,mp4,avi"
+          }
+        },
+        "add": {
+          "button": "Add Share",
+          "success": "Share added"
+        },
+        "edit": {
+          "button": "Edit",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "delete": {
+          "button": "Delete",
+          "armed": "Hold to confirm",
+          "success": "Share deleted — {count, plural, one {# file} other {# files}} marked as orphaned"
+        },
+        "warning": {
+          "rescanRecommended": "Path updated — files at old path will appear as vanished on next scan unless they exist at new path. Re-scan recommended.",
+          "rescanAction": "Re-scan now"
+        },
+        "discardDialog": {
+          "title": "Discard unsaved changes to {name}?",
+          "body": "You have unsaved edits on this share. Switching cards will lose them.",
+          "stay": "Stay editing",
+          "discard": "Discard"
+        },
+        "onboarding": {
+          "alreadyCompleted": "Onboarding already completed — manage shares in Settings → Paths"
+        },
+        "error": {
+          "share_mutating_during_scan": "Cannot modify share while a scan is in progress. Wait for scan to finish, then retry.",
+          "path_traversal_rejected": "Path may not contain '..' segments",
+          "path_nul_byte_rejected": "Path may not contain control characters",
+          "extensions_csv_empty_after_normalization": "Extensions list is empty after normalization",
+          "name_invalid_chars": "Name may only contain letters, numbers, spaces, and ._-()",
+          "cache_pool_path_nested_under_share": "Cache pool path collides with share '{conflictingShareName}'",
+          "share_path_nested": "Path conflicts with existing share '{conflictingShareName}' ({conflictingSharePath}) — shares cannot nest",
+          "share_name_duplicate": "Name already in use",
+          "share_path_duplicate": "Path already in use",
+          "share_not_found": "Share not found",
+          "validation_failed": "Please correct the highlighted fields"
+        }
+      }
+    },
+    "autoScan": {
+      "title": "Auto-Scan",
+      "description": "Watches share paths in real time and enqueues new files within seconds.",
+      "toggleLabel": "Enable Auto-Scan",
+      "toggleHelp": "Default ON. Off pauses event-driven scanning; the 6 h reconcile timer also stops.",
+      "statusRunning": "Active",
+      "statusError": "Error",
+      "statusStopped": "Stopped",
+      "lastEventLabel": "Last event",
+      "lastEventNever": "no events yet",
+      "lastReconcileLabel": "Last reconcile",
+      "reconcileNever": "no reconcile yet",
+      "bootReconcileCountLabel": "Files reconciled at boot",
+      "bootReconcileInProgress": "Boot reconcile running…",
+      "orphanReEnqueueCountAtBootLabel": "Orphans re-enqueued at boot",
+      "droppedEventsLast24hLabel": "Events dropped (last 24 h)",
+      "pollingModeInotify": "inotify",
+      "pollingModeAuto": "Polling (auto)",
+      "pollingModeForced": "Polling (forced)",
+      "inotifyBudgetLabel": "inotify watch budget",
+      "inotifyBudgetUnknown": "(unknown — Linux only)",
+      "inotifyBudgetWarn": "Budget pressure (>80%)",
+      "inotifyBudgetBannerLow": "inotify max_user_watches is below the recommended 524288. Watcher may fail under load.",
+      "inotifyBudgetBannerPressure": "inotify watch budget over 80% — consider raising the limit.",
+      "enospcWarningTitle": "inotify limit reached (ENOSPC)",
+      "enospcWarningBody": "The container cannot register more file watches. Raise fs.inotify.max_user_watches.",
+      "enospcSnippetTitle": "Fix snippet",
+      "enospcSnippetCopy": "Copy",
+      "enospcAutoRetryHint": "Auto-retry running (backoff 10 s → 60 s → 5 min → 30 min → 1 h).",
+      "shareTableShare": "Share",
+      "shareTableMode": "Mode",
+      "shareTableLastEvent": "Last event",
+      "advancedSectionTitle": "Advanced options",
+      "advancedSectionDescription": "Operator-tunable detection timing. Defaults are safe; lower stability/batch values increase responsiveness at the cost of more partial-file events.",
+      "bootScanOnStartLabel": "Boot scan on start",
+      "bootScanOnStartHelp": "When enabled (default), the container performs a full library reconcile every time it starts. When disabled, files added while the container was stopped are picked up only at the next periodic reconcile (default 6 h).",
+      "stabilityThresholdLabel": "Write-stability threshold",
+      "stabilityThresholdHelp": "How long chokidar waits after the last write before considering a file stable.",
+      "stabilityThresholdUnit": "ms",
+      "batchWindowLabel": "Batch collection window",
+      "batchWindowHelp": "Events within this window are coalesced into a single ingest pass per share.",
+      "batchWindowUnit": "ms",
+      "reconcileIntervalLabel": "Reconcile interval",
+      "reconcileIntervalHelp": "Periodic full-library reconcile against the database. Catches anything missed by the event stream.",
+      "reconcileIntervalUnit": "h",
+      "advancedSaveButton": "Save",
+      "advancedSaveSavingButton": "Saving…",
+      "advancedSavedToast": "Advanced auto-scan settings saved.",
+      "advancedSaveFailedToast": "Could not save advanced settings — please retry.",
+      "advancedDirtyHint": "Unsaved changes",
+      "errorStabilityThresholdOutOfRange": "Must be between 1000 and 60000 ms.",
+      "errorBatchWindowOutOfRange": "Must be between 500 and 30000 ms.",
+      "errorReconcileIntervalOutOfRange": "Must be between 0.05 and 72 h."
+    },
+    "cachePath": {
+      "title": "Cache pool path",
+      "description": "Working directory for in-progress encodes. Auto-detected when left unset.",
+      "effectiveLabel": "Effective cache path",
+      "overrideLabel": "Override path",
+      "helperText": "Leave empty to auto-detect (/mnt/cache → /config/cache). Set an absolute path to override.",
+      "badge": {
+        "mntCache": "Auto · /mnt/cache",
+        "configFallback": "Auto · appdata fallback",
+        "userOverride": "Manual override"
+      },
+      "advisory": "No dedicated cache pool detected — encodes will stage inside the appdata volume. For large libraries, map a dedicated cache mount: a full appdata volume risks database corruption.",
+      "saveCta": "Save",
+      "savingCta": "Saving…",
+      "savedToast": "Cache path saved",
+      "errorToast": {
+        "generic": "Could not save the cache path",
+        "cache_pool_path_not_writable": "That path is not writable — create it first or pick another",
+        "cache_pool_path_nested_under_share": "That path is nested under a configured share — pick a path outside your media shares"
+      }
+    }
+  },
+  "diagnostics": {
+    "title": "Diagnostics",
+    "subtitle": "System state, warnings, and bug-report surface",
+    "refresh": "Refresh",
+    "loading": "Loading...",
+    "refreshError": "Refresh failed ({status})",
+    "refreshTimeout": "Refresh timed out",
+    "generatedAt": "Generated",
+    "section": {
+      "appInfo": "App Info",
+      "runtime": "Runtime",
+      "encoders": "Encoders",
+      "warnings": "Warnings",
+      "recentErrors": "Recent Errors",
+      "testEncode": "Test Encode",
+      "copyReport": "Copy Report"
+    },
+    "app": {
+      "version": "Version",
+      "gitHash": "Git hash",
+      "committedAt": "Committed at"
+    },
+    "runtime": {
+      "platform": "Platform",
+      "uptime": "Uptime"
+    },
+    "mounts": {
+      "heading": "Mounts",
+      "none": "No mounts probed"
+    },
+    "onboarding": {
+      "completed": "Onboarding done",
+      "hasShare": "Has share"
+    },
+    "encoders": {
+      "detected": "Detected",
+      "devices": "Devices",
+      "none": "none"
+    },
+    "warnings": {
+      "none": "No warnings"
+    },
+    "recentErrors": {
+      "none": "No recent errors"
+    },
+    "copyReport": {
+      "description": "Copy a markdown-formatted diagnostics report to the clipboard for pasting into a bug report.",
+      "button": "Copy report",
+      "toastSuccess": "Report copied to clipboard",
+      "toastError": "Failed to copy: {status}",
+      "toastTimeout": "Report fetch timed out",
+      "fallbackTitle": "Copy diagnostics report",
+      "fallbackInstruction": "Clipboard access unavailable — select all (Ctrl+A) and copy (Ctrl+C):",
+      "gateHelper": "Run a test encode first to attach lifecycle evidence to the bug report.",
+      "gateAriaDescription": "Copy disabled until test encode completes."
+    },
+    "testEncode": {
+      "button": "Run test encode",
+      "loadingLabel": "Running... (~5-12s)",
+      "resultTitle": "Result",
+      "success": "Encoder spawned successfully",
+      "failed": "Encoder spawn failed",
+      "killedTimeout": "Spawn killed at timeout — check ffmpeg or rate-limit",
+      "mutexHeld": "Another test-encode in progress (retry in {seconds}s)",
+      "retryCountdown": "Retry in {seconds}s",
+      "stdoutToggle": "Show stdout / stderr",
+      "duration": "Duration",
+      "exitCode": "Exit code",
+      "diagnosisTitle": "Likely cause",
+      "hint": {
+        "qsvMfxSessionUnsupported": "QSV could not open an MFX session (-9). Usually the container is missing the render group or the oneVPL runtime. Check the GPU / render-group diagnostics.",
+        "qsvMfxGenUnsupported": "QSV reported an unsupported configuration (-3). This iGPU generation may not support HEVC QSV — consider the libx265 software encoder.",
+        "qsvRuntimeMissing": "The oneVPL / MFX runtime could not be loaded. This image is missing libmfx-gen / libvpl — update to a build that includes the oneVPL runtime.",
+        "qsvMfxSessionGeneric": "QSV failed to initialise an MFX session. Verify the iGPU is passed through and the oneVPL runtime plus render group are present.",
+        "qsvDeviceCreationFailed": "QSV could not create the hardware device. Check that /dev/dri is mapped into the container and the render group matches.",
+        "nvencLibMissing": "NVENC libraries could not be loaded. Run the container with --runtime=nvidia and NVIDIA_DRIVER_CAPABILITIES including 'video'.",
+        "nvencNoCapableDevice": "No NVENC-capable GPU was found. Ensure NVIDIA_VISIBLE_DEVICES exposes the GPU and the driver supports HEVC NVENC.",
+        "nvencSessionFailed": "NVENC could not open an encode session. This often means the driver lacks the 'video' capability or the session limit was reached.",
+        "nvencDriverMismatch": "The NVIDIA driver is too old for this NVENC build. Update the host NVIDIA driver.",
+        "vaapiNoDisplay": "VAAPI could not open a display device. Check that /dev/dri/renderD128 is mapped and a VA driver (iHD) is installed.",
+        "vaapiDeviceMissing": "The render device /dev/dri/renderD128 was not found in the container. Map /dev/dri into the container.",
+        "permRenderNodeEacces": "Permission denied on the render device. The container user is not in the render group — add the render group GID.",
+        "genericHwInitFailed": "The hardware encoder failed to start. Check the render group, GPU pass-through and the GPU diagnostics section."
+      }
+    },
+    "encoderReplay": {
+      "button": "Re-run detection",
+      "toastUnchanged": "Detection unchanged",
+      "toastTimeout": "Detection timed out",
+      "diffTitle": "Detection diff",
+      "added": "added",
+      "removed": "removed",
+      "changed": "changed"
+    },
+    "feedback": {
+      "sectionHeading": "Report an issue",
+      "bugReport": "Bug report",
+      "featureRequest": "Feature request",
+      "toastBugCopied": "Diagnostics-report copied — paste into forum post",
+      "toastFeatureCopied": "Feature-request template copied — paste into forum post",
+      "openForum": "Open forum",
+      "bugGateHelper": "Run a test encode first to attach lifecycle evidence to the bug report.",
+      "featureTemplate": {
+        "what": "What?",
+        "why": "Why?",
+        "how": "How could that look?"
+      }
+    },
+    "banner": {
+      "countOne": "{count} warning active",
+      "countMany": "{count} warnings active",
+      "cta": {
+        "viewDiagnostics": "View diagnostics"
+      },
+      "dismiss": {
+        "aria": "Dismiss {code} warning for 24 hours"
+      },
+      "restorePill": {
+        "label": "{count, plural, one {# warning hidden} other {# warnings hidden}}",
+        "cta": "Restore",
+        "restoreAria": "Restore all dismissed warnings"
+      },
+      "severity": {
+        "warn": "Warning",
+        "error": "Error"
+      },
+      "killSwitch": {
+        "devLabel": "Banner disabled via env flag"
+      },
+      "announce": {
+        "dismissed": "Warning {code} dismissed for 24 hours",
+        "restored": "{count, plural, one {# warning restored} other {# warnings restored}}"
+      }
+    },
+    "blocklist": {
+      "title": "Blocklist Evaluation",
+      "entriesLabel": "entries",
+      "cachedAtLabel": "Pattern cache",
+      "emptyState": "No recent evaluations.",
+      "pathDisclosureWarning": "Paths shown here are included verbatim in the bug-report Markdown. Review before posting to public forums."
+    },
+    "slowRequests": {
+      "title": "Slow Requests",
+      "emptyState": "No slow requests recorded (threshold: 1s).",
+      "headerRoute": "Route",
+      "headerDuration": "Duration (ms)",
+      "headerAt": "At",
+      "headerBreakdown": "Breakdown"
+    },
+    "slowQueries": {
+      "title": "Slow Queries",
+      "emptyState": "No slow queries recorded (threshold: 100ms).",
+      "headerQuery": "Query",
+      "headerDuration": "Duration (ms)",
+      "headerAt": "At"
+    },
+    "webVitals": {
+      "title": "Web Vitals",
+      "emptyState": "No web vitals recorded.",
+      "headerRoute": "Route",
+      "headerTtfb": "TTFB p75 (ms)",
+      "headerLcp": "LCP p75 (ms)",
+      "headerInp": "INP p75 (ms)",
+      "headerSamples": "Samples"
+    },
+    "containerImage": {
+      "title": "Container Image",
+      "labelOS": "OS",
+      "labelGlibc": "GLIBC",
+      "labelIntelMediaDriver": "Intel Media Driver",
+      "labelLibva": "libva",
+      "labelLibdrm": "libdrm",
+      "labelFfmpeg": "ffmpeg",
+      "labelConfigFlags": "ffmpeg configuration flags",
+      "refreshLabel": "Refresh",
+      "refreshRateLimited": "Refresh limited — try again in a moment."
+    },
+    "renderDevices": {
+      "title": "Render Devices",
+      "emptyState": "No render devices found (no /dev/dri).",
+      "inGroup": "in group",
+      "notInGroup": "not in group",
+      "groupNote": "Group name is container-side and informational; the numeric GID is authoritative. Membership counts the process primary GID (PGID) and supplementary groups — fix via PGID='<gid>' or --group-add '<gid>'."
+    },
+    "cpu": {
+      "title": "CPU / iGPU",
+      "labelVendor": "Vendor",
+      "labelModelName": "Model name",
+      "labelFamilyModel": "CPUID family / model",
+      "labelMicroarch": "Microarchitecture",
+      "labelGraphicsGen": "Graphics generation",
+      "labelHevcQsv": "HEVC-QSV (hardware)",
+      "hevcQsv": {
+        "none": "Not supported (iGPU predates HEVC-QSV)",
+        "8bit": "8-bit supported",
+        "10bit": "8-bit + 10-bit supported",
+        "unknown": "Unknown"
+      },
+      "gentableNote": "HEVC-QSV reflects iGPU hardware capability derived from the embedded CPUID gen-table; actual QSV functionality is verified separately by the probe-encode."
+    },
+    "cache": {
+      "title": "Cache",
+      "labelEffective": "Effective path",
+      "labelResolution": "Resolution",
+      "labelSetting": "Configured override",
+      "labelWritable": "Writable",
+      "autoValue": "(auto)",
+      "advisory": "Config-fallback: no dedicated cache mount detected — map one (a full appdata volume risks database corruption).",
+      "resolution": {
+        "mntCache": "Auto · /mnt/cache",
+        "configFallback": "Auto · appdata fallback",
+        "userOverride": "Manual override"
+      }
+    }
+  },
+  "onboarding": {
+    "title": "Get started with x265-butler",
+    "step1": {
+      "headline": "Welcome to x265-butler",
+      "body": "Let's get you set up in four quick steps.",
+      "cta": "Get started"
+    },
+    "step2": {
+      "headline": "Hardware acceleration"
+    },
+    "step3": {
+      "headline": "Where are your videos?",
+      "body": "x265-butler will scan this directory for HEVC-eligible files.",
+      "field": {
+        "scanRoot": {
+          "label": "Scan root",
+          "helper": "unRAID typical: /media (read) or /mnt/user/Movies. Must be reachable inside the container.",
+          "placeholder": "/media"
+        },
+        "minSizeMb": {
+          "label": "Minimum file size (MB)",
+          "helper": "Files smaller than this are skipped. Filters samples and thumbnails."
+        },
+        "extensions": {
+          "label": "Extensions",
+          "helper": "Default: mp4, mkv, avi, mov, m4v, ts. Edit later in Settings."
+        }
+      },
+      "writableGate": {
+        "warningHeading": "This path is read-only inside the container",
+        "warningBody": "x265-butler can read this directory but cannot write to it. Encodes write the optimized file back in-place, so the job will fail late with an EACCES error at the final commit step.",
+        "fixHint": "Fix: set PUID/PGID so the container user owns (or can write) this mount, then restart the container. You can continue now and fix it afterward.",
+        "overrideLabel": "I understand, continue anyway"
+      }
+    },
+    "step4": {
+      "headline": "Hardware encoder detection",
+      "body": "Auto-detected on this host:",
+      "probing": "Probing /dev/dri and nvidia-smi...",
+      "detected": {
+        "heading": "Detected encoders"
+      },
+      "active": {
+        "line": "Resolved encoder: {encoder} ({resolution})"
+      },
+      "error": {
+        "fallback": "Detection failed. Continuing with libx265 software fallback."
+      },
+      "benchRecommendation": {
+        "label": "Recommended: {encoder} · CRF {crf}",
+        "ariaLabel": "Benchmark recommendation chip"
+      },
+      "cpuAdvisory": {
+        "label": "Your Intel iGPU (graphics gen {gen}) predates hardware HEVC-QSV (introduced at gen {minGen}, Skylake). QSV is unavailable on this hardware — libx265 software encoding is recommended.",
+        "ariaLabel": "CPU capability advisory"
+      },
+      "detectFailRemediation": {
+        "heading": "Suggested next steps"
+      }
+    },
+    "step5": {
+      "headline": "Quality defaults",
+      "body": "These work for most content. Tune later in Settings → Encoder.",
+      "cta": {
+        "finish": "Finish setup"
+      },
+      "crfExplainer": {
+        "triggerAriaLabel": "CRF explainer",
+        "header": "CRF Quality scale",
+        "lossless": "18-23 — visually lossless",
+        "good": "23-28 — good quality",
+        "artifacts": ">28 — visible artifacts",
+        "scaleAriaLabel": "CRF scale 0 to 51"
+      }
+    },
+    "paths": {
+      "autoSkipToast": {
+        "title": "Using container mount",
+        "description": "Scanning {path} — open Settings to change",
+        "actionLabel": "Open Settings",
+        "ariaLabel": "Path auto-detected from container mount"
+      }
+    },
+    "hwAccel": {
+      "intent": {
+        "body": "Detected GPU support before we set up your library."
+      },
+      "branch": {
+        "active": {
+          "title": "Hardware acceleration active",
+          "body": "The following encoder(s) are available:",
+          "encoderLabel": {
+            "nvenc": "NVIDIA NVENC",
+            "qsv": "Intel QSV",
+            "vaapi": "AMD/Intel VAAPI",
+            "libx265": "libx265 (software)"
+          }
+        },
+        "nvidia": {
+          "title": "NVIDIA plugin missing",
+          "body": "/dev/nvidia* devices present but nvidia-smi is missing. Install the unRAID NVIDIA-Driver-Plugin to enable NVENC.",
+          "steps": {
+            "1": "Install the unRAID NVIDIA-Driver-Plugin from Community Apps",
+            "2": "Set the Extra Parameter --runtime=nvidia",
+            "3": "Add the Variables NVIDIA_VISIBLE_DEVICES and NVIDIA_DRIVER_CAPABILITIES",
+            "4": "Restart the container and click Test now"
+          },
+          "testNow": {
+            "label": "Test now",
+            "inflight": "Re-detecting…",
+            "error": "Detection failed; try again"
+          },
+          "continueAnyway": "Continue with software encoding"
+        },
+        "software": {
+          "title": "Software encoding active",
+          "body": "No GPU detected. x265-butler will use libx265 (CPU encoder).",
+          "readmeLink": "Learn about hardware acceleration",
+          "nvidiaHint": {
+            "title": "Running an NVIDIA GPU?",
+            "body": "If you have an NVIDIA card, NVENC needs three things in the container template — copy each into its unRAID field:"
+          }
+        },
+        "legacyIntel": {
+          "title": "Legacy Intel iGPU detected",
+          "body": "Your Intel iGPU uses the legacy i965 path. HEVC hardware encode works, but AV1 hardware encode is unavailable and HEVC quality may be inferior to modern iHD iGPUs."
+        }
+      },
+      "cta": {
+        "continue": "Continue",
+        "back": "Back"
+      },
+      "nvenc": {
+        "fieldLabel": {
+          "extraParam": "Extra Parameters",
+          "envVar": "Variable",
+          "name": "Name",
+          "value": "Value"
+        },
+        "copy": {
+          "extraParam": "Copy extra parameter {value}",
+          "name": "Copy variable name {value}",
+          "value": "Copy variable value {value}"
+        }
+      }
+    },
+    "autoScan": {
+      "heading": "Auto-scan runs in the background",
+      "bodyAutoScanOn": "Auto-scan is ON — no manual scans needed for daily use.",
+      "bodyBootScan": "Boot-scan is ON — restarts reconcile anything added during downtime.",
+      "bodyAdvancedOptions": "Power-tuning is available under Settings → General → Advanced Options.",
+      "deepLinkLabel": "Open advanced options",
+      "iconLabel": "Auto-scan active"
+    },
+    "complete": {
+      "toast": "Setup complete!"
+    },
+    "error": {
+      "networkTimeout": "Network timeout — please try again."
+    },
+    "nav": {
+      "back": "Back",
+      "continue": "Continue"
+    },
+    "indicator": {
+      "aria": "Step {current} of {total}: {name}"
+    },
+    "validation": {
+      "scanRootRequired": "Path is required and must be absolute (start with /)",
+      "minSizeRange": "Must be between 1 and 10000"
+    }
+  },
+  "blocklist": {
+    "title": "Blocklist",
+    "subhead": {
+      "one": "1 entry skipped on every scan.",
+      "many": "{total} entries skipped on every scan."
+    },
+    "table": {
+      "type": "Type",
+      "displayValue": "Path / pattern",
+      "reason": "Reason",
+      "createdAt": "Added",
+      "actions": "Actions",
+      "recentMatches": "Recent matches"
+    },
+    "type": {
+      "file": "File",
+      "pattern": "Pattern"
+    },
+    "reason": {
+      "operator": "Manual",
+      "autoFailure": "Auto (failure)",
+      "autoSkip": "Auto (skip)"
+    },
+    "addPattern": {
+      "headline": "Add pattern",
+      "label": "Path pattern",
+      "placeholder": "/movies/Samples/*",
+      "helper": "Trailing `*` matches anything after; leading + trailing `*` matches contained substring.",
+      "submit": "Add",
+      "cancel": "Cancel",
+      "extensionWarning": {
+        "title": "Pattern saved — but no scanned share covers .{ext} files",
+        "body": "Current scan-extensions: {exts}. Add .{ext} to a share's extensions in Settings to make this pattern effective.",
+        "dismiss": "Got it"
+      }
+    },
+    "recentMatches": {
+      "tooltip": {
+        "neverMatched": "Never matched in the last 50 scan evaluations. Current scan-extensions: {exts}. Pattern targets .{ext} — add to a share's extensions in Settings."
+      },
+      "ariaLabel": "Recent match count"
+    },
+    "card": {
+      "recentMatchesLabel": "Recent matches",
+      "fileEntryDash": "Not applicable"
+    },
+    "actions": {
+      "addToBlocklist": "Add to blocklist",
+      "remove": "Remove"
+    },
+    "confirm": {
+      "addToBlocklist": "Confirm",
+      "remove": "Confirm remove"
+    },
+    "added": {
+      "toast": "Added to blocklist."
+    },
+    "removed": {
+      "toast": "Removed from blocklist."
+    },
+    "empty": {
+      "headline": "No blocklist entries",
+      "body": "Add files or path patterns to skip them on next scan."
+    },
+    "error": {
+      "patternTooComplex": "Pattern can have at most two `*` wildcards.",
+      "patternTooShort": "Pattern must be at least 2 characters.",
+      "fileNotFound": "File not found.",
+      "addFailed": "Could not add to blocklist.",
+      "removeFailed": "Could not remove blocklist entry.",
+      "dbError": "Could not load blocklist. See server logs."
+    }
+  },
+  "login": {
+    "title": "x265-butler",
+    "subtitle": "Sign in to continue",
+    "field": {
+      "username": {
+        "label": "Username",
+        "placeholder": "admin"
+      },
+      "password": {
+        "label": "Password",
+        "show": "Show password",
+        "hide": "Hide password"
+      }
+    },
+    "action": {
+      "submit": "Sign in",
+      "submitting": "Signing in…"
+    },
+    "rateLimited": {
+      "label": "Try again in {seconds}s"
+    },
+    "error": {
+      "required": "Required",
+      "invalidCredentials": "Invalid username or password.",
+      "rateLimited": "Too many attempts. Try again in {seconds} seconds.",
+      "serverError": "Server error. Try again.",
+      "networkError": "Network error. Check your connection."
+    },
+    "toast": {
+      "expired": {
+        "title": "Session expired",
+        "body": "Please sign in again."
+      },
+      "success": "Signed in."
+    },
+    "recovery": {
+      "note": "Forgot password? Run scripts/auth-reset.ts from the container shell."
+    },
+    "setupRequired": {
+      "title": "Setup required",
+      "body": "Authentication is enabled but no account exists yet. Open Settings → Auth to create one.",
+      "cta": "Go to Settings"
+    }
+  },
+  "stats": {
+    "title": "Advanced Stats",
+    "subtitle": "Detailed encoding metrics and library analysis.",
+    "topSavers": {
+      "title": "Top Savers",
+      "subtitle": "Files with the highest byte savings.",
+      "empty": {
+        "title": "No data yet",
+        "body": "Complete your first encoding job to see top savers."
+      },
+      "table": {
+        "file": "File",
+        "saved": "Saved",
+        "savedPercent": "Saved %",
+        "encoder": "Encoder",
+        "date": "Date",
+        "fileMissing": "File not found"
+      }
+    },
+    "encoderPerf": {
+      "title": "Encoder Performance",
+      "subtitle": "Total bytes saved per encoder.",
+      "empty": {
+        "title": "No encoder data",
+        "body": "Encoder stats appear after encoding jobs complete."
+      },
+      "chart": {
+        "aria": "Encoder performance bar chart"
+      }
+    },
+    "timeline": {
+      "title": "Savings Timeline",
+      "subtitle": "Daily savings and cumulative total over the last 30 days.",
+      "empty": {
+        "title": "No activity yet",
+        "body": "Savings trend will appear after encoding jobs complete."
+      },
+      "daily": "Daily savings",
+      "cumulative": "Cumulative savings"
+    },
+    "charts": {
+      "sectionHint": {
+        "aria": "More information"
+      },
+      "pipelineHealth": {
+        "title": "Pipeline Health",
+        "subtitle": "Job queue health and failure metrics"
+      },
+      "diskRecovery": {
+        "title": "Disk Recovery",
+        "subtitle": "Reclaimed and pending disk space"
+      },
+      "libraryOverview": {
+        "title": "Library Overview",
+        "subtitle": "File and format breakdown"
+      },
+      "skipAnalysis": {
+        "title": "Skip Analysis",
+        "subtitle": "Files skipped and why"
+      },
+      "failedJobRate": {
+        "title": "Failed Job Rate",
+        "subtitle": "Failure rate across all jobs",
+        "hint": "Share of jobs that failed. Below 5% is normal; above 10% signals a recurring problem worth investigating.",
+        "threshold": {
+          "healthy": "Healthy",
+          "attention": "Attention",
+          "critical": "Critical"
+        },
+        "aria": "{pct}% — {thresholdLabel}",
+        "interruptedNote": "Interrupted jobs excluded"
+      },
+      "encodeSpeedRatio": {
+        "title": "Encode Speed Ratio",
+        "subtitle": "Avg output/input size ratio",
+        "hint": "Ratio of encode duration to video duration. 2× means a 2-hour film encodes in 1 hour. High values may indicate slow hardware or heavy encoder settings.",
+        "target": "Target: < 0.6",
+        "aria": "Encode speed ratio: {value}"
+      },
+      "allTimeJobSummary": {
+        "title": "All-Time Jobs",
+        "done": "Done",
+        "failed": "Failed",
+        "interrupted": "Interrupted",
+        "cancelled": "Cancelled",
+        "total": "Total",
+        "hint": "Total jobs processed since launch — a quick gauge of how much of your library has been encoded.",
+        "aria": "All-time job summary"
+      },
+      "fileStatusDistribution": {
+        "title": "File Status",
+        "subtitle": "Distribution by current status",
+        "hint": "Current processing status of every file the scanner has seen.",
+        "empty": {
+          "title": "No files",
+          "body": "No files have been scanned yet."
+        },
+        "aria": "File status distribution chart"
+      },
+      "resolutionDistribution": {
+        "title": "Resolution Breakdown",
+        "hint": "How your library files break down by resolution. Useful for targeting the highest-quality files first.",
+        "bucket": {
+          "4K": "4K",
+          "1080p": "1080p",
+          "720p": "720p",
+          "SD": "SD",
+          "unknown": "Unknown"
+        },
+        "empty": {
+          "title": "No resolution data",
+          "body": "Resolution data appears after files are scanned."
+        },
+        "aria": "Resolution distribution chart"
+      },
+      "bitrateDistribution": {
+        "title": "Bitrate Distribution",
+        "hint": "Distribution by original bitrate. High-bitrate files (> 10 Mbps) typically yield the largest space savings after re-encoding.",
+        "bucket": {
+          "lt1Mbps": "< 1 Mbps",
+          "1to5Mbps": "1–5 Mbps",
+          "5to10Mbps": "5–10 Mbps",
+          "10to20Mbps": "10–20 Mbps",
+          "gt20Mbps": "> 20 Mbps",
+          "unknown": "Unknown"
+        },
+        "aria": "Bitrate distribution chart"
+      },
+      "skipTypeBreakdown": {
+        "title": "Skip Reasons",
+        "subtitle": "Why files were skipped",
+        "hint": "Why files were skipped by the scanner. A large 'Already HEVC' share means most of your library is already optimised.",
+        "empty": {
+          "title": "No skipped files",
+          "body": "Skipped file breakdown appears here."
+        },
+        "aria": "Skip type breakdown chart",
+        "bucket": {
+          "already_small": "Already small",
+          "already_hevc": "Already HEVC",
+          "no_gain": "No gain",
+          "unknown": "Unknown"
+        }
+      },
+      "currentTrashSize": {
+        "title": "Trash Size",
+        "subtitle": "Currently in trash",
+        "hint": "Disk space held by original files awaiting trash expiry. Released automatically when the retention period ends.",
+        "aria": "Current trash size"
+      },
+      "expiringSoon": {
+        "title": "Expiring Soon",
+        "hint": "Original files in the trash expiring within the next 7 days — they will be permanently deleted.",
+        "noneSoon": "None expiring soon",
+        "expiringSoon": "{count} expiring within {withinDays} days",
+        "aria": {
+          "expiringSoon": "{count} items expiring within {withinDays} days"
+        }
+      },
+      "netDiskFreed": {
+        "title": "Net Disk Freed",
+        "caveat": {
+          "tooltip": "Accounts for trash retention. May be negative if files were restored or trash not yet purged."
+        },
+        "aria": "Net disk freed"
+      },
+      "avgQueueWait": {
+        "title": "Avg Queue Wait",
+        "subtitle": "Average wait before encoding starts",
+        "hint": "Average time a file waits in the queue before encoding starts. Long waits may indicate the encoder is busy or under-provisioned.",
+        "aria": "Average queue wait time"
+      },
+      "sortToggle": {
+        "aria": "Sort {direction}"
+      },
+      "topSavers": {
+        "hint": "Top 10 files by absolute bytes saved. Click a filename to jump to its library entry."
+      },
+      "savingsTimeline": {
+        "subtitle": "Last 30 days, daily",
+        "hint": "Daily bytes saved and cumulative total over the last 30 days (UTC buckets). Gaps or flat periods indicate no completed encodes on those days.",
+        "chartAria": "Savings timeline bar chart",
+        "day": {
+          "aria": "{date}: {savings} saved ({jobCount, plural, =0 {no jobs} one {# job} other {# jobs}})"
+        },
+        "empty": {
+          "title": "No activity yet",
+          "body": "Savings trend will appear after encoding jobs complete."
+        }
+      },
+      "encoderPerf": {
+        "chartAria": "Encoder performance bar chart",
+        "hint": "Total bytes saved per encoder across all completed jobs. Longer bar = more storage reclaimed by that encoder.",
+        "empty": {
+          "title": "No encoder data",
+          "body": "Encoder stats appear after encoding jobs complete."
+        }
+      }
+    }
+  },
+  "bench": {
+    "page": {
+      "title": "Encoder Benchmark",
+      "subhead": "Measure VMAF / size / encode-time for your encoder × preset × quality matrix on representative samples.",
+      "infoButton": "About the Encoder Benchmark",
+      "info": {
+        "title": "How the Encoder Benchmark works",
+        "what": {
+          "heading": "What it does",
+          "body": "The bench encodes short samples from your selected files across every combination of encoder, preset, and quality value. It measures VMAF (perceptual quality), output size, and encode time — then draws the Pareto frontier so you can spot the best trade-offs at a glance."
+        },
+        "modes": {
+          "heading": "Modes",
+          "native": "Native Sweep — you pick raw quality values (CRF for libx265, CQ for NVENC/QSV, −qp for VAAPI). Cheapest: each combo encodes once.",
+          "vmaf": "VMAF-anchored — you pick target VMAF scores (e.g. 95, 92, 88). The bench probes each encoder/preset pair to find the quality value that hits each target. ~3–4× more encodes than Native Sweep."
+        },
+        "pareto": {
+          "heading": "Pareto frontier",
+          "body": "A combo is on the Pareto frontier when no other combo beats it on both size and quality simultaneously. The frontier (grey line in the chart) is the set of non-dominated trade-offs — every point on it is optimal for some priority."
+        },
+        "top3": {
+          "heading": "Top 3 picks",
+          "size": "Smallest — lowest output size on the frontier.",
+          "balanced": "Balanced — best size×quality product (geometric midpoint on the frontier).",
+          "quality": "Highest quality — best VMAF score on the frontier."
+        },
+        "samples": {
+          "heading": "Samples",
+          "body": "To keep run times short, the bench only encodes 3×20-second clips per file (configurable in Settings → Bench). Results are representative but not identical to a full-file encode."
+        },
+        "passes": {
+          "heading": "Two-pass structure",
+          "body": "Pass 1 (this plan) encodes the sample matrix and surfaces the Pareto results. Pass 2 — full-file verification of the winner — lands in Plan 11-03."
+        }
+      },
+      "emptyState": {
+        "title": "No benchmarks yet",
+        "body": "Pick a few files from your library and choose an encoder × preset × quality matrix. The bench encodes 3×20-second samples per file and shows you the Pareto frontier.",
+        "cta": "Start a benchmark"
+      }
+    },
+    "form": {
+      "submit": "Start Benchmark",
+      "mode": {
+        "label": "Mode",
+        "native": "Native Sweep (raw CRF / CQ values, ~1× cost)",
+        "vmafAnchored": "VMAF-anchored (target VMAF buckets, ~3-4× cost)",
+        "help": "Native sweep is the cheap honest baseline. VMAF-anchored solves for cross-encoder fair comparison.",
+        "hint": "Native Sweep encodes once per combo at a raw quality value — fast and cheap. VMAF-anchored probes each encoder/preset pair to find the quality value that hits your target VMAF score (~3–4× more encodes, but enables fair cross-encoder comparison)."
+      },
+      "files": {
+        "label": "File IDs",
+        "placeholder": "e.g. 12, 47, 102",
+        "help": "Comma-separated. 1-50 files.",
+        "hint": "Comma-separated IDs from the Library page. The bench encodes short samples, so pick files representative of your actual content — diverse resolution, bitrate, and scene complexity."
+      },
+      "encoders": {
+        "label": "Encoders",
+        "help": "At least 1.",
+        "hint": "libx265 — software CPU encoder, universally available. NVENC — NVIDIA GPU (much faster). QSV — Intel Quick Sync GPU. VAAPI — Linux GPU encoder (AMD or Intel). Only detected/installed encoders will produce results."
+      },
+      "presets": {
+        "label": "Presets",
+        "hint": "Select which x265 presets to benchmark. Faster presets trade quality for speed.",
+        "groupFast": "Fast",
+        "groupBalanced": "Balanced",
+        "groupSlow": "Slow"
+      },
+      "nativeValues": {
+        "label": "Native quality values",
+        "placeholder": "e.g. 20, 23, 26",
+        "help": "CRF for libx265 / CQ for NVENC / global_quality for QSV / -qp for VAAPI.",
+        "hint": "Raw quality parameter fed directly to the encoder. CRF for libx265 — lower = better quality + larger file. CQ for NVENC/QSV. −qp for VAAPI. Typical range 18–30. Each value produces one encode per encoder/preset combo."
+      },
+      "vmafTargets": {
+        "label": "VMAF targets",
+        "placeholder": "e.g. 95, 92, 88, 85",
+        "help": "Each encoder is probed to hit each target.",
+        "hint": "The bench binary-searches the quality parameter to produce exactly this VMAF score per encoder/preset pair. Higher = better quality + larger file. Typical: 95 (high), 92 (balanced), 88 (small). ~3–4× more encodes than Native Sweep."
+      },
+      "disclosure": {
+        "label": "Review & override defaults",
+        "summary": {
+          "native": "Native · {encCount, plural, one {# encoder} other {# encoders}} · {presetCount, plural, one {# preset} other {# presets}} · CRF {values}",
+          "vmaf": "VMAF · {encCount, plural, one {# encoder} other {# encoders}} · {presetCount, plural, one {# preset} other {# presets}} · VMAF {values}"
+        }
+      },
+      "reset": {
+        "cta": "↻ Reset to defaults",
+        "disabledHint": "Already on defaults"
+      },
+      "settingsLink": "→ Persist defaults in Settings",
+      "sampleSection": "Sample configuration",
+      "advanced": {
+        "label": "Advanced",
+        "sampleCount": "Samples per file",
+        "sampleDuration": "Sample duration (s)",
+        "vmafModel": "VMAF model"
+      },
+      "errors": {
+        "required": "Required",
+        "outOfRange": "Out of range",
+        "tooMany": "Too many — max 50",
+        "submitFailed": "Could not enqueue benchmark — see toast for details",
+        "encoderRequired": "At least one encoder required",
+        "presetRequired": "At least one preset required"
+      }
+    },
+    "stepper": {
+      "pass1": {
+        "label": "Quick check"
+      },
+      "pass2": {
+        "label": "Full check"
+      },
+      "state": {
+        "idle": "Idle",
+        "queued": "Queued",
+        "running": "Running",
+        "complete": "Complete",
+        "failed": "Failed",
+        "cancelled": "Cancelled"
+      },
+      "progressPill": "{completed} of {total} combos"
+    },
+    "progress": {
+      "heading": "Benchmark running…",
+      "combos": "{completed} of {total} combinations",
+      "fileOf": "File {current} of {total}",
+      "combo": "Combo {current} of {total}",
+      "encoderLine": "{encoder} @ CRF {crf}",
+      "fileLine": "File {current}/{total}: {filename}",
+      "runLine": "{completed} done · {pct}%",
+      "phase": {
+        "encode": "Encoding",
+        "vmaf": "VMAF",
+        "sampleExtraction": "Sample extraction",
+        "pareto": "Pareto"
+      }
+    },
+    "chart": {
+      "title": "Pareto frontier",
+      "subhead": "Bubble size = encode-time. X is log-scale.",
+      "axis": {
+        "size": "Encoded size",
+        "vmaf": "VMAF",
+        "time": "Encode time"
+      },
+      "encoder": {
+        "libx265": "libx265",
+        "hevcNvenc": "NVENC",
+        "hevcQsv": "QSV",
+        "hevcVaapi": "VAAPI"
+      },
+      "paretoLine": "Pareto frontier",
+      "running": {
+        "banner": "Live — {completed} of {total} combos encoded"
+      }
+    },
+    "top3": {
+      "size": {
+        "title": "Smallest size"
+      },
+      "balanced": {
+        "title": "Balanced"
+      },
+      "quality": {
+        "title": "Highest quality"
+      },
+      "savesPct": "saves {pct}%",
+      "worseByPct": "+{pct}% worse",
+      "savesBytes": "≈{bytes} on full file",
+      "noSavings": "no savings",
+      "compressionUnavailable": "Compression: legacy data",
+      "projectionAssumption": "Projection assumes uniform compressibility across files",
+      "useThis": "Verify on full file",
+      "applyAsDefaults": "Apply as defaults",
+      "verifyTooltipReady": "Run a bench to enable Pass-2 verify",
+      "noCandidate": "No candidate — Pareto front too short",
+      "sizeLabel": "Size",
+      "timeLabel": "Time",
+      "sameComboAs": "Same combo as {roleTitle}"
+    },
+    "pass2": {
+      "heading": "Pass-2 verified result",
+      "idle": "Ready to verify",
+      "running": "Verifying…",
+      "complete": "Verified",
+      "failed": "Verify failed",
+      "cancelled": "Cancelled",
+      "retry": "Retry",
+      "restart": "Restart",
+      "progressLabel": "Pass-2 verify progress",
+      "verifiedSourceFile": "Verified source: {path}",
+      "verifyTooltipReady": "Run a bench to enable Pass-2 verify",
+      "vmafLabel": "VMAF",
+      "sizeLabel": "Size",
+      "timeLabel": "Time",
+      "deltaVsSample": "Δ {delta} vs sample",
+      "savingsVsFull": "{pct}% saved vs full source",
+      "cancelCta": "Cancel verify"
+    },
+    "apply": {
+      "dialogTitle": "Apply as new encoder defaults?",
+      "dialogBody": "These values will be written as your global encoder defaults. Pipeline V2 reads them at encode-dispatch.",
+      "currentLabel": "Current",
+      "newLabel": "New",
+      "cancelCta": "Cancel",
+      "keepCurrentCta": "Keep current",
+      "applyCta": "Apply",
+      "success": "Defaults updated",
+      "idempotentSuccess": "Defaults already match — no change",
+      "errorValidation": "Cannot apply: combo is not verified",
+      "errorNetwork": "Could not write defaults — check connection and retry",
+      "errorUnauthorized": "Sign in required to apply defaults",
+      "undoToast": "Defaults applied for {encoder} ({crf}/{preset}) — Undo?",
+      "noChange": "Defaults already match this combo",
+      "undo": {
+        "success": "Previous settings restored",
+        "error": "Restore failed — please revert manually in Settings"
+      }
+    },
+    "terminal": {
+      "failed": {
+        "title": "Run failed",
+        "body": "{errorReason}"
+      },
+      "cancelled": {
+        "title": "Run cancelled",
+        "body": "Cancelled at {when}"
+      },
+      "newRun": "Start new run"
+    },
+    "cancel": {
+      "button": "Cancel run",
+      "toast": {
+        "success": "Run cancelled",
+        "error": "Could not cancel — please try again"
+      },
+      "undo": {
+        "toastBody": "Cancellation scheduled — Undo?"
+      }
+    },
+    "errors": {
+      "runNotFound": "Benchmark run not found"
+    },
+    "settings": {
+      "title": "Bench defaults",
+      "section": {
+        "sampling": "Sampling",
+        "matrix": "Default Matrix",
+        "vmaf": "VMAF"
+      },
+      "sampleCount": {
+        "label": "Samples per file",
+        "help": "3 is the sweet-spot per ab-av1 research."
+      },
+      "sampleDurationSeconds": {
+        "label": "Sample duration (s)",
+        "help": "20 seconds per sample is the published sweet-spot."
+      },
+      "mode": {
+        "label": "Default Mode",
+        "help": "Initial mode in the enqueue form. Operator can override per run.",
+        "native": "Native Sweep",
+        "vmafAnchored": "VMAF-anchored"
+      },
+      "encoders": {
+        "label": "Default Encoders",
+        "help": "Pre-selected encoders. At least one required."
+      },
+      "presets": {
+        "label": "Default Presets",
+        "help": "Pre-selected presets across speed groups.",
+        "groupFast": "Fast",
+        "groupBalanced": "Balanced",
+        "groupSlow": "Slow"
+      },
+      "nativeValues": {
+        "label": "Default Native Values",
+        "help": "CRF or QP values to sweep, comma-separated. Example: 23,28"
+      },
+      "vmafModel": {
+        "label": "VMAF model",
+        "help": "Standard libvmaf 2.x model. Use vmaf_v0.6.1_neg to penalize NVENC pre-filtering."
+      },
+      "vmafBuckets": {
+        "label": "VMAF Pareto Buckets",
+        "help": "Three VMAF thresholds for Pareto bucketing. Example: 95,92,88",
+        "bucket1": {
+          "label": "Bucket 1 (highest quality)"
+        },
+        "bucket2": {
+          "label": "Bucket 2"
+        },
+        "bucket3": {
+          "label": "Bucket 3"
+        },
+        "errors": {
+          "outOfRange": "Value must be between 0 and 100",
+          "notDescending": "Values must be strictly descending"
+        },
+        "legacyFormatRecovered": "Stored VMAF buckets were invalid — defaults (95/92/88) loaded. Please review or adjust.",
+        "dismissLegacyNotice": "Dismiss notice",
+        "dismissAction": "Dismiss"
+      },
+      "save": "Save defaults",
+      "saved": "Bench defaults saved",
+      "saveFailed": "Failed to save bench defaults",
+      "errors": {
+        "vmafBuckets": "VMAF buckets must be exactly 3 strictly descending values 0–100 (e.g. 95,92,88)."
+      }
+    },
+    "compareTable": {
+      "heading": "Pass-2 comparison",
+      "notVerified": "Not verified",
+      "awaitingVerify": "Awaiting verify",
+      "vmafLabel": "VMAF",
+      "sizeLabel": "Size",
+      "timeLabel": "Time",
+      "sameComboAs": "Same combo as {roleTitle}"
+    },
+    "tabs": {
+      "active": "Active",
+      "history": "History"
+    },
+    "history": {
+      "title": "Run History",
+      "searchPlaceholder": "Filter by encoder…",
+      "emptyTotal": "No bench runs yet",
+      "emptyFiltered": "No runs match this filter",
+      "col": {
+        "created": "Created",
+        "mode": "Mode",
+        "encoders": "Encoders",
+        "topCombo": "Top combo",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "loadMore": "Load more",
+      "compareCta": "{count, plural, =0 {Select runs to compare} =1 {Select one more} other {Compare (#)}}",
+      "compareLimit": "Maximum 3 runs",
+      "clearSelection": "Clear"
+    },
+    "runDetail": {
+      "backToHistory": "← Back to History",
+      "notFound": "Run not found",
+      "copyLink": "Copy link",
+      "copied": "Link copied",
+      "runPass2Cta": "Run full check",
+      "runPass2Disabled": "Another bench run is currently active"
+    },
+    "compare": {
+      "title": "Compare runs",
+      "legend": {
+        "show": "Show",
+        "hide": "Hide"
+      },
+      "missingIds": "{count, plural, one {Run #{ids} not found} other {Runs #{ids} not found}}"
+    }
+  },
+  "bulk": {
+    "blocklist": {
+      "success": "{count, plural, one {# file added to blocklist} other {# files added to blocklist}}",
+      "all_failed": "{count, plural, one {# file failed} other {# files failed}}",
+      "partial": "{ok} added, {fail} failed"
+    },
+    "retry": {
+      "success": "{count, plural, one {# file requeued for retry} other {# files requeued for retry}}",
+      "all_failed": "{count, plural, one {# file failed} other {# files failed}}",
+      "partial": "{ok} requeued, {fail} failed"
+    },
+    "restore": {
+      "success": "{count, plural, one {# file restored} other {# files restored}}",
+      "all_failed": "{count, plural, one {# file failed to restore} other {# files failed to restore}}",
+      "partial": "{ok} restored, {fail} failed"
+    },
+    "delete": {
+      "success": "{count, plural, one {# file permanently deleted} other {# files permanently deleted}}",
+      "all_failed": "{count, plural, one {# file failed to delete} other {# files failed to delete}}",
+      "partial": "{ok} deleted, {fail} failed"
+    },
+    "failed": {
+      "not_found": "Not found",
+      "not_eligible": "Not eligible",
+      "already_blocked": "Already blocklisted",
+      "already_restored": "Already restored",
+      "already_deleted": "Already deleted",
+      "fs_orphan": "Orphaned file (DB row removed; manual filesystem check required)",
+      "internal_error": "Internal error",
+      "more": "+{count} more"
+    }
+  },
+  "palette": {
+    "title": "Quick navigation",
+    "placeholder": "Search page…",
+    "empty": "No matches",
+    "trigger_aria": "Open quick navigation",
+    "kbd_hint": "Ctrl K",
+    "close_aria": "Close quick navigation"
+  },
+  "scan": {
+    "estimate": {
+      "title": "Scan · Estimate Mode",
+      "subhead": "Preview encoding savings without writing to disk.",
+      "form": {
+        "path": "Path",
+        "extensions": "Extensions",
+        "minSize": "Min size (MB)",
+        "maxDepth": "Max depth",
+        "submit": "Estimate",
+        "submitting": "Estimating…"
+      },
+      "result": {
+        "savings": {
+          "title": "Estimated savings",
+          "of": "{percent}% of {total}",
+          "source": {
+            "benchAugmented": "Bench run #{runId}",
+            "naive": "Naive estimate (no bench data)"
+          }
+        },
+        "encodeTime": {
+          "title": "Estimated encode time",
+          "files": "{count} eligible files",
+          "unknown": "Unknown (no duration data)"
+        },
+        "skipBuckets": {
+          "title": "Skip breakdown",
+          "sidecar": "Already encoded (sidecar match)",
+          "blocklist": "Blocklisted",
+          "eligible": "Eligible to encode",
+          "scanned": "Total scanned"
+        },
+        "computedIn": "Computed in {seconds}s · read-only · no DB write"
+      },
+      "empty": {
+        "title": "No matching files",
+        "body": "No files in this folder matched the filter criteria."
+      },
+      "errors": {
+        "scanInProgress": "A scan is currently running — try again in a moment.",
+        "rootNotFound": "Path not found.",
+        "rootNotDirectory": "Path exists but is not a directory.",
+        "rootOutsideScope": "Path is outside the configured scan root.",
+        "invalidBody": "Request body is malformed or missing required fields.",
+        "unsupportedMediaType": "Content-Type must be application/json.",
+        "truncated": "Result truncated at {cap} files — narrow the path to scan a subset.",
+        "internal": "Estimate failed — see logs."
+      }
+    }
+  }
+}
