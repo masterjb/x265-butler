@@ -1,0 +1,28 @@
+node_modules/
+dist/
+coverage/
+.next/
+.buildx-cache/
+.buildx-cache-new/
+next-env.d.ts
+.env
+.env.local
+data/
+.data/
+*.log
+*.tsbuildinfo
+
+# 01-03: deterministic test fixtures generated at runtime — never commit
+tests/fixtures/scan/*.bin
+
+# User-local tool state (per-workstation, not shared)
+
+dev.db
+.local-bin/
+
+# Plan 19-01: phase-close-merge.sh audit-trail logs
+scripts/.logs/
+
+# Plan 21-03 audit-baseline scratch (vitest pre-APPLY count, per-workstation, not shared)
+
+
