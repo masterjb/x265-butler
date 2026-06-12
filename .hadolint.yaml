@@ -1,0 +1,6 @@
+ignored:
+  # "Pin versions in apt-get install" — acceptable trade-off for bookworm-slim: we WANT Debian's
+  # security patch cadence on ffmpeg/gosu/tini/wget rather than freezing to a point-in-time version.
+  - DL3008
+trustedRegistries:
+  - docker.io
