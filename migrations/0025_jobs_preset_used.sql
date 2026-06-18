@@ -1,0 +1,12 @@
+-- Plan 12-03 (inline-extend per Route-1 scope-expansion at T7 checkpoint):
+-- per-job preset audit-trail via DB column. Mirrors 0012's `crf` column
+-- ALTER TABLE pattern. Orchestrator dispatch writes the resolved preset
+-- (post-Catalog-validator-fallback) via JobRepo.setPresetUsed at the same
+-- boundary that already calls setEncoder + setCrf. NULL for pre-0025 legacy
+-- rows + for any future encoder that doesn't carry a preset semantic.
+-- Free-form TEXT (no CHECK constraint) — Catalog-validation lives at the
+-- orchestrator + zod boundary, NOT here. AC-11 ORIGINALLY "exactly 1
+-- migration" — reversed mid-checkpoint by operator (Route-1 inline-extend).
+-- audit M4 trade-off-decision reversed: per-job preset is now a first-class
+-- DB column instead of log-only audit-trail.
+ALTER TABLE job ADD COLUMN preset_used TEXT;
