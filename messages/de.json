@@ -1,0 +1,2832 @@
+{
+  "common": {
+    "confirm": {
+      "cancel": "Abbrechen",
+      "undo": "Rückgängig",
+      "armedAriaLabel": "Aktion bestätigen (2. Klick)",
+      "cooldownAriaLabel": "Wartet auf Aktivierung",
+      "undoCountdownAriaLabel": "Rückgängig in {seconds}s"
+    }
+  },
+  "app": {
+    "title": "x265-butler",
+    "skipLink": "Zum Hauptinhalt springen",
+    "openNav": "Navigation öffnen",
+    "closeNav": "Navigation schließen",
+    "themeToggle": {
+      "label": "Erscheinungsbild umschalten",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "system": "System"
+    },
+    "langSwitch": {
+      "label": "Sprache",
+      "en": "English",
+      "de": "Deutsch"
+    }
+  },
+  "nav": {
+    "dashboard": "Übersicht",
+    "stats": "Statistiken",
+    "bench": "Benchmark",
+    "storage": "Speicher",
+    "library": "Bibliothek",
+    "queue": "Warteschlange",
+    "trash": "Papierkorb",
+    "blocklist": "Blocklist",
+    "scanEstimate": "Schätzung",
+    "settings": "Einstellungen",
+    "diagnostics": "Diagnose",
+    "logs": "Protokolle"
+  },
+  "empty": {
+    "queue": {
+      "pageTitle": "Warteschlange",
+      "pageSubhead": "Laufende und geplante Encoding-Jobs.",
+      "title": "Warteschlange ist leer",
+      "body": "Sobald das Encoding verfügbar ist, erscheinen geplante und laufende Jobs hier.",
+      "phaseHint": "Verfügbar in v1.2",
+      "cta": "Zur Bibliothek"
+    },
+    "trash": {
+      "pageTitle": "Papierkorb",
+      "pageSubhead": "Originale, die nach erfolgreichem Encode beiseitegelegt wurden.",
+      "title": "Papierkorb ist leer",
+      "body": "Beim Encoding entfernte Quelldateien erscheinen hier mit konfigurierbarer Aufbewahrung.",
+      "phaseHint": "Verfügbar in v1.2",
+      "cta": "Zur Bibliothek"
+    },
+    "logs": {
+      "pageTitle": "Protokolle",
+      "pageSubhead": "Pro-Job ffmpeg-Ausgabe und Container-Logs.",
+      "title": "Noch keine Protokolle",
+      "body": "Sobald das Encoding verfügbar ist, landen Pro-Job-Protokolle und der Container-Log-Tail hier.",
+      "phaseHint": "Verfügbar in v1.5",
+      "cta": "Zur Bibliothek"
+    },
+    "home": {
+      "title": "x265-butler",
+      "body": "Öffne die Bibliothek, um gescannte Dateien zu durchsuchen."
+    }
+  },
+  "notfound": {
+    "routeUnknown": {
+      "title": "Unbekannte Route",
+      "body": "Es gibt keinen Bereich '{route}'. Meinen Sie '{candidate}'?",
+      "primaryCta": "Zu {candidate} wechseln",
+      "candidatesLabel": "Nächste Treffer"
+    },
+    "localeUnknown": {
+      "title": "Sprache nicht unterstützt",
+      "body": "Diese URL verwendet einen nicht konfigurierten Sprachcode. Fallback auf Englisch.",
+      "primaryCta": "Auf Englisch fortfahren"
+    },
+    "localeMissing": {
+      "title": "Sprachpräfix fehlt",
+      "body": "URLs in x265-butler beginnen immer mit einem Sprachcode (z. B. /de/library).",
+      "primaryCta": "Lokalisierte Variante öffnen"
+    },
+    "fallback": {
+      "title": "Seite nicht gefunden",
+      "body": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+      "primaryCta": "Zur Bibliothek"
+    },
+    "onboardingIncomplete": {
+      "title": "Onboarding nicht abgeschlossen",
+      "body": "Zentrale Einstellungen fehlen noch. Bitte schließen Sie das Onboarding ab, um die Bibliothek freizuschalten.",
+      "primaryCta": "Onboarding starten"
+    },
+    "actionCluster": {
+      "diagnostics": "Diagnose",
+      "library": "Zur Bibliothek",
+      "forum": "Im Forum melden",
+      "onboarding": "Onboarding starten"
+    }
+  },
+  "error": {
+    "staleCache": {
+      "title": "Veralteter Browser-Cache",
+      "body": "Ihr Browser rendert ein älteres Anwendungs-Bundle als der Server erwartet. Ein Hard-Refresh löst das in der Regel: Strg+Umschalt+R (oder Cmd+Umschalt+R unter macOS).",
+      "primaryCta": "Hard-Refresh"
+    },
+    "unknown": {
+      "title": "Ein Fehler ist aufgetreten",
+      "body": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder teilen Sie den Diagnose-Report im Forum.",
+      "primaryCta": "Erneut versuchen"
+    },
+    "actionCluster": {
+      "retry": "Erneut versuchen",
+      "diagnostics": "Diagnose",
+      "library": "Zur Bibliothek",
+      "forum": "Im Forum melden",
+      "onboarding": "Onboarding starten"
+    },
+    "cause": {
+      "cachePoolUnavailable": "Cache-Pool nicht verfügbar"
+    }
+  },
+  "logs": {
+    "title": "Protokolle",
+    "tab": {
+      "perJob": "Pro Job",
+      "container": "Container"
+    },
+    "perJob": {
+      "list": {
+        "aria": "Letzte Jobs",
+        "empty": {
+          "title": "Noch keine Jobs mit Protokollen",
+          "body": "Starte einen Encode aus der Bibliothek, um die ffmpeg-Ausgabe pro Job hier zu erfassen."
+        }
+      },
+      "viewer": {
+        "regionAria": "Job-Protokoll-Ansicht",
+        "empty": {
+          "title": "Job auswählen",
+          "body": "Wähle einen Eintrag aus der Liste, um das erfasste ffmpeg-Protokoll anzuzeigen.",
+          "noLines": "Noch kein Protokollinhalt vorhanden."
+        },
+        "loading": "Wird geladen…",
+        "lineCount": "{count, plural, one {# Zeile} other {# Zeilen}}",
+        "liveLabel": "Live",
+        "reconnectingLabel": "Wiederverbindung",
+        "staticLabel": "Statisch"
+      },
+      "action": {
+        "download": "Herunterladen",
+        "downloadAria": "Protokolldatei herunterladen"
+      }
+    },
+    "container": {
+      "regionAria": "Container-Protokoll-Tail",
+      "empty": "Keine Protokollzeilen verfügbar.",
+      "format": {
+        "raw": "Roh",
+        "json": "JSON"
+      },
+      "lines": {
+        "aria": "Zeilen anzeigen",
+        "option": "{count} Zeilen"
+      },
+      "action": {
+        "refresh": "Aktualisieren",
+        "refreshAria": "Container-Protokoll aktualisieren",
+        "autoRefresh": "Auto-Aktualisierung",
+        "download": "Herunterladen"
+      },
+      "note": {
+        "dockerLogs": "Container-Protokolle sind auch über die Host-Shell mit `docker logs x265-butler` verfügbar."
+      }
+    },
+    "loadError": "Protokolle konnten nicht geladen werden ({detail}).",
+    "retry": "Erneut versuchen",
+    "clear": {
+      "label": "Log leeren",
+      "success": "Log geleert",
+      "error": "Log konnte nicht geleert werden",
+      "warning": "Leert auch Diagnose → letzte Fehler, langsame Anfragen und Abfragen (gemeinsamer Log-Speicher)."
+    }
+  },
+  "storage": {
+    "title": "Speicher-Analyse",
+    "subtitle": "Wo geht der Speicherplatz hin?",
+    "toolbar": {
+      "toolbarAria": "Speicher-Filter",
+      "depthLabel": "Tiefe",
+      "depthAria": "Ordner-Tiefe: {depth}",
+      "depthOption": "{depth, select, 1 {Tiefe 1 (oberste Ebene)} 2 {Tiefe 2} 3 {Tiefe 3} 4 {Tiefe 4} 5 {Tiefe 5 (tief)} other {Tiefe {depth}}}",
+      "asOfLabel": "Stand: {time}",
+      "asOfPending": "Lädt…"
+    },
+    "kpi": {
+      "totalSize": {
+        "label": "Gesamtgröße",
+        "empty": "—",
+        "tooltip": "Insgesamt {bytes} Bytes über alle Dateien."
+      },
+      "largestFolder": {
+        "label": "Größter Ordner",
+        "empty": "Noch keine Ordner",
+        "rowAria": "{path} in der Bibliothek öffnen"
+      },
+      "mostOptimizedShare": {
+        "label": "Am besten optimierter Share",
+        "crossShareNote": "über alle Shares",
+        "empty": "Noch keine HEVC-Daten"
+      },
+      "legacyCodecPercent": {
+        "label": "Legacy-Codec-Anteil",
+        "aria": "Legacy-Codec-Anteil: {pct} Prozent, Status {zone}",
+        "threshold": {
+          "healthy": "Gesund",
+          "attention": "Erhöht",
+          "critical": "Kritisch"
+        },
+        "tooltip": {
+          "healthy": "Gesund: unter 20 % Legacy-Codecs.",
+          "attention": "Erhöht: 20–50 % Legacy-Codecs auf der Platte.",
+          "critical": "Kritisch: mehr als 50 % der Bytes nutzen Legacy-Codecs."
+        }
+      }
+    },
+    "buckets": {
+      "title": "Größenverteilung",
+      "listAria": "Dateigrößen-Buckets",
+      "barAria": "{bucket}: {pct}% der Gesamtbytes",
+      "tooltip": "{bucket}: {fileCount} Dateien, {bytes}",
+      "rowSummary": "{fileCount} Dateien · {bytes}",
+      "bucket": {
+        "lt100MB": "< 100 MB",
+        "100MBto1GB": "100 MB – 1 GB",
+        "1to10GB": "1 – 10 GB",
+        "gt10GB": "> 10 GB"
+      }
+    },
+    "codecPie": {
+      "title": "Codec-Verteilung",
+      "noteAria": "Hinweis zu diesem Chart",
+      "legendAria": "Codec-Legende",
+      "legendValue": "{fileCount} Dateien · {bytes}",
+      "unknown": "unbekannt",
+      "empty": "Noch keine Codec-Daten."
+    },
+    "sharesTable": {
+      "title": "Shares-Vergleich",
+      "empty": "Shares konfigurieren, um sie hier zu vergleichen.",
+      "orphan": "Verwaiste Dateien",
+      "orphanTooltip": "Dateien ohne konfigurierten Share",
+      "largestFolderAria": "{path} in der Bibliothek öffnen",
+      "cols": {
+        "share": "Share",
+        "totalSize": "Gesamtgröße",
+        "hevcPercent": "HEVC %",
+        "savings": "Einsparung",
+        "largestFolder": "Größter Ordner"
+      }
+    },
+    "topFolders": {
+      "title": "Top-Ordner nach Größe",
+      "empty": "Noch keine Ordner zum Ranken vorhanden.",
+      "rowClickAria": "Dateien in {path} anzeigen",
+      "pathTooLong": "Pfad zu lang für sicheren Deep-Link.",
+      "truncatedBadge": "Ergebnisse begrenzt (50k-Zeilen-Limit erreicht)",
+      "truncatedTooltip": "Die Aggregation hat das 50 000-Zeilen-Sicherheitslimit erreicht. Nach Share filtern oder Tiefe reduzieren für einen engeren Blick.",
+      "cols": {
+        "rank": "#",
+        "path": "Pfad",
+        "size": "Größe",
+        "fileCount": "Dateien"
+      }
+    },
+    "empty": {
+      "noShares": {
+        "headline": "Keine Shares konfiguriert",
+        "body": "Pfade in den Einstellungen konfigurieren, um die Analyse zu starten.",
+        "cta": "Zu Einstellungen → Pfade"
+      },
+      "noFiles": {
+        "headline": "Noch keine Dateien gescannt",
+        "body": "Einen Scan starten, um die Speicher-Analyse zu befüllen.",
+        "cta": "Scan starten"
+      },
+      "noFilesForShare": {
+        "headline": "Keine Dateien in diesem Share",
+        "body": "Anderen Share aus der Toolbar wählen oder diesen scannen."
+      }
+    },
+    "unknownShare": {
+      "warning": "Share {id} nicht gefunden.",
+      "back": "Zurück zu allen Shares"
+    },
+    "errors": {
+      "loadFailed": "Laden fehlgeschlagen: {endpoint}",
+      "tryAgain": "Erneut versuchen",
+      "code": {
+        "internal_error": "Interner Serverfehler",
+        "http_error": "Netzwerkfehler",
+        "invalid_query": "Ungültige Query-Parameter",
+        "auth_required": "Authentifizierung erforderlich",
+        "unknown": "Unerwarteter Fehler"
+      }
+    }
+  },
+  "library": {
+    "header": {
+      "title": "Bibliothek",
+      "subhead": "{total, plural, =0 {Noch keine Dateien indexiert} one {# Datei indexiert} other {# Dateien indexiert}}"
+    },
+    "selection": {
+      "header": {
+        "aria": "Alle auf dieser Seite auswählen"
+      },
+      "row": {
+        "aria": "{filename} auswählen"
+      },
+      "bar": {
+        "label_count": "{count, plural, =0 {Nichts ausgewählt} one {# ausgewählt} other {# ausgewählt}}",
+        "clear": "Auswahl löschen",
+        "max_warning_over": "Auswahl: {count} von max. 500 — bitte um {overflow} reduzieren"
+      }
+    },
+    "bulk": {
+      "encode": {
+        "label": "Kodieren ({count})",
+        "network_error": "Netzwerkfehler — Auswahl beibehalten, bitte erneut versuchen"
+      },
+      "blocklist": {
+        "label": "Blockliste ({count})",
+        "undo": {
+          "toastBody": "{count, plural, one {# Datei wird} other {# Dateien werden}} zur Blockliste hinzugefügt — Rückgängig?"
+        },
+        "network_error": "Netzwerkfehler — Auswahl beibehalten, bitte erneut versuchen"
+      },
+      "retry": {
+        "label": "Wiederholen ({count})",
+        "undo": {
+          "toastBody": "{count, plural, one {# Datei wird} other {# Dateien werden}} erneut versucht — Rückgängig?"
+        },
+        "network_error": "Netzwerkfehler — Auswahl beibehalten, bitte erneut versuchen"
+      },
+      "delete": {
+        "label": "Löschen ({count})",
+        "network_error": "Netzwerkfehler — Auswahl beibehalten, bitte erneut versuchen"
+      }
+    },
+    "search": {
+      "placeholder": "Pfad suchen…",
+      "clear": "Suche zurücksetzen"
+    },
+    "filter": {
+      "all": "Alle",
+      "aria": "Nach Status filtern",
+      "includeVanishedLabel": "Fehlende Dateien anzeigen",
+      "includeVanishedAria": "Auf Disk nicht mehr vorhandene Dateien anzeigen"
+    },
+    "shareFilter": {
+      "aria": "Nach Freigabe filtern",
+      "all": "Alle",
+      "triggerLabelAll": "Freigabe: Alle",
+      "triggerLabelOrphan": "Freigabe: Verwaiste",
+      "triggerLabel": "Freigabe: {name}",
+      "orphan": "Verwaiste ({count})",
+      "announceChange": "{type, select, all {Filter zurückgesetzt, zeige alle Freigaben} orphan {Filter auf verwaiste Dateien gesetzt} share {Filter auf Freigabe {name} gesetzt} other {}}"
+    },
+    "pathPrefixPill": {
+      "label": "Ordner",
+      "clear": "Ordner-Filter entfernen",
+      "aria": "Filter aktiv: Ordner {path}"
+    },
+    "status": {
+      "pending": "Wartend",
+      "queued": "Eingereiht",
+      "encoding": "Encodiert",
+      "doneSmaller": "Fertig (kleiner)",
+      "doneLarger": "Fertig (größer)",
+      "doneNotWorth": "Nicht lohnend",
+      "doneAlreadyEvaluated": "Bereits bewertet",
+      "skippedCodec": "Übersprungen (Codec)",
+      "skippedBitrate": "Übersprungen (Bitrate)",
+      "skippedSuffix": "Übersprungen (Suffix)",
+      "skippedTag": "Übersprungen (Tag)",
+      "skippedSidecar": "Übersprungen (Sidecar)",
+      "skippedBlocklist": "Übersprungen (Blockliste)",
+      "failed": "Fehlgeschlagen",
+      "blocklisted": "Blockiert",
+      "interrupted": "Unterbrochen",
+      "vanished": "Auf Disk fehlend"
+    },
+    "column": {
+      "id": "ID",
+      "path": "Pfad",
+      "codec": "Codec",
+      "bitrate": "Bitrate",
+      "duration": "Dauer",
+      "size": "Größe",
+      "status": "Status",
+      "scanned": "Gescannt"
+    },
+    "empty": {
+      "headline": "Noch keine Dateien gescannt",
+      "helper": "Starte einen Scan, um die Bibliothek zu füllen.",
+      "helperMissingRoot": "Der konfigurierte Scan-Pfad existiert nicht.",
+      "scanCta": "Jetzt scannen",
+      "configurePathCta": "Scan-Pfad konfigurieren"
+    },
+    "filteredByFile": {
+      "banner": "Gefiltert auf Datei #{id}",
+      "clearLink": "Filter zurücksetzen"
+    },
+    "filteredEmpty": {
+      "headline": "Keine Treffer",
+      "helper": "Anderes Suchwort oder Filter probieren.",
+      "clearCta": "Filter zurücksetzen"
+    },
+    "error": {
+      "message": "Bibliothek konnte nicht geladen werden. Erneut versuchen.",
+      "retry": "Erneut versuchen"
+    },
+    "detail": {
+      "title": "Datei-Details",
+      "path": "Pfad",
+      "hash": "Content-Hash",
+      "resolution": "Auflösung",
+      "container": "Container",
+      "mtime": "Geändert",
+      "lastScanned": "Zuletzt gescannt",
+      "created": "Hinzugefügt",
+      "encodeInfo": {
+        "title": "Encoded mit",
+        "encoder": "Encoder",
+        "crf": "CRF",
+        "preset": "Preset",
+        "finishedAt": "Beendet"
+      },
+      "containerOverride": {
+        "label": "Container-Override",
+        "hint": "Gilt nur für diese Datei. Global: {global}",
+        "save": "Speichern",
+        "saving": "Speichert…",
+        "saved": "Gespeichert",
+        "saveError": "Speichern fehlgeschlagen",
+        "saveAria": "Container-Override für diese Datei speichern",
+        "options": {
+          "inherit": "Vererben (global: {global})",
+          "mkv": "MKV",
+          "mp4": "MP4",
+          "matchSource": "Quelle übernehmen"
+        }
+      },
+      "containerFallback": {
+        "title": "Container-Fallback",
+        "description": "Diese Datei wurde als MKV kodiert, weil das Quellformat nicht vollständig mit MP4 kompatibel ist.",
+        "from": "Von",
+        "to": "Nach",
+        "reason": {
+          "audio": "Audio-Codec inkompatibel mit MP4 (z. B. TrueHD, DTS)",
+          "subtitle": "Untertitel-Codec inkompatibel mit MP4",
+          "preflight_unavailable": "Formatanalyse fehlgeschlagen — MKV als sicherer Fallback gewählt"
+        },
+        "forceRetryButton": {
+          "label": "Erneut als MP4 versuchen",
+          "confirmLabel": "Erneut als MP4 bestätigen",
+          "cancelLabel": "Abbrechen",
+          "successToast": "Force-Retry als MP4 eingereicht",
+          "errorToast": {
+            "network": "Wiederholung fehlgeschlagen — Netzwerkfehler",
+            "validation": "Wiederholung abgelehnt — Dateistatus hat sich geändert"
+          }
+        },
+        "aria": {
+          "card": "Container-Fallback Details",
+          "fromBadge": "Quell-Container: {from}",
+          "toBadge": "Ausgabe-Container: {to}",
+          "reasonLabel": "Fallback-Grund",
+          "retryButton": "Diese Datei erneut als MP4 versuchen"
+        }
+      },
+      "copyAria": "{label} kopieren",
+      "copyFallback": "Strg-C / Cmd-C zum Kopieren drücken",
+      "copied": {
+        "path": "Pfad kopiert",
+        "hash": "Hash kopiert"
+      }
+    },
+    "pagination": {
+      "showing": "Zeige {from}–{to} von {total}",
+      "prev": "Vorherige Seite",
+      "next": "Nächste Seite",
+      "pageSize": "Seitengröße",
+      "aria": "Seitennavigation"
+    },
+    "rescan": {
+      "buttonIdle": "Jetzt scannen",
+      "buttonScanning": "Scanne…",
+      "toastSuccess": "Scan abgeschlossen",
+      "toastError": "Scan fehlgeschlagen",
+      "toastInProgress": "Ein Scan läuft bereits"
+    },
+    "export": {
+      "button": {
+        "idle": "CSV exportieren",
+        "busy": "Exportiere…",
+        "aria": "Aktuelle Bibliotheksansicht als CSV-Datei exportieren"
+      },
+      "error": {
+        "message": "Export fehlgeschlagen. Bitte erneut versuchen.",
+        "message_partial": "Export wurde während des Downloads unterbrochen. Bitte erneut versuchen.",
+        "retry": "Erneut versuchen"
+      },
+      "empty": {
+        "tooltip": "Nichts zu exportieren — Bibliothek ist leer"
+      }
+    },
+    "aria": {
+      "resultsCount": "{count, plural, one {# Treffer} other {# Treffer}}",
+      "noResults": "Keine Treffer"
+    },
+    "encodeNow": {
+      "button": "Jetzt encodieren",
+      "toastQueued": "Eingereiht",
+      "toastAlreadyQueued": "Bereits in der Queue",
+      "toastStatusChanged": "Dateistatus hat sich geändert — erneut versuchen",
+      "toastError": "Einreihen fehlgeschlagen. Erneut versuchen."
+    },
+    "retry": {
+      "actions": {
+        "retry": "Erneut versuchen"
+      },
+      "confirm": {
+        "retry": "Wiederholen bestätigen"
+      },
+      "toast": {
+        "success": "Wiederholung eingeplant. Datei auf pending zurückgesetzt.",
+        "notEligible": "Datei kann im aktuellen Zustand nicht wiederholt werden.",
+        "error": "Wiederholen fehlgeschlagen. Bitte später erneut versuchen."
+      },
+      "undo": {
+        "toastBody": "Wiederholung geplant für {filename} — Rückgängig?"
+      }
+    },
+    "delete": {
+      "actions": {
+        "delete": "Eintrag löschen"
+      },
+      "toast": {
+        "success": "Eintrag entfernt. Die Datei auf der Festplatte bleibt unangetastet.",
+        "error": "Eintrag konnte nicht gelöscht werden. Bitte später erneut versuchen.",
+        "activeJob": "Dieser Eintrag wird gerade kodiert — Job zuerst stoppen.",
+        "benchRef": "Dieser Eintrag wird von einem Benchmark referenziert und kann nicht gelöscht werden."
+      },
+      "undo": {
+        "toastBody": "Eintrag wird gelöscht für {filename} — Rückgängig?"
+      }
+    },
+    "skip": {
+      "button": "Überspringen",
+      "confirm": {
+        "skip": "Überspringen bestätigen",
+        "countdown": "Bestätigen ({seconds}s)"
+      },
+      "toast": {
+        "success": "Übersprungen — Datei zurück in den Wartezustand.",
+        "error": "Überspringen fehlgeschlagen. Erneut versuchen."
+      },
+      "undo": {
+        "toastBody": "Überspringen geplant — Rückgängig?"
+      }
+    },
+    "estimate": {
+      "button": "Ordner schätzen"
+    }
+  },
+  "queue": {
+    "title": "Warteschlange",
+    "controls": {
+      "activeCount": "{active} aktiv · {pending} wartend"
+    },
+    "pause": {
+      "button": "Pause",
+      "resume": "Fortsetzen",
+      "aria": "Warteschlange pausieren oder fortsetzen",
+      "toast": {
+        "error": "Pausenstatus konnte nicht geändert werden. Bitte erneut versuchen."
+      }
+    },
+    "paused": {
+      "banner": "Warteschlange pausiert — der laufende Encode wird beendet; es werden keine neuen Jobs gestartet."
+    },
+    "skip": {
+      "button": "Überspringen",
+      "tooltip": "Diese Datei überspringen. Encoding stoppt sofort und die Datei kehrt in den Wartezustand zurück.",
+      "confirm": {
+        "skip": "Überspringen bestätigen",
+        "countdown": "Bestätigen ({seconds}s)"
+      },
+      "toast": {
+        "success": "Übersprungen — Datei zurück in den Wartezustand.",
+        "error": "Überspringen fehlgeschlagen. Erneut versuchen."
+      },
+      "undo": {
+        "toastBody": "Überspringen geplant — Rückgängig?"
+      }
+    },
+    "cancel_all": {
+      "button": "Alles zurücksetzen",
+      "tooltip": "Aktuelles Encoding abbrechen und die Warteschlange leeren. Alle betroffenen Dateien kehren in den Wartezustand zurück.",
+      "confirm": {
+        "title": "Warteschlange zurücksetzen?",
+        "message": "{count, plural, =0 {Keine Dateien in der Warteschlange.} one {Eine Datei wird in den Wartezustand zurückgesetzt.} other {# Dateien werden in den Wartezustand zurückgesetzt.}}",
+        "confirm": "Alles zurücksetzen",
+        "cancel": "Warteschlange behalten"
+      },
+      "empty": {
+        "tooltip": "Nichts zurückzusetzen — Warteschlange ist leer."
+      },
+      "toast": {
+        "success": "Zurückgesetzt — {skipped} encodiert gestoppt, {cancelled} aus der Warteschlange entfernt.",
+        "error": "Warteschlange konnte nicht zurückgesetzt werden. Erneut versuchen."
+      },
+      "undo": {
+        "toastBody": "{count, plural, =1 {# Job} other {# Jobs}} werden zurückgesetzt — Rückgängig?"
+      }
+    },
+    "active": {
+      "idleHeadline": "Encoder im Leerlauf",
+      "idleHelper": "Keine Jobs aktiv. Datei aus Library einreihen.",
+      "panelTitle": "Aktiv ({count})",
+      "metricLine": "{pct} · {fps} fps",
+      "skipAria": "{name} überspringen",
+      "statProgress": "Fortschritt",
+      "statFps": "FPS",
+      "statEta": "ETA",
+      "statBytes": "{processed} / {total}",
+      "encoderBadge": "Encoder",
+      "jobIdBadge": "#{jobId}"
+    },
+    "pending": {
+      "title": "Warteschlange",
+      "empty": {
+        "title": "Warteschlange leer",
+        "helper": "Keine Jobs aktiv. Encoder im Leerlauf oder alle Dateien fixiert."
+      }
+    },
+    "completed": {
+      "title": "Abgeschlossen",
+      "filter": {
+        "aria": "Abgeschlossene Jobs filtern",
+        "done": "Fertig",
+        "failed": "Fehler",
+        "cancelled": "Abgebrochen"
+      },
+      "empty": {
+        "helper": "Noch keine abgeschlossenen Jobs."
+      },
+      "toggle": {
+        "show": "Abgeschlossene anzeigen",
+        "hide": "Abgeschlossene ausblenden"
+      }
+    },
+    "reorder": {
+      "handle": {
+        "label": "{filename} per Drag verschieben",
+        "roledescription": "Drag-Griff. Leertaste zum Aufnehmen, Pfeiltasten zum Verschieben, Leertaste zum Ablegen, Escape zum Abbrechen."
+      },
+      "announce": "{filename} an Position {position} von {total} verschoben",
+      "announceStart": "{filename} aufgenommen. Pfeiltasten zum Verschieben, Leertaste zum Ablegen, Escape zum Abbrechen.",
+      "announceOver": "{filename} steht über Position {position}",
+      "announceEnd": "{filename} an Position {position} von {total} abgelegt",
+      "announceCancel": "Verschieben abgebrochen. {filename} an alter Position.",
+      "toast": {
+        "success": "Queue-Reihenfolge aktualisiert",
+        "undo": "Rückgängig",
+        "conflict": "Queue hat sich geändert — neu geladen",
+        "error": "Neue Reihenfolge konnte nicht gespeichert werden",
+        "retry": "Erneut versuchen",
+        "idempotent": "Queue-Reihenfolge bereits gespeichert"
+      },
+      "undo": {
+        "disabled": {
+          "tooltip": "Rückgängig nicht möglich — Queue hat sich geändert"
+        }
+      }
+    },
+    "recent": {
+      "title": "Zuletzt",
+      "filter": {
+        "aria": "Letzte Jobs nach Status filtern",
+        "all": "Alle",
+        "active": "Aktiv",
+        "done": "Fertig",
+        "failed": "Fehlgeschlagen"
+      },
+      "column": {
+        "file": "Datei",
+        "status": "Status",
+        "encoder": "Encoder",
+        "bytes": "Bytes",
+        "savings": "Einsparung",
+        "duration": "Dauer",
+        "finished": "Fertig",
+        "skip": "Überspringen"
+      },
+      "empty": {
+        "headline": "Noch keine Jobs",
+        "helper": "Datei aus Library einreihen, um zu starten.",
+        "openLibraryCta": "Library öffnen"
+      }
+    },
+    "row": {
+      "fileLabel": "Datei",
+      "pathLabel": "Pfad",
+      "atRoot": "(Wurzel)"
+    },
+    "disconnected": {
+      "banner": "Live-Updates pausiert — verbinde erneut…"
+    },
+    "error": {
+      "message": "Queue-Status konnte nicht geladen werden. Erneut versuchen.",
+      "retry": "Erneut versuchen"
+    },
+    "status": {
+      "queued": "Eingereiht",
+      "encoding": "Encodiert",
+      "done": "Fertig",
+      "failed": "Fehlgeschlagen",
+      "cancelled": "Abgebrochen",
+      "interrupted": "Unterbrochen"
+    },
+    "toast": {
+      "actionFailed": "Aktion fehlgeschlagen — erneut versuchen"
+    }
+  },
+  "trash": {
+    "title": "Papierkorb",
+    "summary": {
+      "reclaimed": "{bytesReclaimed} freigegeben in {count} Dateien"
+    },
+    "selection": {
+      "header": {
+        "aria": "Alle auf dieser Seite auswählen"
+      },
+      "row": {
+        "aria": "{filename} auswählen"
+      },
+      "bar": {
+        "label_count": "{count, plural, =0 {Nichts ausgewählt} one {# ausgewählt} other {# ausgewählt}}",
+        "clear": "Auswahl löschen",
+        "max_warning_over": "Auswahl: {count} von max. 500 — bitte um {overflow} reduzieren"
+      }
+    },
+    "bulk": {
+      "restore": {
+        "label": "Wiederherstellen ({count})",
+        "network_error": "Netzwerkfehler — Auswahl beibehalten, bitte erneut versuchen"
+      },
+      "delete": {
+        "label": "Endgültig löschen ({count})",
+        "network_error": "Netzwerkfehler — Auswahl beibehalten, bitte erneut versuchen"
+      }
+    },
+    "column": {
+      "path": "Pfad",
+      "size": "Größe",
+      "trashed": "Gelöscht",
+      "expires": "Läuft ab",
+      "actions": "Aktionen"
+    },
+    "expiry": {
+      "safeLabel": "{days} Tage",
+      "soonLabel": "{days} Tage",
+      "urgentLabel": "{hours} Stunden",
+      "tooltipDetail": "Gesetzt durch retention_days={retentionDays}"
+    },
+    "restore": {
+      "button": "Wiederherstellen",
+      "confirmHeadline": "Datei wiederherstellen?",
+      "confirmHelper": "{originalPath} wird zurück verschoben. Eintrag wird als wiederhergestellt markiert.",
+      "confirmCancel": "Abbrechen",
+      "confirmConfirm": "Wiederherstellen",
+      "inProgress": "Wird wiederhergestellt…",
+      "success": "{filename} wiederhergestellt",
+      "alreadyRestored": "Eintrag wurde bereits wiederhergestellt.",
+      "collisionError": "Wiederherstellung fehlgeschlagen — am Originalpfad existiert bereits eine Datei. Erst verschieben oder umbenennen.",
+      "missingError": "Trash-Datei fehlt — Dateisystem prüfen.",
+      "genericError": "Wiederherstellung fehlgeschlagen. Erneut versuchen."
+    },
+    "empty": {
+      "headline": "Papierkorb ist leer",
+      "helper": "Vom Encoder gelöschte Dateien erscheinen hier für {retentionDays} Tage.",
+      "openSettingsCta": "Aufbewahrung anpassen"
+    },
+    "error": {
+      "message": "Papierkorb konnte nicht geladen werden. Erneut versuchen.",
+      "retry": "Erneut versuchen"
+    },
+    "detailPopover": {
+      "originalPath": "Originalpfad",
+      "trashPath": "Trash-Pfad",
+      "sizeBytes": "Größe (Bytes)",
+      "retentionDays": "Aufbewahrungstage"
+    }
+  },
+  "notification": {
+    "bell": {
+      "aria": "Treiber-Hinweise",
+      "title": "{count, plural, one {# Treiber-Hinweis} other {# Treiber-Hinweise}}",
+      "empty": "Keine Treiber-Hinweise",
+      "dismissAria": "Hinweis ausblenden: {title}"
+    },
+    "detection": {
+      "dri_present_no_driver": {
+        "title": "DRI-Gerät erkannt — kein Treiber",
+        "detail": "vainfo konnte keine VA-API-Entrypoints auflisten",
+        "remediation": {
+          "title": "GPU-Pass-Through prüfen",
+          "steps": [
+            "Stelle sicher, dass der Host einen funktionierenden iGPU/dGPU-Treiber hat",
+            "Reiche `--device /dev/dri:/dev/dri` an den Container durch",
+            "Starte den Container neu und aktualisiere die Erkennung"
+          ]
+        }
+      },
+      "qsv_only_legacy_intel": {
+        "title": "Legacy-Intel-iGPU erkannt",
+        "detail": "Nur der i965-Treiber ist verfügbar; AV1-Hardware-Encode nicht möglich",
+        "remediation": {
+          "title": "Legacy-iGPU — nur zur Info",
+          "body": "Deine Intel-iGPU nutzt den Legacy-i965-Pfad. HEVC-Encode funktioniert; AV1 in Hardware ist nicht verfügbar. Aktion nur nötig, falls du AV1 brauchst."
+        }
+      },
+      "vainfo_binary_missing": {
+        "title": "vainfo-Binärdatei fehlt",
+        "detail": "vainfo ist in diesem Container-Image nicht installiert",
+        "remediation": {
+          "title": "Container-Image neu ziehen",
+          "body": "x265-butler ≥ v2.15.0 liefert vainfo + VAAPI-Treiber standardmäßig mit. Ziehe das aktuelle Image und erzeuge den Container neu."
+        }
+      },
+      "nvenc_no_runtime": {
+        "title": "NVIDIA-GPU ohne Runtime erkannt",
+        "detail": "/dev/nvidia*-Geräte vorhanden, aber nvidia-smi fehlt",
+        "remediation": {
+          "title": "NVIDIA NVENC aktivieren",
+          "steps": [
+            "Installiere das unRAID NVIDIA-Driver-Plugin aus Community Apps",
+            "Setze den Extra-Parameter --runtime=nvidia",
+            "Füge die Variablen NVIDIA_VISIBLE_DEVICES und NVIDIA_DRIVER_CAPABILITIES hinzu",
+            "Starte den Container neu und klicke auf Jetzt testen"
+          ],
+          "copyToast": "In Zwischenablage kopiert",
+          "pluginLinkLabel": "NVIDIA-Driver-Plugin öffnen (Community Apps)",
+          "copyExtraParam": "Extra-Parameter {value} kopieren",
+          "copyName": "Variablenname {value} kopieren",
+          "copyValue": "Variablenwert {value} kopieren"
+        }
+      },
+      "encoder_runtime_broken": {
+        "title": "Hardware-Encoder hat die Laufzeitprüfung nicht bestanden",
+        "detail": "Ein einkompilierter Encoder konnte einen 1-Bild-Testencode nicht abschließen und wurde aus der Liste der verfügbaren Encoder entfernt",
+        "remediation": {
+          "title": "Defekten Encoder wiederherstellen",
+          "steps": [
+            "Lade das neueste x265-butler-Image erneut (es enthält die passenden GPU-Laufzeitbibliotheken)",
+            "Prüfe im Diagnosebericht (Abschnitt Container Image), ob GPU-Treiber und -Laufzeit vorhanden sind",
+            "Wähle vorerst einen anderen Encoder (libx265 funktioniert immer)",
+            "Erstelle einen Fehlerbericht und füge den Diagnose-Auszug des fehlgeschlagenen Encoders bei"
+          ]
+        }
+      }
+    }
+  },
+  "topbar": {
+    "queueStop": {
+      "label": "Queue-Stopp umschalten"
+    },
+    "activeJobsBadge": {
+      "label": "encodieren",
+      "aria": "{count} Jobs werden gerade encodiert. Dashboard öffnen."
+    },
+    "user": {
+      "tooltipUsername": "Angemeldet als {username}",
+      "logout": "Abmelden",
+      "logoutAria": "Abmelden",
+      "logoutSuccess": "Abgemeldet.",
+      "logoutError": "Abmelden fehlgeschlagen.",
+      "logoutRetry": "Erneut versuchen"
+    }
+  },
+  "dashboard": {
+    "title": "Übersicht",
+    "subhead": "Auf einen Blick — Status der Encoding-Pipeline.",
+    "kpi": {
+      "totalSaved": {
+        "label": "Insgesamt gespart",
+        "subtext": "{count} Dateien",
+        "hint": "Gesamt eingesparte Bytes über alle abgeschlossenen Encoding-Jobs — Originalgröße minus kodierte Größe."
+      },
+      "filesProcessed": {
+        "label": "Verarbeitete Dateien",
+        "subtext": "letzte 30 Tage",
+        "hint": "Anzahl der erfolgreich kodierten Dateien in den letzten 30 Tagen."
+      },
+      "avgSavings": {
+        "label": "Ø Einsparung",
+        "subtext": "über abgeschlossene Encodes",
+        "hint": "Durchschnittliche Größenreduktion über alle abgeschlossenen Encodes. 40% bedeutet, die Ausgabedatei ist 40% kleiner als das Original."
+      },
+      "activeEncoder": {
+        "label": "Aktiver Encoder",
+        "subtext": {
+          "auto": "auto",
+          "override": "Override",
+          "fallback": "Fallback"
+        },
+        "hint": "Der aktuell ausgewählte Hardware- oder Software-Encoder. 'Fallback' bedeutet, der gewünschte Encoder war nicht verfügbar und ein Ersatz wird verwendet."
+      },
+      "queueDepth": {
+        "label": "Warteschlange",
+        "subtext": "{encoding} aktiv · {pending} wartend",
+        "hint": "Gesamtanzahl der wartenden Dateien — aktuell am Encodieren plus in der Warteschlange."
+      },
+      "throughput": {
+        "label": "Durchsatz",
+        "subtext": "/Tag über 30d",
+        "hint": "Durchschnittlich verarbeitete Bytes pro Tag in den letzten 30 Tagen. Ein grober Maßstab für die Pipeline-Geschwindigkeit."
+      }
+    },
+    "chart": {
+      "title": "Einsparungs-Trend",
+      "hint": "Täglich eingesparte Bytes der letzten 30 Tage. Jeder Punkt zeigt die durch abgeschlossene Encodes an diesem UTC-Tag eingesparten Bytes. Lücken bedeuten Tage ohne abgeschlossene Jobs.",
+      "empty": {
+        "title": "Noch keine Encodes",
+        "body": "Datei aus der Library encodieren, um Einsparungen zu erfassen."
+      },
+      "tooltip": {
+        "savings": "Einsparung: {value}",
+        "bytesIn": "Rein: {value}",
+        "bytesOut": "Raus: {value}",
+        "dateUtc": "{date} (UTC)"
+      },
+      "aria": "Einsparungs-Trend der letzten 30 Tage (UTC-Tage). Insgesamt gespart: {total}. Spitzentag: {date}, {peak}."
+    },
+    "liveQueue": {
+      "title": "Live-Warteschlange",
+      "hint": "Echtzeit-Ansicht des aktuell laufenden Jobs. Aktualisiert sich automatisch alle 30 Sekunden.",
+      "idle": "Untätig — {count} Jobs in Warteschlange",
+      "empty": "Warteschlange leer"
+    },
+    "recentActivity": {
+      "title": "Letzte Aktivität",
+      "hint": "Die 10 zuletzt abgeschlossenen Jobs. Klick auf eine Zeile öffnet die Datei in der Bibliothek.",
+      "empty": "Noch keine Aktivität",
+      "openInLibrary": "{filename} (#{id})",
+      "fileMissing": "(gelöschte Datei)",
+      "idBadge": "#{id}",
+      "col": {
+        "file": "Datei",
+        "outcome": "Ergebnis",
+        "encoder": "Encoder",
+        "savings": "Einsparung",
+        "time": "Zeit"
+      }
+    },
+    "system": {
+      "title": "System",
+      "hint": "Laufzeitumgebung — Encoder-Toolchain, CPU-Anzahl, Parallelitätslimits und Datenbankgröße.",
+      "cpuCount": "CPU-Kerne",
+      "ffmpegVersion": "ffmpeg-Version",
+      "detectedEncoders": "Erkannte Encoder",
+      "activeConcurrency": "Aktive Parallelität",
+      "cachePool": "Cache-Pool",
+      "dbSize": "DB-Größe"
+    },
+    "error": {
+      "statsFailed": {
+        "title": "Statistiken konnten nicht geladen werden",
+        "body": "Erneut versuchen — Server ist möglicherweise beschäftigt.",
+        "retry": "Statistiken neu laden"
+      }
+    },
+    "codecDistribution": {
+      "title": "Codec-Verteilung",
+      "hint": "Aufschlüsselung aller gescannten Dateien nach Video-Codec und Container-Format. Der HEVC-Anteil zeigt, wie viel der Bibliothek bereits optimiert ist.",
+      "subtitle": "{count, plural, one {# Datei} other {# Dateien}} · {bytes}",
+      "chartAria": "Codec-Verteilung der Bibliothek: {breakdown} — {totalFiles} Dateien insgesamt, {totalBytes}",
+      "hevcCallout": "HEVC: {count, plural, one {# Datei} other {# Dateien}} · {percent}% der Bibliothek",
+      "legendRow": "{label} {count} ({percent}%)",
+      "kpi": {
+        "files": "Dateien",
+        "total": "Gesamt",
+        "hevcShare": "HEVC-Anteil",
+        "mkvShare": "MKV-Anteil"
+      },
+      "section": {
+        "codecs": "Codecs",
+        "containers": "Container"
+      },
+      "bucket": {
+        "hevc": "HEVC",
+        "h264": "H.264",
+        "av1": "AV1",
+        "vp9": "VP9",
+        "other": "Andere",
+        "unknown": "Unbekannt"
+      },
+      "container": {
+        "mkv": "MKV",
+        "mp4": "MP4",
+        "other": "Andere"
+      },
+      "empty": {
+        "title": "Noch keine Dateien indiziert",
+        "body": "Starte einen Scan auf der Bibliotheksseite, um Codec-Statistiken zu füllen"
+      }
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "subhead": "Konfiguriere, wie x265-butler deine Medien findet und verarbeitet.",
+    "tab": {
+      "paths": "Pfade",
+      "encoder": "Encoder",
+      "auth": "Anmeldung",
+      "general": "Allgemein",
+      "bench": "Benchmark"
+    },
+    "auth": {
+      "heading": "Anmeldung",
+      "helper": "Standardmäßig aus. LAN-only Deployment angenommen.",
+      "toggle": {
+        "label": "Anmeldung aktivieren",
+        "helper": "Nutzername + Passwort zum Zugriff verlangen.",
+        "disableConfirm": {
+          "title": "Anmeldung deaktivieren?",
+          "body": "Das Dashboard ist anschließend ohne Login erreichbar.",
+          "cancel": "Abbrechen",
+          "confirm": "Deaktivieren"
+        }
+      }
+    },
+    "setup": {
+      "heading": "Einmalige Einrichtung",
+      "field": {
+        "username": {
+          "label": "Nutzername",
+          "helper": "3–64 Zeichen · Buchstaben, Ziffern, _ und - erlaubt.",
+          "placeholder": "admin"
+        },
+        "password": {
+          "label": "Passwort",
+          "show": "Passwort anzeigen",
+          "hide": "Passwort verbergen",
+          "helper": "Mindestens 12 Zeichen · Buchstaben, Ziffern, Symbole mischen."
+        },
+        "confirmPassword": {
+          "label": "Passwort bestätigen"
+        }
+      },
+      "action": {
+        "submit": "Konto anlegen",
+        "submitting": "Wird angelegt…"
+      },
+      "error": {
+        "passwordsDontMatch": "Passwörter stimmen nicht überein.",
+        "usernameTaken": "Nutzername existiert bereits.",
+        "passwordTooWeak": "Passwort zu schwach — ≥12 Zeichen + Mix aus Zeichenklassen nötig.",
+        "usernameInvalid": "Nutzername darf nur Buchstaben, Ziffern, _ und - enthalten.",
+        "usernameTooShort": "Nutzername muss mindestens 3 Zeichen lang sein."
+      },
+      "success": "Konto angelegt."
+    },
+    "advanced": {
+      "heading": "Erweitert",
+      "sessionTtl": {
+        "label": "Sitzungsdauer",
+        "helper": "Wie lange eine angemeldete Sitzung gültig bleibt, bevor neue Anmeldung nötig ist.",
+        "preset": {
+          "1h": "1 Stunde",
+          "6h": "6 Stunden",
+          "1d": "1 Tag",
+          "3d": "3 Tage",
+          "7d": "7 Tage",
+          "14d": "14 Tage",
+          "30d": "30 Tage"
+        }
+      },
+      "trustProxyXff": {
+        "label": "X-Forwarded-For-Header vertrauen",
+        "helperWarning": "Nur aktivieren wenn ein Reverse-Proxy davor steht, der client-supplied XFF strippt. Sonst kann IP-Rate-Limit umgangen werden."
+      },
+      "bcryptCost": {
+        "label": "Bcrypt-Kostenfaktor",
+        "helper": "Höher = langsameres Login + stärker gegen Brute-Force. Standard 12 wird empfohlen.",
+        "helperWarning14": "Anmeldung dauert ~1 Sekunde pro Versuch. Für Operator-only LAN-Box akzeptabel; nicht für hochlastige Deployments.",
+        "estimate": "Kostenfaktor: {cost} (≈{ms}ms Hash)"
+      }
+    },
+    "danger": {
+      "heading": "Gefahrenzone",
+      "disableAndDelete": {
+        "label": "Deaktivieren + Nutzer löschen",
+        "body": "Löscht das Nutzerkonto, löscht das Session-Secret und deaktiviert die Anmeldung. Nur durch erneute Einrichtung umkehrbar.",
+        "confirmTitle": "Anmeldung deaktivieren + Nutzer löschen?",
+        "confirmBody": "Sicher? Nutzer wird gelöscht und Anmeldung ausgeschaltet.",
+        "cancel": "Abbrechen",
+        "confirm": "Deaktivieren + löschen",
+        "success": "Anmeldung deaktiviert und Nutzer gelöscht.",
+        "armedLabel": "Bestätigen: unumkehrbar"
+      }
+    },
+    "section": {
+      "scanPath": {
+        "title": "Scan-Pfad",
+        "description": "Wo x265-butler nach Mediendateien sucht."
+      },
+      "filter": {
+        "title": "Filter",
+        "description": "Was als Kandidat für die Verarbeitung zählt."
+      },
+      "preferences": {
+        "title": "Präferenzen",
+        "description": "Sprache und Erscheinungsbild — werden beim Speichern sofort übernommen."
+      },
+      "encoder": {
+        "title": "Encoder-Auswahl",
+        "description": "Wähle, welcher ffmpeg-Encoder genutzt wird und wie viele parallele Jobs laufen."
+      },
+      "crf": {
+        "title": "CRF-Standardwerte je Encoder",
+        "description": "Qualitätsziel pro Encoder. 0 = verlustfrei, 23 ≈ libx265-Standard, 51 = schlechteste Qualität. Niedriger bedeutet größere Datei und bessere Qualität.",
+        "preset": {
+          "label": "Preset",
+          "helper": {
+            "libx265": "Geschwindigkeit-vs-Qualität-Abwägung. Langsamere Presets verkleinern Dateien bei gleichem CRF weiter.",
+            "nvenc": "NVENC-Preset (p1 = schnellste, p7 = langsamste/beste Qualität bei gleichem QP).",
+            "qsv": "QSV-Preset. Langsamer = bessere Kompression bei gleichem global_quality.",
+            "vaapi": "VAAPI-Preset. Treiber ignoriert dieses Flag eventuell — compression_level ist der maßgebliche Regler."
+          },
+          "option": {
+            "libx265": {
+              "ultrafast": "ultrafast",
+              "superfast": "superfast",
+              "veryfast": "veryfast",
+              "faster": "faster",
+              "fast": "fast",
+              "medium": "medium",
+              "slow": "slow",
+              "slower": "slower",
+              "veryslow": "veryslow",
+              "placebo": "placebo"
+            },
+            "nvenc": {
+              "p1": "p1 (schnellste)",
+              "p2": "p2",
+              "p3": "p3",
+              "p4": "p4",
+              "p5": "p5",
+              "p6": "p6",
+              "p7": "p7 (langsamste)"
+            },
+            "qsv": {
+              "veryfast": "veryfast",
+              "faster": "faster",
+              "fast": "fast",
+              "medium": "medium",
+              "slow": "slow",
+              "slower": "slower",
+              "veryslow": "veryslow"
+            },
+            "vaapi": {
+              "fast": "fast",
+              "medium": "medium",
+              "slow": "slow"
+            }
+          }
+        },
+        "applyFromBench": {
+          "label": "Aus Benchmark übernehmen",
+          "loading": "Übernehme…",
+          "initialLoading": "Lade…",
+          "tooltipNoBench": "Führe zuerst einen Benchmark aus, um diese Aktion zu aktivieren.",
+          "tooltipAuthRequired": "Bitte anmelden, um Benchmark-Empfehlung zu nutzen.",
+          "tooltipFetchError": "Bench-Empfehlung konnte nicht geladen werden — bitte später erneut versuchen.",
+          "tooltipInitialLoading": "Suche nach Benchmark-Empfehlung…",
+          "tooltipNoRecommendationsForMode": "Keine Empfehlungen für diesen Lauf × Modus verfügbar.",
+          "aria": {
+            "label": "CRF-Werte aus der letzten abgeschlossenen Benchmark-Empfehlung übernehmen"
+          },
+          "success": {
+            "toast": "{crfCount} CRF + {presetCount} Preset aus Lauf #{runId} übernommen"
+          },
+          "error": {
+            "toast": "Bench-Empfehlung konnte nicht angewendet werden — bitte erneut versuchen."
+          },
+          "labelWithRunAndMode": "Aus Lauf #{runId} ({modeLabel}) übernehmen",
+          "runPicker": {
+            "label": "Quell-Lauf",
+            "optionPattern": "Lauf #{runId} · vor {relativeTime} · {encoders} Encoder",
+            "defaultHint": "(neuester)",
+            "loading": "Lade Läufe…",
+            "empty": "Noch keine abgeschlossenen Benchmarks",
+            "error": "Läufe konnten nicht geladen werden"
+          },
+          "mode": {
+            "label": "Modus",
+            "defaultHint": "Standard",
+            "quality": {
+              "label": "Qualität",
+              "description": "Höchste Qualität; größere Dateien"
+            },
+            "balanced": {
+              "label": "Ausgewogen",
+              "description": "Bestes Größen-Qualitäts-Verhältnis"
+            },
+            "size": {
+              "label": "Größe",
+              "description": "Kleinste Dateien bei akzeptabler Qualität"
+            }
+          }
+        }
+      },
+      "minSavings": {
+        "title": "Mindesteinsparung",
+        "description": "Encodierte Ausgaben werden nur behalten, wenn sie um mindestens diesen Prozentsatz kleiner als die Quelle sind. Unterhalb der Schwelle bleibt die Quelle erhalten und ein forensischer Datensatz wird geschrieben."
+      },
+      "outputContainer": {
+        "title": "Ausgabecontainer",
+        "description": "Format des erzeugten Videos. MKV bewahrt alle Untertitel- und Audiospuren; MP4 ist breiter abspielbar, kann aber Spuren verlieren."
+      },
+      "sidecar": {
+        "title": "Sidecar-Metadaten",
+        "description": "Wohin die .x265-butler.json-Sidecar-Datei pro Datei geschrieben wird, damit künftige Scans bereits verarbeitete Dateien überspringen können."
+      },
+      "outputMode": {
+        "title": "Ausgabe-Strategie",
+        "description": "Ob die kodierte Datei als neue Datei neben dem Original geschrieben wird oder das Original an Ort und Stelle ersetzt."
+      },
+      "gpuDevice": {
+        "title": "GPU-Gerät",
+        "description": "Welche GPU die Hardware-Encoder (QSV / VAAPI) verwenden. Auf einem Host mit mehreren GPUs einen bestimmten Render-Knoten wählen — zum Beispiel um eine Intel-Arc-dGPU statt der integrierten iGPU zu nutzen."
+      },
+      "autoCrop": {
+        "title": "Auto-Crop",
+        "description": "Schwarze Balken (Letterbox / Pillarbox) vor dem Encoden erkennen und entfernen — das Äquivalent zu HandBrakes automatischem Zuschnitt. Standardmäßig aus, das Originalbild bleibt unverändert."
+      }
+    },
+    "field": {
+      "scanRoot": {
+        "label": "Scan-Pfad",
+        "helper": "Absoluter Pfad zur Medien-Freigabe, z. B. /media.",
+        "placeholder": "/media",
+        "warningMissing": "Pfad existiert aktuell nicht."
+      },
+      "extensions": {
+        "label": "Datei-Erweiterungen",
+        "helper": "Zu scannende Datei-Erweiterungen, kommagetrennt. Beispiel: mp4, mkv.",
+        "placeholder": "mp4, mkv",
+        "removeAria": "{ext} entfernen"
+      },
+      "minSizeMb": {
+        "label": "Minimale Dateigröße (MB)",
+        "helper": "Kleinere Dateien werden ignoriert. 50 MB filtert Samples und Vorschaubilder.",
+        "suffix": "MB"
+      },
+      "maxDepth": {
+        "label": "Maximale Scan-Tiefe",
+        "helper": "Wie tief in Unterordner gescannt wird. Standard 12 deckt die meisten Bibliotheken ab."
+      },
+      "language": {
+        "label": "Sprache"
+      },
+      "theme": {
+        "label": "Erscheinungsbild",
+        "system": "System",
+        "light": "Hell",
+        "dark": "Dunkel"
+      },
+      "autoEnqueueAfterScan": {
+        "label": "Pending-Dateien nach Scan automatisch encodieren",
+        "helper": "Wenn aktiviert, startet jeder abgeschlossene Scan libx265-Encode-Jobs für alle Dateien im Status pending."
+      },
+      "deleteOriginalAfterEncode": {
+        "label": "Original nach erfolgreichem Encode löschen",
+        "helper": "Wenn aktiviert, wird die Originaldatei nach erfolgreichem Encode endgültig gelöscht (Papierkorb wird übersprungen). Standard: Original wandert in den Papierkorb mit Retention. Nicht rückgängig zu machen."
+      },
+      "outputSuffix": {
+        "label": "Suffix der Ausgabedatei",
+        "helper": {
+          "mkv": "Freitext-Label, das an den Basisnamen angehängt wird. Endet der Wert nicht bereits auf .mkv, wird .mkv automatisch angehängt. Beispiel: -x265 → movie-x265.mkv. Keine Pfad-Trennzeichen oder Steuerzeichen.",
+          "mp4": "Freitext-Label, das an den Basisnamen angehängt wird. Endet der Wert nicht bereits auf .mp4, wird .mp4 automatisch angehängt. Beispiel: -x265 → movie-x265.mp4. Keine Pfad-Trennzeichen oder Steuerzeichen.",
+          "matchSource": "Freitext-Label, das an den Basisnamen angehängt wird. Die Endung folgt der Erweiterung der Quelldatei zur Encode-Zeit (.mp4-Quelle → .mp4-Ausgabe; sonst → .mkv). Beispiel: -x265 → movie-x265.mkv (oder movie-x265.mp4 bei .mp4-Quelle). Keine Pfad-Trennzeichen oder Steuerzeichen."
+        }
+      },
+      "outputContainer": {
+        "label": "Ausgabecontainer",
+        "description": "MP4 tauscht Untertitel- und Exotik-Audio-Abdeckung gegen breitere Geräte-Wiedergabe. MKV ist der sichere Standard und bewahrt jede Spur. „Wie Quelle“ wählt den Container anhand der Dateiendung der Quelle und fällt bei inkompatiblen Audio- oder Untertitel-Codecs automatisch auf MKV zurück.",
+        "options": {
+          "mkv": "MKV (alle Spuren)",
+          "mp4": "MP4 (breite Kompatibilität)",
+          "matchSource": "Wie Quelle"
+        },
+        "warning": {
+          "mp4": "MP4 unterstützt nicht alle Untertitel- und Audioformate. Inkompatible Untertitel werden beim Encode automatisch entfernt; exotische Audio-Codecs (TrueHD, DTS, FLAC, rohes PCM) führen zum Fehlschlagen des betroffenen Jobs mit klarer Fehlermeldung.",
+          "dismiss": "Hinweis schließen"
+        },
+        "advisory": {
+          "queueSemantic": "Diese Einstellung gilt für Jobs, die nach dem Speichern verteilt werden — auch für bereits eingereihte Jobs.",
+          "matchSource": "Wählt MKV oder MP4 anhand der Dateiendung der Quelle. Fällt automatisch auf MKV zurück, wenn der MP4-Muxer die Audio- oder Untertitel-Codecs nicht akzeptiert — der Dateiname der Ausgabe spiegelt den aufgelösten Container wider."
+        },
+        "aria": {
+          "label": "Ausgabecontainer",
+          "warning": "Hinweis zur Container-Kompatibilität"
+        },
+        "tooltip": {
+          "trigger": "Weitere Informationen zum Ausgabecontainer"
+        }
+      },
+      "cachePoolPath": {
+        "label": "Cache-Pool-Pfad",
+        "placeholder": "/mnt/cache/x265-butler",
+        "helper": "Arbeitsverzeichnis für laufende Encodes. Sollte auf schneller Storage liegen und darf NICHT mit dem Scan-Root übereinstimmen.",
+        "hintWillCreate": "Pfad existiert noch nicht — wird beim ersten Encode automatisch angelegt."
+      },
+      "encoder": {
+        "label": "Encoder",
+        "helper": "auto wählt pro Job den besten erkannten Encoder. Pinnt einen bestimmten Encoder bei Override.",
+        "option": {
+          "auto": "auto",
+          "nvenc": "NVENC",
+          "qsv": "QuickSync (QSV)",
+          "vaapi": "VAAPI",
+          "libx265": "libx265 (Software)"
+        }
+      },
+      "concurrency": {
+        "label": "Parallelität",
+        "helper": "auto: cores/4 für libx265 (max 8); 1 für HW. Override gilt einheitlich für alle Encoder.",
+        "option": {
+          "auto": "auto"
+        }
+      },
+      "crf_libx265": {
+        "label": "CRF — libx265",
+        "helper": "0 = verlustfrei, 23 = Standard, 51 = schlechteste Qualität. Niedriger bedeutet größere Datei mit besserer Qualität."
+      },
+      "crf_nvenc": {
+        "label": "CRF — NVENC",
+        "helper": "NVENC QP-Skala 0-51. 23 ≈ libx265 Standardqualität."
+      },
+      "crf_qsv": {
+        "label": "CRF — QSV",
+        "helper": "QSV global_quality 0-51. 22 = Community-Standard für HEVC."
+      },
+      "crf_vaapi": {
+        "label": "CRF — VAAPI",
+        "helper": "VAAPI QP-Skala 0-51. 22 = Community-Standard für HEVC."
+      },
+      "minSavings": {
+        "label": "Mindesteinsparung",
+        "helper": {
+          "template": "Ausgabe wird nur behalten, wenn sie ≥ {value}% kleiner als die Quelle ist. Darunter → Status 'Nicht lohnend'."
+        },
+        "aria": {
+          "valuetext": "{value} Prozent Schwelle"
+        }
+      },
+      "sidecarMode": {
+        "label": "Sidecar-Speicherort",
+        "aria": {
+          "label": "Sidecar-Speicherort-Modus"
+        },
+        "options": {
+          "off": "Aus (keine Sidecar)",
+          "beside": "Neben der Datei (Standard)",
+          "central": "Zentraler Baum (unter /config)"
+        },
+        "description": "Aus schreibt keine Sidecar. Neben der Datei legt sie neben jede Datei (Standard). Zentral schreibt einen gespiegelten Baum unter dem Pfad unten und hält deine Medienordner sauber."
+      },
+      "sidecarCentralPath": {
+        "label": "Zentraler Sidecar-Pfad",
+        "placeholder": "/config/x265-butler/sidecars/",
+        "description": "Absoluter Pfad für den zentralen Sidecar-Baum. Wird nur verwendet, wenn der Speicherort auf Zentral steht."
+      },
+      "trashPath": {
+        "label": "Papierkorb-Speicherort",
+        "placeholder": "/mnt/user/media-trash (leer = Cache-Pool verwenden)",
+        "description": "Wo wiederherstellbare Originale während der Aufbewahrungsfrist liegen. Leer lassen, um den Cache-Pool zu verwenden (Standard). Absoluten Pfad angeben — zum Beispiel auf dem Array —, um 30 Tage alte Originale vom schnellen Cache fernzuhalten. Darf nicht innerhalb einer gescannten Freigabe liegen."
+      },
+      "gpuDevice": {
+        "label": "Render-Gerät",
+        "description": "Auto verwendet den ersten erkannten Render-Knoten — identisch zu früheren Versionen. Nur auf einem Host mit mehreren GPUs einen bestimmten Knoten wählen. Die Auswahl bleibt erhalten, auch wenn das Gerät vorübergehend nicht vorhanden ist.",
+        "autoOption": "Auto (erstes erkanntes)",
+        "notPresentHint": "derzeit nicht vorhanden",
+        "accessHint": "{group} · {access}",
+        "access": {
+          "readWrite": "Lesen/Schreiben",
+          "readOnly": "nur Lesen",
+          "noAccess": "kein Zugriff"
+        }
+      },
+      "autoCrop": {
+        "label": "Schwarze Balken automatisch zuschneiden",
+        "helper": "Letterbox-/Pillarbox-Balken pro Datei erkennen und vor dem Encoden zuschneiden. Standardmäßig aus."
+      },
+      "cropOverride": {
+        "label": "Crop-Override",
+        "description": "Optionaler fester Zuschnitt als W:H:X:Y (gerade Werte, z. B. 1920:800:0:140). Leer lassen für automatische Erkennung. Ein gültiger Override gewinnt immer, auch wenn der Schalter oben aus ist.",
+        "placeholder": "1920:800:0:140"
+      },
+      "outputMode": {
+        "label": "Ausgabe-Strategie",
+        "aria": {
+          "label": "Modus der Ausgabe-Strategie"
+        },
+        "options": {
+          "suffix": "Original behalten, neue Datei schreiben (Standard)",
+          "replace": "Original an Ort und Stelle ersetzen"
+        },
+        "description": "„Original behalten“ schreibt die kodierte Datei als Geschwisterdatei mit deinem Ausgabe-Suffix. „Ersetzen“ verschiebt das Original in den wiederherstellbaren Papierkorb und benennt die kodierte Datei an dessen Stelle um.",
+        "replaceWarning": "„Ersetzen“ verschiebt jedes Original in den Papierkorb und setzt die kodierte Datei an dessen Stelle — es bleibt keine zweite Kopie auf dem Datenträger. Originale bleiben bis zum Ablauf der Aufbewahrungsfrist aus dem Papierkorb wiederherstellbar. Hardlink-Dateien (z. B. Sonarr/Radarr-Importe) fallen automatisch auf „Original behalten“ zurück, um den anderen Link nicht zu zerstören.",
+        "armLabel": "In-Place-Ersetzen aktivieren",
+        "armedConfirmed": "In-Place-Ersetzen aktiviert — zum Anwenden speichern.",
+        "offReplaceHint": "Sidecar-Metadaten sind aus, während „Ersetzen“ aktiv ist. Ohne Sidecar stützt sich die Skip-Erkennung allein auf den Datenbank-Hash — ein erneuter Scan nach einem Datenbank-Reset kann eine bereits-HEVC-Datei erneut kodieren.",
+        "armRequired": "Bestätige die In-Place-Ersetzen-Warnung vor dem Speichern."
+      }
+    },
+    "encoder": {
+      "detected": {
+        "heading": "Erkannte Encoder",
+        "pill": {
+          "available": "{encoder}, verfügbar",
+          "unavailable": "{encoder}, auf diesem Host nicht erkannt",
+          "libx265": "libx265, immer verfügbar"
+        }
+      },
+      "active": {
+        "line": "Aktiv: {encoder} ({resolution})",
+        "aria": "Aktiver Encoder: {encoder} ({resolution})",
+        "fallbackLine": "Fallback auf libx265 — gewählter Encoder ({requested}) auf diesem Host nicht erkannt"
+      },
+      "warningsBadge": {
+        "label": "{count, plural, one {# Hinweis} other {# Hinweise}}",
+        "aria": "Treiber-Hinweise öffnen"
+      },
+      "warningsPopover": {
+        "remediationLink": "Siehe README HW-Beschleunigung"
+      }
+    },
+    "action": {
+      "save": "Speichern",
+      "saving": "Speichere…",
+      "saved": "Einstellungen gespeichert",
+      "savedEncoder": "Encoder-Einstellungen gespeichert",
+      "savedEncoderActive": "Aktiver Encoder: {encoder}",
+      "cancel": "Abbrechen",
+      "discard": "Verwerfen"
+    },
+    "unsavedChanges": {
+      "title": "Änderungen verwerfen?",
+      "body": "Ungespeicherte Änderungen gehen verloren.",
+      "action": {
+        "save": "Speichern und wechseln",
+        "discard": "Verwerfen",
+        "cancel": "Abbrechen"
+      },
+      "error": {
+        "validation": "Einige Felder enthalten Fehler. Korrigiere sie vor dem Speichern.",
+        "network": "Einstellungen konnten nicht gespeichert werden. Prüfe die Verbindung und versuche es erneut."
+      }
+    },
+    "error": {
+      "load": "Einstellungen konnten nicht geladen werden",
+      "save": "Konnte nicht speichern. Erneut versuchen.",
+      "retry": "Erneut versuchen"
+    },
+    "fieldErrors": {
+      "cachePoolPathNotWritable": "Pfad ist nicht beschreibbar. Bitte sicherstellen, dass das Verzeichnis existiert und der Container-User Schreibrechte hat."
+    },
+    "validation": {
+      "required": "Pflichtfeld.",
+      "pathAbsolute": "Pfad muss absolut sein.",
+      "min": "Wert zu klein.",
+      "max": "Wert zu groß.",
+      "extensionsRequired": "Mindestens eine Erweiterung ist erforderlich.",
+      "cachePathCollidesWithScanRoot": "Cache-Pool-Pfad darf nicht mit dem Scan-Root übereinstimmen.",
+      "crfRange": "Muss zwischen 0 und 51 liegen",
+      "outputSuffixFormat": "Darf '/', '\\\\' oder Steuerzeichen nicht enthalten",
+      "minSavingsRange": "Muss zwischen 0 und 50 liegen",
+      "sidecarCentralPathAbsolute": "Muss ein absoluter Pfad sein (mit / beginnend)",
+      "sidecarCentralPathForbidden": "Dieser Pfad ist ein geschütztes Systemverzeichnis — bitte einen anderen Speicherort wählen",
+      "trashPathAbsolute": "Muss ein absoluter Pfad sein (mit / beginnend) — oder leer, um den Cache-Pool zu verwenden",
+      "trashPathForbidden": "Dieser Pfad ist ein geschütztes Systemverzeichnis — bitte einen anderen Speicherort wählen",
+      "trash_path_nested_under_share": "Papierkorb-Pfad darf nicht innerhalb einer gescannten Freigabe liegen — sonst werden die Originale erneut importiert",
+      "gpuDeviceFormat": "Muss leer sein (Auto) oder ein /dev/dri/renderD<N>-Geräteknoten",
+      "cropOverrideFormat": "Muss leer sein (Auto) oder eine gerade W:H:X:Y-Geometrie (z. B. 1920:800:0:140)"
+    },
+    "paths": {
+      "shares": {
+        "title": "Shares",
+        "emptyState": "Noch keine Shares — füge unten deinen ersten hinzu",
+        "summary": "{name} · {path} · min {minMb, number} MB · {extCount, plural, one {# ext} other {# ext}} · Tiefe {depth}",
+        "depthUnlimited": "∞",
+        "card": {
+          "editAria": "Share {name} bearbeiten",
+          "deleteAria": "Share {name} löschen"
+        },
+        "form": {
+          "label": {
+            "name": "Name",
+            "path": "Pfad",
+            "minSizeMb": "Mindestgröße (MB)",
+            "extensions": "Dateierweiterungen",
+            "maxDepth": "Maximale Tiefe"
+          },
+          "helper": {
+            "maxDepthEmpty": "Leer lassen für unbegrenzt",
+            "extensions": "Kommagetrennt, z.B. mkv,mp4,avi"
+          }
+        },
+        "add": {
+          "button": "Share hinzufügen",
+          "success": "Share hinzugefügt"
+        },
+        "edit": {
+          "button": "Bearbeiten",
+          "save": "Speichern",
+          "cancel": "Abbrechen"
+        },
+        "delete": {
+          "button": "Löschen",
+          "armed": "Zum Bestätigen halten",
+          "success": "Share gelöscht — {count, plural, one {# Datei} other {# Dateien}} als verwaist markiert"
+        },
+        "warning": {
+          "rescanRecommended": "Pfad aktualisiert — Dateien am alten Pfad erscheinen beim nächsten Scan als verschwunden, sofern sie nicht am neuen Pfad existieren. Re-Scan empfohlen.",
+          "rescanAction": "Jetzt scannen"
+        },
+        "discardDialog": {
+          "title": "Nicht gespeicherte Änderungen an {name} verwerfen?",
+          "body": "Es gibt nicht gespeicherte Änderungen an diesem Share. Beim Wechsel gehen sie verloren.",
+          "stay": "Weiter bearbeiten",
+          "discard": "Verwerfen"
+        },
+        "onboarding": {
+          "alreadyCompleted": "Onboarding bereits abgeschlossen — Shares über Einstellungen → Pfade verwalten"
+        },
+        "error": {
+          "share_mutating_during_scan": "Share kann während eines laufenden Scans nicht geändert werden. Bitte warte, bis der Scan beendet ist, und versuche es erneut.",
+          "path_traversal_rejected": "Pfad darf keine '..'-Segmente enthalten",
+          "path_nul_byte_rejected": "Pfad darf keine Steuerzeichen enthalten",
+          "extensions_csv_empty_after_normalization": "Die Liste der Dateierweiterungen ist nach Normalisierung leer",
+          "name_invalid_chars": "Name darf nur Buchstaben, Zahlen, Leerzeichen und ._-() enthalten",
+          "cache_pool_path_nested_under_share": "Cache-Pool-Pfad kollidiert mit Share '{conflictingShareName}'",
+          "share_path_nested": "Pfad kollidiert mit Share '{conflictingShareName}' ({conflictingSharePath}) — Shares dürfen nicht verschachtelt sein",
+          "share_name_duplicate": "Name bereits vergeben",
+          "share_path_duplicate": "Pfad bereits vergeben",
+          "share_not_found": "Share nicht gefunden",
+          "validation_failed": "Bitte die markierten Felder korrigieren"
+        }
+      }
+    },
+    "autoScan": {
+      "title": "Auto-Scan",
+      "description": "Überwacht Share-Pfade live und übernimmt neue Dateien binnen Sekunden in die Queue.",
+      "toggleLabel": "Auto-Scan aktivieren",
+      "toggleHelp": "Standard EIN. AUS pausiert den Watcher und stoppt den 6 h-Reconcile-Timer.",
+      "statusRunning": "Aktiv",
+      "statusError": "Fehler",
+      "statusStopped": "Pausiert",
+      "lastEventLabel": "Letztes Event",
+      "lastEventNever": "noch keine Events",
+      "lastReconcileLabel": "Letzter Reconcile",
+      "reconcileNever": "noch kein Reconcile",
+      "bootReconcileCountLabel": "Beim Start abgeglichene Dateien",
+      "bootReconcileInProgress": "Boot-Reconcile läuft…",
+      "orphanReEnqueueCountAtBootLabel": "Orphans beim Start nachgereicht",
+      "droppedEventsLast24hLabel": "Verworfene Events (24 h)",
+      "pollingModeInotify": "inotify",
+      "pollingModeAuto": "Polling (auto)",
+      "pollingModeForced": "Polling (erzwungen)",
+      "inotifyBudgetLabel": "inotify-Watch-Budget",
+      "inotifyBudgetUnknown": "(unbekannt — nur Linux)",
+      "inotifyBudgetWarn": "Budget hoch (>80%)",
+      "inotifyBudgetBannerLow": "inotify max_user_watches liegt unter dem empfohlenen Wert 524288. Watcher kann unter Last fehlschlagen.",
+      "inotifyBudgetBannerPressure": "inotify-Watch-Budget über 80% ausgelastet — Limit erhöhen.",
+      "enospcWarningTitle": "inotify-Limit erreicht (ENOSPC)",
+      "enospcWarningBody": "Der Container kann keine weiteren Watches anlegen. Erhöhe fs.inotify.max_user_watches.",
+      "enospcSnippetTitle": "Fix-Snippet",
+      "enospcSnippetCopy": "Kopieren",
+      "enospcAutoRetryHint": "Auto-Retry läuft (Backoff 10 s → 60 s → 5 min → 30 min → 1 h).",
+      "shareTableShare": "Share",
+      "shareTableMode": "Modus",
+      "shareTableLastEvent": "Letztes Event",
+      "advancedSectionTitle": "Erweiterte Optionen",
+      "advancedSectionDescription": "Operator-Tuning der Erkennungszeiten. Defaults sind sicher; niedrigere Stabilitäts-/Batch-Werte erhöhen die Reaktivität, erzeugen aber mehr Events während noch laufender Schreibvorgänge.",
+      "bootScanOnStartLabel": "Beim Start initial scannen",
+      "bootScanOnStartHelp": "Aktiviert (Standard) führt der Container bei jedem Start einen vollständigen Library-Abgleich aus. Wenn deaktiviert, werden Dateien, die während Container-Stillstand hinzugefügt wurden, erst beim nächsten periodischen Abgleich erfasst (Default 6 h).",
+      "stabilityThresholdLabel": "Wartezeit nach Schreibende",
+      "stabilityThresholdHelp": "Wie lange chokidar nach dem letzten Schreibzugriff wartet, bis eine Datei als stabil gilt.",
+      "stabilityThresholdUnit": "ms",
+      "batchWindowLabel": "Batch-Sammelfenster",
+      "batchWindowHelp": "Events innerhalb dieses Fensters werden pro Share zu einem Ingest-Durchgang zusammengefasst.",
+      "batchWindowUnit": "ms",
+      "reconcileIntervalLabel": "Reconcile-Intervall",
+      "reconcileIntervalHelp": "Periodischer Vollabgleich der Library gegen die Datenbank. Fängt alles ab, was der Event-Stream verpasst hat.",
+      "reconcileIntervalUnit": "h",
+      "advancedSaveButton": "Speichern",
+      "advancedSaveSavingButton": "Speichere…",
+      "advancedSavedToast": "Erweiterte Auto-Scan-Einstellungen gespeichert.",
+      "advancedSaveFailedToast": "Erweiterte Einstellungen konnten nicht gespeichert werden — bitte erneut versuchen.",
+      "advancedDirtyHint": "Ungespeicherte Änderungen",
+      "errorStabilityThresholdOutOfRange": "Muss zwischen 1000 und 60000 ms liegen.",
+      "errorBatchWindowOutOfRange": "Muss zwischen 500 und 30000 ms liegen.",
+      "errorReconcileIntervalOutOfRange": "Muss zwischen 0.05 und 72 h liegen."
+    },
+    "cachePath": {
+      "title": "Cache-Pool-Pfad",
+      "description": "Arbeitsverzeichnis für laufende Encodes. Wird automatisch erkannt, wenn leer gelassen.",
+      "effectiveLabel": "Effektiver Cache-Pfad",
+      "overrideLabel": "Pfad überschreiben",
+      "helperText": "Leer lassen für automatische Erkennung (/mnt/cache → /config/cache). Absoluten Pfad angeben zum Überschreiben.",
+      "badge": {
+        "mntCache": "Auto · /mnt/cache",
+        "configFallback": "Auto · appdata-Fallback",
+        "userOverride": "Manuell überschrieben"
+      },
+      "advisory": "Kein dedizierter Cache-Pool erkannt — Encodes werden im appdata-Volume zwischengespeichert. Für große Bibliotheken einen dedizierten Cache-Mount einbinden: ein volles appdata-Volume riskiert Datenbank-Korruption.",
+      "saveCta": "Speichern",
+      "savingCta": "Speichert…",
+      "savedToast": "Cache-Pfad gespeichert",
+      "errorToast": {
+        "generic": "Cache-Pfad konnte nicht gespeichert werden",
+        "cache_pool_path_not_writable": "Dieser Pfad ist nicht beschreibbar — zuerst anlegen oder anderen wählen",
+        "cache_pool_path_nested_under_share": "Dieser Pfad liegt innerhalb einer konfigurierten Freigabe — Pfad außerhalb der Medien-Freigaben wählen"
+      }
+    }
+  },
+  "diagnostics": {
+    "title": "Diagnose",
+    "subtitle": "Systemzustand, Warnungen und Fehlerbericht-Oberfläche",
+    "refresh": "Aktualisieren",
+    "loading": "Lade...",
+    "refreshError": "Aktualisierung fehlgeschlagen ({status})",
+    "refreshTimeout": "Zeitüberschreitung beim Aktualisieren",
+    "generatedAt": "Erstellt",
+    "section": {
+      "appInfo": "App-Info",
+      "runtime": "Laufzeit",
+      "encoders": "Encoder",
+      "warnings": "Warnungen",
+      "recentErrors": "Letzte Fehler",
+      "testEncode": "Test-Encode",
+      "copyReport": "Bericht kopieren"
+    },
+    "app": {
+      "version": "Version",
+      "gitHash": "Git-Hash",
+      "committedAt": "Committet am"
+    },
+    "runtime": {
+      "platform": "Plattform",
+      "uptime": "Laufzeit"
+    },
+    "mounts": {
+      "heading": "Mounts",
+      "none": "Keine Mounts geprüft"
+    },
+    "onboarding": {
+      "completed": "Onboarding fertig",
+      "hasShare": "Share vorhanden"
+    },
+    "encoders": {
+      "detected": "Erkannt",
+      "devices": "Geräte",
+      "none": "keine"
+    },
+    "warnings": {
+      "none": "Keine Warnungen"
+    },
+    "recentErrors": {
+      "none": "Keine kürzlichen Fehler"
+    },
+    "copyReport": {
+      "description": "Diagnose-Bericht als Markdown in die Zwischenablage kopieren — zum Einfügen in einen Fehlerbericht.",
+      "button": "Bericht kopieren",
+      "toastSuccess": "Bericht in Zwischenablage kopiert",
+      "toastError": "Kopieren fehlgeschlagen: {status}",
+      "toastTimeout": "Zeitüberschreitung beim Abruf",
+      "fallbackTitle": "Diagnose-Bericht kopieren",
+      "fallbackInstruction": "Zwischenablage nicht verfügbar — alles auswählen (Strg+A) und kopieren (Strg+C):",
+      "gateHelper": "Führen Sie zuerst einen Test-Encode aus, damit der Bug-Report einen Lifecycle-Nachweis enthält.",
+      "gateAriaDescription": "Kopieren deaktiviert bis Test-Encode abgeschlossen ist."
+    },
+    "testEncode": {
+      "button": "Test-Encode starten",
+      "loadingLabel": "Läuft... (~5-12 s)",
+      "resultTitle": "Ergebnis",
+      "success": "Encoder erfolgreich gestartet",
+      "failed": "Encoder-Start fehlgeschlagen",
+      "killedTimeout": "Prozess bei Timeout abgebrochen — ffmpeg oder Rate-Limit prüfen",
+      "mutexHeld": "Anderer Test-Encode läuft (Wiederholung in {seconds} s)",
+      "retryCountdown": "Wiederholung in {seconds} s",
+      "stdoutToggle": "stdout / stderr anzeigen",
+      "duration": "Dauer",
+      "exitCode": "Exit-Code",
+      "diagnosisTitle": "Wahrscheinliche Ursache",
+      "hint": {
+        "qsvMfxSessionUnsupported": "QSV konnte keine MFX-Session öffnen (-9). Meist fehlt die render-Gruppe oder die oneVPL-Runtime im Container. Prüfe die GPU-/render-Gruppen-Diagnose.",
+        "qsvMfxGenUnsupported": "QSV meldet eine nicht unterstützte Konfiguration (-3). Diese iGPU-Generation unterstützt HEVC-QSV evtl. nicht — ziehe den libx265-Software-Encoder in Betracht.",
+        "qsvRuntimeMissing": "Die oneVPL-/MFX-Runtime konnte nicht geladen werden. Diesem Image fehlen libmfx-gen / libvpl — aktualisiere auf einen Build mit oneVPL-Runtime.",
+        "qsvMfxSessionGeneric": "QSV konnte keine MFX-Session initialisieren. Prüfe iGPU-Durchreichung sowie oneVPL-Runtime und render-Gruppe.",
+        "qsvDeviceCreationFailed": "QSV konnte das Hardware-Gerät nicht erstellen. Prüfe, ob /dev/dri in den Container gemappt ist und die render-Gruppe passt.",
+        "qsvOptionRejected": "Der QSV-Encoder hat eine ffmpeg-Option abgelehnt (oneVPL/libvpl meldet ein ungültiges Argument). Das ist meist eine inkompatible oder veraltete Encoder-Option und KEIN Hardware-Fehler — aktualisiere auf einen Build mit kompatiblen QSV-Optionen oder melde die oben gezeigte Option.",
+        "nvencLibMissing": "NVENC-Bibliotheken konnten nicht geladen werden. Starte den Container mit --runtime=nvidia und NVIDIA_DRIVER_CAPABILITIES inkl. 'video'.",
+        "nvencNoCapableDevice": "Keine NVENC-fähige GPU gefunden. Stelle sicher, dass NVIDIA_VISIBLE_DEVICES die GPU freigibt und der Treiber HEVC-NVENC unterstützt.",
+        "nvencSessionFailed": "NVENC konnte keine Encode-Session öffnen. Oft fehlt dem Treiber die 'video'-Capability oder das Session-Limit ist erreicht.",
+        "nvencDriverMismatch": "Der NVIDIA-Treiber ist zu alt für diesen NVENC-Build. Aktualisiere den NVIDIA-Treiber des Hosts.",
+        "vaapiNoDisplay": "VAAPI konnte kein Display-Gerät öffnen. Prüfe, ob /dev/dri/renderD128 gemappt ist und ein VA-Treiber (iHD) installiert ist.",
+        "vaapiDeviceMissing": "Das render-Gerät /dev/dri/renderD128 wurde im Container nicht gefunden. Mappe /dev/dri in den Container.",
+        "permRenderNodeEacces": "Zugriff auf das render-Gerät verweigert. Der Container-Benutzer ist nicht in der render-Gruppe — füge die render-Gruppen-GID hinzu.",
+        "genericHwInitFailed": "Der Hardware-Encoder konnte nicht starten. Prüfe render-Gruppe, GPU-Durchreichung und den GPU-Diagnose-Abschnitt."
+      }
+    },
+    "encoderReplay": {
+      "button": "Erkennung erneut ausführen",
+      "toastUnchanged": "Erkennung unverändert",
+      "toastTimeout": "Zeitüberschreitung bei Erkennung",
+      "diffTitle": "Erkennungs-Diff",
+      "added": "hinzugefügt",
+      "removed": "entfernt",
+      "changed": "geändert"
+    },
+    "feedback": {
+      "sectionHeading": "Problem melden",
+      "bugReport": "Fehler melden",
+      "featureRequest": "Funktion anfragen",
+      "toastBugCopied": "Diagnose-Bericht kopiert — in Forum-Beitrag einfügen",
+      "toastFeatureCopied": "Funktions-Anfrage-Vorlage kopiert — in Forum-Beitrag einfügen",
+      "openForum": "Forum öffnen",
+      "bugGateHelper": "Führen Sie zuerst einen Test-Encode aus, damit der Bug-Report einen Lifecycle-Nachweis enthält.",
+      "featureTemplate": {
+        "what": "Was?",
+        "why": "Warum?",
+        "how": "Wie könnte das aussehen?"
+      }
+    },
+    "banner": {
+      "countOne": "{count} aktive Warnung",
+      "countMany": "{count} aktive Warnungen",
+      "cta": {
+        "viewDiagnostics": "Diagnose öffnen"
+      },
+      "dismiss": {
+        "aria": "Warnung {code} für 24 Stunden ausblenden"
+      },
+      "restorePill": {
+        "label": "{count, plural, one {# Warnung ausgeblendet} other {# Warnungen ausgeblendet}}",
+        "cta": "Wiederherstellen",
+        "restoreAria": "Alle ausgeblendeten Warnungen wiederherstellen"
+      },
+      "severity": {
+        "warn": "Warnung",
+        "error": "Fehler"
+      },
+      "killSwitch": {
+        "devLabel": "Banner über env-Flag deaktiviert"
+      },
+      "announce": {
+        "dismissed": "Warnung {code} für 24 Stunden ausgeblendet",
+        "restored": "{count, plural, one {# Warnung wiederhergestellt} other {# Warnungen wiederhergestellt}}"
+      }
+    },
+    "blocklist": {
+      "title": "Blocklist-Auswertung",
+      "entriesLabel": "Einträge",
+      "cachedAtLabel": "Pattern-Cache",
+      "emptyState": "Keine kürzlichen Auswertungen.",
+      "pathDisclosureWarning": "Die hier gezeigten Pfade landen wörtlich im Bug-Report-Markdown. Bitte vor dem Posten in öffentliche Foren prüfen."
+    },
+    "slowRequests": {
+      "title": "Langsame Seitenladevorgänge",
+      "emptyState": "Keine langsamen Anfragen erfasst (Schwellwert: 1 s).",
+      "headerRoute": "Route",
+      "headerDuration": "Dauer (ms)",
+      "headerAt": "Zeitpunkt",
+      "headerBreakdown": "Aufschlüsselung"
+    },
+    "slowQueries": {
+      "title": "Langsame SQL-Queries",
+      "emptyState": "Keine langsamen Queries erfasst (Schwellwert: 100 ms).",
+      "headerQuery": "Query",
+      "headerDuration": "Dauer (ms)",
+      "headerAt": "Zeitpunkt"
+    },
+    "webVitals": {
+      "title": "Web Vitals",
+      "emptyState": "Keine Web Vitals erfasst.",
+      "headerRoute": "Route",
+      "headerTtfb": "TTFB p75 (ms)",
+      "headerLcp": "LCP p75 (ms)",
+      "headerInp": "INP p75 (ms)",
+      "headerSamples": "Samples"
+    },
+    "containerImage": {
+      "title": "Container-Image",
+      "labelOS": "OS",
+      "labelGlibc": "GLIBC",
+      "labelIntelMediaDriver": "Intel Media Driver",
+      "labelLibva": "libva",
+      "labelLibdrm": "libdrm",
+      "labelFfmpeg": "ffmpeg",
+      "labelConfigFlags": "ffmpeg-Konfigurations-Flags",
+      "refreshLabel": "Aktualisieren",
+      "refreshRateLimited": "Aktualisierung gedrosselt — bitte gleich erneut versuchen."
+    },
+    "renderDevices": {
+      "title": "Render-Devices",
+      "emptyState": "Keine Render-Devices gefunden (kein /dev/dri).",
+      "inGroup": "in Gruppe",
+      "accessOkNoGroup": "RW OK — Gruppenmitgliedschaft nicht erforderlich",
+      "accessProblem": "kein Zugriff — Render-Node nicht lesbar/beschreibbar",
+      "groupNoteFix": "Der Gruppenname ist container-seitig und informativ; die numerische GID ist maßgeblich. Die Mitgliedschaft zählt die primäre Prozess-GID (PGID) und ergänzende Gruppen — Behebung via PGID='<gid>' oder --group-add '<gid>'.",
+      "groupNoteOk": "Der Gruppenname ist informativ; die numerische GID ist maßgeblich. Kein Render-Device meldete einen Zugriffsfehler, den eine Gruppenmitgliedschaft beheben würde — PGID- / --group-add-Änderungen sind nicht erforderlich."
+    },
+    "cpu": {
+      "title": "CPU / iGPU",
+      "labelVendor": "Hersteller",
+      "labelModelName": "Modellname",
+      "labelFamilyModel": "CPUID-Familie / -Modell",
+      "labelMicroarch": "Mikroarchitektur",
+      "labelGraphicsGen": "Grafik-Generation",
+      "labelHevcQsv": "HEVC-QSV (Hardware)",
+      "hevcQsv": {
+        "none": "Nicht unterstützt (iGPU älter als HEVC-QSV)",
+        "8bit": "8-Bit unterstützt",
+        "10bit": "8-Bit + 10-Bit unterstützt",
+        "unknown": "Unbekannt"
+      },
+      "gentableNote": "HEVC-QSV spiegelt die iGPU-Hardwarefähigkeit gemäß der eingebetteten CPUID-Generationstabelle wider; die tatsächliche QSV-Funktion wird separat durch den Probe-Encode verifiziert."
+    },
+    "cache": {
+      "title": "Cache",
+      "labelEffective": "Effektiver Pfad",
+      "labelResolution": "Auflösung",
+      "labelSetting": "Konfigurierte Überschreibung",
+      "labelWritable": "Beschreibbar",
+      "autoValue": "(auto)",
+      "advisory": "Appdata-Fallback: kein dedizierter Cache-Mount erkannt — einen einbinden (ein volles appdata-Volume riskiert Datenbank-Korruption).",
+      "resolution": {
+        "mntCache": "Auto · /mnt/cache",
+        "configFallback": "Auto · appdata-Fallback",
+        "userOverride": "Manuell überschrieben"
+      }
+    }
+  },
+  "onboarding": {
+    "title": "Mit x265-butler starten",
+    "step1": {
+      "headline": "Willkommen bei x265-butler",
+      "body": "Vier kurze Schritte zum Start.",
+      "cta": "Los geht's"
+    },
+    "step2": {
+      "headline": "Hardware-Beschleunigung"
+    },
+    "step3": {
+      "headline": "Wo liegen deine Videos?",
+      "body": "x265-butler durchsucht dieses Verzeichnis nach HEVC-Kandidaten.",
+      "field": {
+        "scanRoot": {
+          "label": "Scan-Root",
+          "helper": "unRAID typisch: /media (read) oder /mnt/user/Movies. Muss aus dem Container erreichbar sein.",
+          "placeholder": "/media"
+        },
+        "minSizeMb": {
+          "label": "Mindestgröße (MB)",
+          "helper": "Dateien kleiner als dieser Wert werden übersprungen. Filtert Samples und Thumbnails."
+        },
+        "extensions": {
+          "label": "Endungen",
+          "helper": "Standard: mp4, mkv, avi, mov, m4v, ts. Später unter Einstellungen anpassbar."
+        }
+      },
+      "writableGate": {
+        "warningHeading": "Dieser Pfad ist im Container schreibgeschützt",
+        "warningBody": "x265-butler kann dieses Verzeichnis lesen, aber nicht beschreiben. Encodes schreiben die optimierte Datei direkt zurück, daher schlägt der Job erst spät mit einem EACCES-Fehler beim finalen Commit-Schritt fehl.",
+        "fixHint": "Lösung: Setze PUID/PGID so, dass der Container-Benutzer diesen Mount besitzt (oder beschreiben darf), und starte den Container neu. Du kannst jetzt fortfahren und es danach beheben.",
+        "overrideLabel": "Verstanden, trotzdem fortfahren"
+      }
+    },
+    "step4": {
+      "headline": "Hardware-Encoder-Erkennung",
+      "body": "Auf diesem Host automatisch erkannt:",
+      "probing": "Prüfe /dev/dri und nvidia-smi...",
+      "detected": {
+        "heading": "Erkannte Encoder"
+      },
+      "active": {
+        "line": "Aktiver Encoder: {encoder} ({resolution})"
+      },
+      "error": {
+        "fallback": "Erkennung fehlgeschlagen. Fortsetzung mit libx265 Software-Fallback."
+      },
+      "benchRecommendation": {
+        "label": "Empfohlen: {encoder} · CRF {crf}",
+        "ariaLabel": "Benchmark-Empfehlungs-Chip"
+      },
+      "cpuAdvisory": {
+        "label": "Deine Intel-iGPU (Grafik-Generation {gen}) ist älter als Hardware-HEVC-QSV (eingeführt ab Generation {minGen}, Skylake). QSV ist auf dieser Hardware nicht verfügbar — libx265-Software-Encoding wird empfohlen.",
+        "ariaLabel": "Hinweis zur CPU-Fähigkeit"
+      },
+      "detectFailRemediation": {
+        "heading": "Nächste Schritte"
+      }
+    },
+    "step5": {
+      "headline": "Qualitäts-Standardwerte",
+      "body": "Diese Werte passen für die meisten Inhalte. Später unter Einstellungen → Encoder anpassbar.",
+      "cta": {
+        "finish": "Einrichtung abschließen"
+      },
+      "crfExplainer": {
+        "triggerAriaLabel": "CRF-Erklärung",
+        "header": "CRF-Qualitätsskala",
+        "lossless": "18-23 — visuell verlustfrei",
+        "good": "23-28 — gute Qualität",
+        "artifacts": ">28 — sichtbare Artefakte",
+        "scaleAriaLabel": "CRF-Skala 0 bis 51"
+      }
+    },
+    "paths": {
+      "autoSkipToast": {
+        "title": "Container-Mount wird verwendet",
+        "description": "Scannt {path} — in Einstellungen ändern",
+        "actionLabel": "Einstellungen öffnen",
+        "ariaLabel": "Pfad automatisch vom Container-Mount erkannt"
+      }
+    },
+    "hwAccel": {
+      "intent": {
+        "body": "GPU-Unterstützung erkannt, bevor wir deine Bibliothek einrichten."
+      },
+      "device": {
+        "label": "Render-Gerät",
+        "autoOption": "Auto (erstes erkanntes)",
+        "description": "Auf einem Host mit mehreren GPUs wählen, welchen Render-Knoten die Hardware-Encoder verwenden. Auto nutzt den ersten erkannten Knoten — unverändert lassen, außer du hast mehr als eine GPU."
+      },
+      "branch": {
+        "active": {
+          "title": "Hardware-Beschleunigung aktiv",
+          "body": "Folgende Encoder sind verfügbar:",
+          "encoderLabel": {
+            "nvenc": "NVIDIA NVENC",
+            "qsv": "Intel QSV",
+            "vaapi": "AMD/Intel VAAPI",
+            "libx265": "libx265 (Software)"
+          }
+        },
+        "nvidia": {
+          "title": "NVIDIA-Plugin fehlt",
+          "body": "/dev/nvidia*-Geräte vorhanden, aber nvidia-smi fehlt. Installiere das unRAID NVIDIA-Driver-Plugin, um NVENC zu aktivieren.",
+          "steps": {
+            "1": "Installiere das unRAID NVIDIA-Driver-Plugin aus Community Apps",
+            "2": "Setze den Extra-Parameter --runtime=nvidia",
+            "3": "Füge die Variablen NVIDIA_VISIBLE_DEVICES und NVIDIA_DRIVER_CAPABILITIES hinzu",
+            "4": "Starte den Container neu und klicke auf Jetzt testen"
+          },
+          "testNow": {
+            "label": "Jetzt testen",
+            "inflight": "Erneute Erkennung…",
+            "error": "Erkennung fehlgeschlagen; bitte erneut versuchen"
+          },
+          "continueAnyway": "Mit Software-Encoding fortfahren"
+        },
+        "software": {
+          "title": "Software-Encoding aktiv",
+          "body": "Keine GPU erkannt. x265-butler nutzt libx265 (CPU-Encoder).",
+          "readmeLink": "Mehr zur Hardware-Beschleunigung erfahren",
+          "nvidiaHint": {
+            "title": "Nutzt du eine NVIDIA-GPU?",
+            "body": "Wenn du eine NVIDIA-Karte hast, braucht NVENC drei Einträge im Container-Template — kopiere jeden in das passende unRAID-Feld:"
+          }
+        },
+        "legacyIntel": {
+          "title": "Legacy-Intel-iGPU erkannt",
+          "body": "Deine Intel-iGPU nutzt den Legacy-i965-Pfad. HEVC-Hardware-Encode funktioniert, aber AV1-Hardware-Encode ist nicht verfügbar und die HEVC-Qualität kann gegenüber modernen iHD-iGPUs schwächer ausfallen."
+        }
+      },
+      "cta": {
+        "continue": "Weiter",
+        "back": "Zurück"
+      },
+      "nvenc": {
+        "fieldLabel": {
+          "extraParam": "Extra Parameters",
+          "envVar": "Variable",
+          "name": "Name",
+          "value": "Wert"
+        },
+        "copy": {
+          "extraParam": "Extra-Parameter {value} kopieren",
+          "name": "Variablenname {value} kopieren",
+          "value": "Variablenwert {value} kopieren"
+        }
+      }
+    },
+    "autoScan": {
+      "heading": "Auto-Scan läuft im Hintergrund",
+      "bodyAutoScanOn": "Auto-Scan ist AN — keine manuellen Scans für den täglichen Gebrauch nötig.",
+      "bodyBootScan": "Boot-Scan ist AN — Neustarts gleichen ab, was während Downtime hinzukam.",
+      "bodyAdvancedOptions": "Power-Tuning unter Einstellungen → Allgemein → Erweiterte Optionen.",
+      "deepLinkLabel": "Erweiterte Optionen öffnen",
+      "iconLabel": "Auto-Scan aktiv"
+    },
+    "autoCrop": {
+      "iconLabel": "Auto-Crop verfügbar",
+      "heading": "Schwarze Balken automatisch entfernen",
+      "body": "Auto-Crop entfernt Letterbox-/Pillarbox-Balken vor dem Encoden — das Äquivalent zu HandBrakes Auto-Crop. Standardmäßig aus; jederzeit unter Einstellungen → Encoder → Auto-Crop aktivierbar.",
+      "deepLinkLabel": "Auto-Crop-Einstellungen öffnen"
+    },
+    "complete": {
+      "toast": "Einrichtung abgeschlossen!"
+    },
+    "error": {
+      "networkTimeout": "Netzwerk-Timeout — bitte erneut versuchen."
+    },
+    "nav": {
+      "back": "Zurück",
+      "continue": "Weiter"
+    },
+    "indicator": {
+      "aria": "Schritt {current} von {total}: {name}"
+    },
+    "validation": {
+      "scanRootRequired": "Pfad ist erforderlich und muss absolut sein (mit / beginnen)",
+      "minSizeRange": "Muss zwischen 1 und 10000 liegen"
+    }
+  },
+  "blocklist": {
+    "title": "Blocklist",
+    "subhead": {
+      "one": "1 Eintrag wird bei jedem Scan übersprungen.",
+      "many": "{total} Einträge werden bei jedem Scan übersprungen."
+    },
+    "table": {
+      "type": "Typ",
+      "displayValue": "Pfad / Muster",
+      "reason": "Grund",
+      "createdAt": "Hinzugefügt",
+      "actions": "Aktionen",
+      "recentMatches": "Letzte Treffer"
+    },
+    "type": {
+      "file": "Datei",
+      "pattern": "Muster"
+    },
+    "reason": {
+      "operator": "Manuell",
+      "autoFailure": "Auto (Fehler)",
+      "autoSkip": "Auto (Skip)"
+    },
+    "addPattern": {
+      "headline": "Pfadmuster hinzufügen",
+      "label": "Pfadmuster",
+      "placeholder": "/movies/Samples/*",
+      "helper": "Sternchen `*` am Ende matcht alles danach; Sternchen am Anfang + Ende matcht enthaltene Zeichenfolge.",
+      "submit": "Hinzufügen",
+      "cancel": "Abbrechen",
+      "extensionWarning": {
+        "title": "Muster gespeichert — aber kein gescannter Pfad deckt .{ext}-Dateien ab",
+        "body": "Aktuelle Scan-Endungen: {exts}. Füge .{ext} zu den Endungen eines Pfades in den Einstellungen hinzu, damit dieses Muster wirkt.",
+        "dismiss": "Verstanden"
+      }
+    },
+    "recentMatches": {
+      "tooltip": {
+        "neverMatched": "Nicht getroffen in den letzten 50 Scan-Auswertungen. Aktuelle Scan-Endungen: {exts}. Muster zielt auf .{ext} — füge sie den Endungen eines Pfades in den Einstellungen hinzu."
+      },
+      "ariaLabel": "Anzahl letzter Treffer"
+    },
+    "card": {
+      "recentMatchesLabel": "Letzte Treffer",
+      "fileEntryDash": "Nicht zutreffend"
+    },
+    "actions": {
+      "addToBlocklist": "Zur Blocklist",
+      "remove": "Eintrag entfernen"
+    },
+    "confirm": {
+      "addToBlocklist": "Bestätigen",
+      "remove": "Entfernen bestätigen"
+    },
+    "added": {
+      "toast": "Zur Blocklist hinzugefügt."
+    },
+    "removed": {
+      "toast": "Von Blocklist entfernt."
+    },
+    "empty": {
+      "headline": "Keine Blocklist-Einträge",
+      "body": "Füge Dateien oder Pfadmuster hinzu, um sie beim nächsten Scan zu überspringen."
+    },
+    "error": {
+      "patternTooComplex": "Muster darf höchstens zwei `*` enthalten.",
+      "patternTooShort": "Muster muss mindestens 2 Zeichen haben.",
+      "fileNotFound": "Datei nicht gefunden.",
+      "addFailed": "Zur Blocklist hinzufügen fehlgeschlagen.",
+      "removeFailed": "Eintrag konnte nicht entfernt werden.",
+      "dbError": "Blocklist konnte nicht geladen werden. Siehe Server-Logs."
+    }
+  },
+  "login": {
+    "title": "x265-butler",
+    "subtitle": "Zum Fortfahren anmelden",
+    "field": {
+      "username": {
+        "label": "Nutzername",
+        "placeholder": "admin"
+      },
+      "password": {
+        "label": "Passwort",
+        "show": "Passwort anzeigen",
+        "hide": "Passwort verbergen"
+      }
+    },
+    "action": {
+      "submit": "Anmelden",
+      "submitting": "Anmelden…"
+    },
+    "rateLimited": {
+      "label": "Erneut versuchen in {seconds}s"
+    },
+    "error": {
+      "required": "Pflichtfeld",
+      "invalidCredentials": "Ungültiger Nutzername oder Passwort.",
+      "rateLimited": "Zu viele Versuche. Erneut versuchen in {seconds} Sekunden.",
+      "serverError": "Server-Fehler. Erneut versuchen.",
+      "networkError": "Netzwerk-Fehler. Verbindung prüfen."
+    },
+    "toast": {
+      "expired": {
+        "title": "Sitzung abgelaufen",
+        "body": "Bitte erneut anmelden."
+      },
+      "success": "Angemeldet."
+    },
+    "recovery": {
+      "note": "Passwort vergessen? Führe scripts/auth-reset.ts in der Container-Shell aus."
+    },
+    "setupRequired": {
+      "title": "Einrichtung erforderlich",
+      "body": "Anmeldung ist aktiviert, aber kein Konto vorhanden. Öffne Einstellungen → Auth zum Anlegen.",
+      "cta": "Zu Einstellungen"
+    }
+  },
+  "stats": {
+    "title": "Erweiterte Statistiken",
+    "subtitle": "Detaillierte Encoding-Metriken und Bibliotheksanalyse.",
+    "topSavers": {
+      "title": "Top-Einsparungen",
+      "subtitle": "Dateien mit den höchsten Byte-Einsparungen.",
+      "empty": {
+        "title": "Noch keine Daten",
+        "body": "Schließe deinen ersten Encoding-Job ab, um Top-Einsparungen zu sehen."
+      },
+      "table": {
+        "file": "Datei",
+        "saved": "Eingespart",
+        "savedPercent": "Eingespart %",
+        "encoder": "Encoder",
+        "date": "Datum",
+        "fileMissing": "Datei nicht gefunden"
+      }
+    },
+    "encoderPerf": {
+      "title": "Encoder-Performance",
+      "subtitle": "Gesamt eingesparte Bytes pro Encoder.",
+      "empty": {
+        "title": "Keine Encoder-Daten",
+        "body": "Encoder-Statistiken erscheinen nach abgeschlossenen Encoding-Jobs."
+      },
+      "chart": {
+        "aria": "Encoder-Performance-Balkendiagramm"
+      }
+    },
+    "timeline": {
+      "title": "Einsparungs-Verlauf",
+      "subtitle": "Tägliche Einsparungen und Gesamtsumme der letzten 30 Tage.",
+      "empty": {
+        "title": "Noch keine Aktivität",
+        "body": "Der Einsparungs-Trend erscheint nach abgeschlossenen Encoding-Jobs."
+      },
+      "daily": "Tägliche Einsparungen",
+      "cumulative": "Kumulierte Einsparungen"
+    },
+    "charts": {
+      "sectionHint": {
+        "aria": "Weitere Informationen"
+      },
+      "pipelineHealth": {
+        "title": "Pipeline-Gesundheit",
+        "subtitle": "Job-Warteschlange und Fehlermetriken"
+      },
+      "diskRecovery": {
+        "title": "Speicher-Rückgewinnung",
+        "subtitle": "Zurückgewonnener und ausstehender Speicher"
+      },
+      "libraryOverview": {
+        "title": "Bibliotheks-Übersicht",
+        "subtitle": "Datei- und Format-Aufschlüsselung"
+      },
+      "skipAnalysis": {
+        "title": "Übersprungene Dateien",
+        "subtitle": "Übersprungene Dateien und Gründe"
+      },
+      "failedJobRate": {
+        "title": "Fehlerrate",
+        "subtitle": "Fehlerrate über alle Jobs",
+        "hint": "Anteil fehlgeschlagener Jobs. Unter 5% ist normal; über 10% deutet auf ein wiederkehrendes Problem hin.",
+        "threshold": {
+          "healthy": "Gesund",
+          "attention": "Achtung",
+          "critical": "Kritisch"
+        },
+        "aria": "{pct}% — {thresholdLabel}",
+        "interruptedNote": "Unterbrochene Jobs ausgeschlossen"
+      },
+      "encodeSpeedRatio": {
+        "title": "Encode-Größenverhältnis",
+        "subtitle": "Ø Ausgabe-/Eingabe-Verhältnis",
+        "hint": "Verhältnis von Kodierungsdauer zu Videolänge. 2× bedeutet: ein 2h-Film wird in 1h kodiert. Hohe Werte können auf langsame Hardware oder aufwendige Einstellungen hinweisen.",
+        "target": "Ziel: < 0,6",
+        "aria": "Encode-Größenverhältnis: {value}"
+      },
+      "allTimeJobSummary": {
+        "title": "Jobs gesamt",
+        "done": "Fertig",
+        "failed": "Fehlgeschlagen",
+        "interrupted": "Unterbrochen",
+        "cancelled": "Abgebrochen",
+        "total": "Gesamt",
+        "hint": "Gesamte abgearbeitete Jobs seit Start — ein schneller Überblick, wie viel der Bibliothek bereits kodiert wurde.",
+        "aria": "Gesamte Job-Übersicht"
+      },
+      "fileStatusDistribution": {
+        "title": "Dateistatus",
+        "subtitle": "Verteilung nach aktuellem Status",
+        "hint": "Aktueller Verarbeitungsstatus aller vom Scanner erfassten Dateien.",
+        "empty": {
+          "title": "Keine Dateien",
+          "body": "Noch keine Dateien gescannt."
+        },
+        "aria": "Dateistatus-Verteilungsdiagramm"
+      },
+      "resolutionDistribution": {
+        "title": "Auflösungs-Aufschlüsselung",
+        "hint": "Verteilung der Bibliotheksdateien nach Auflösung. Hilft dabei, die qualitativ hochwertigsten Dateien zuerst zu priorisieren.",
+        "bucket": {
+          "4K": "4K",
+          "1080p": "1080p",
+          "720p": "720p",
+          "SD": "SD",
+          "unknown": "Unbekannt"
+        },
+        "empty": {
+          "title": "Keine Auflösungsdaten",
+          "body": "Auflösungsdaten erscheinen nach dem Scannen."
+        },
+        "aria": "Auflösungs-Verteilungsdiagramm"
+      },
+      "bitrateDistribution": {
+        "title": "Bitrate-Verteilung",
+        "hint": "Verteilung nach Original-Bitrate. Dateien mit hoher Bitrate (> 10 Mbps) bringen beim Re-Encoding in der Regel die größten Einsparungen.",
+        "bucket": {
+          "lt1Mbps": "< 1 Mbps",
+          "1to5Mbps": "1–5 Mbps",
+          "5to10Mbps": "5–10 Mbps",
+          "10to20Mbps": "10–20 Mbps",
+          "gt20Mbps": "> 20 Mbps",
+          "unknown": "Unbekannt"
+        },
+        "aria": "Bitrate-Verteilungsdiagramm"
+      },
+      "skipTypeBreakdown": {
+        "title": "Übersprungsarten",
+        "subtitle": "Warum Dateien übersprungen wurden",
+        "hint": "Warum Dateien vom Scanner übersprungen wurden. Ein großer 'Bereits HEVC'-Anteil bedeutet, dass der Großteil der Bibliothek bereits optimiert ist.",
+        "empty": {
+          "title": "Keine übersprungenen Dateien",
+          "body": "Aufschlüsselung der übersprungenen Dateien erscheint hier."
+        },
+        "aria": "Übersprungsarten-Diagramm",
+        "bucket": {
+          "already_small": "Bereits klein",
+          "already_hevc": "Bereits HEVC",
+          "no_gain": "Kein Gewinn",
+          "unknown": "Unbekannt"
+        }
+      },
+      "currentTrashSize": {
+        "title": "Papierkorb-Größe",
+        "subtitle": "Aktuell im Papierkorb",
+        "hint": "Speicherplatz durch Original-Dateien im Papierkorb, die noch auf ihr Ablaufen warten. Wird automatisch freigegeben, wenn die Aufbewahrungsfrist endet.",
+        "aria": "Aktuelle Papierkorb-Größe"
+      },
+      "expiringSoon": {
+        "title": "Bald ablaufend",
+        "hint": "Originaldateien im Papierkorb, die in den nächsten 7 Tagen ablaufen und dauerhaft gelöscht werden.",
+        "noneSoon": "Nichts läuft bald ab",
+        "expiringSoon": "{count} laufen in {withinDays} Tagen ab",
+        "aria": {
+          "expiringSoon": "{count} Einträge laufen in {withinDays} Tagen ab"
+        }
+      },
+      "netDiskFreed": {
+        "title": "Netto-Speicher freigegeben",
+        "caveat": {
+          "tooltip": "Berücksichtigt die Papierkorb-Aufbewahrung. Kann negativ sein, wenn Dateien wiederhergestellt oder der Papierkorb noch nicht geleert wurde."
+        },
+        "aria": "Netto-Speicher freigegeben"
+      },
+      "avgQueueWait": {
+        "title": "Ø Wartezeit",
+        "subtitle": "Ø Wartezeit bis Encoding-Start",
+        "hint": "Durchschnittliche Wartezeit einer Datei in der Queue bis die Kodierung beginnt. Lange Wartezeiten können auf einen ausgelasteten oder zu schwach ausgestatteten Encoder hinweisen.",
+        "aria": "Durchschnittliche Wartezeit in der Warteschlange"
+      },
+      "sortToggle": {
+        "aria": "Sortieren {direction}"
+      },
+      "topSavers": {
+        "hint": "Top 10 Dateien nach absolut eingesparten Bytes. Klick auf einen Dateinamen öffnet den Bibliothekseintrag."
+      },
+      "savingsTimeline": {
+        "subtitle": "Letzte 30 Tage, täglich",
+        "hint": "Täglich eingesparte Bytes und kumulierter Gesamt-Wert der letzten 30 Tage (UTC-Tagesgrenzen). Lücken bedeuten keine abgeschlossenen Encodes an diesen Tagen.",
+        "chartAria": "Einsparungs-Zeitreihe",
+        "day": {
+          "aria": "{date}: {savings} eingespart ({jobCount, plural, =0 {keine Jobs} one {# Job} other {# Jobs}})"
+        },
+        "empty": {
+          "title": "Noch keine Aktivität",
+          "body": "Der Einsparungs-Trend erscheint nach abgeschlossenen Encoding-Jobs."
+        }
+      },
+      "encoderPerf": {
+        "chartAria": "Encoder-Performance-Balkendiagramm",
+        "hint": "Gesamt eingesparte Bytes pro Encoder über alle abgeschlossenen Jobs. Längere Balken = mehr Speicher durch diesen Encoder zurückgewonnen.",
+        "empty": {
+          "title": "Keine Encoder-Daten",
+          "body": "Encoder-Statistiken erscheinen nach abgeschlossenen Encoding-Jobs."
+        }
+      }
+    }
+  },
+  "bench": {
+    "page": {
+      "title": "Encoder-Benchmark",
+      "subhead": "VMAF / Größe / Encode-Zeit für deine Encoder × Preset × Qualitäts-Matrix messen – auf repräsentativen Samples.",
+      "infoButton": "Über den Encoder-Benchmark",
+      "info": {
+        "title": "Wie der Encoder-Benchmark funktioniert",
+        "what": {
+          "heading": "Was er macht",
+          "body": "Der Benchmark encodiert kurze Samples deiner ausgewählten Dateien für jede Kombination aus Encoder, Preset und Qualitätswert. Er misst VMAF (wahrgenommene Qualität), Ausgabegröße und Encode-Zeit – und zeichnet die Pareto-Front, damit du die besten Trade-offs auf einen Blick erkennst."
+        },
+        "modes": {
+          "heading": "Modi",
+          "native": "Native Sweep – du wählst rohe Qualitätswerte (CRF für libx265, CQ für NVENC/QSV, -qp für VAAPI). Günstigster Modus: jede Kombination wird einmal encodiert.",
+          "vmaf": "VMAF-verankert – du wählst VMAF-Zielwerte (z. B. 95, 92, 88). Der Benchmark tastet jedes Encoder/Preset-Paar ab, um den Qualitätswert zu finden, der den Zielwert trifft. Etwa 3–4× mehr Encodes als beim Native Sweep."
+        },
+        "pareto": {
+          "heading": "Pareto-Front",
+          "body": "Eine Kombination liegt auf der Pareto-Front, wenn keine andere Kombination sie gleichzeitig bei Größe und Qualität übertrifft. Die Front (graue Linie im Diagramm) ist die Menge nicht-dominierter Trade-offs – jeder Punkt ist für eine bestimmte Priorität optimal."
+        },
+        "top3": {
+          "heading": "Top-3-Empfehlungen",
+          "size": "Kleinste Größe – niedrigste Ausgabegröße auf der Front.",
+          "balanced": "Ausgewogen – bestes Größe×Qualität-Produkt (geometrischer Mittelpunkt auf der Front).",
+          "quality": "Beste Qualität – höchster VMAF-Score auf der Front."
+        },
+        "samples": {
+          "heading": "Samples",
+          "body": "Um die Laufzeit kurz zu halten, encodiert der Benchmark nur 3 × 20-Sekunden-Clips pro Datei (in Einstellungen → Benchmark konfigurierbar). Die Ergebnisse sind repräsentativ, aber nicht identisch mit einem Full-File-Encode."
+        },
+        "passes": {
+          "heading": "Zwei-Pass-Struktur",
+          "body": "Pass 1 (dieser Plan) encodiert die Sample-Matrix und zeigt die Pareto-Ergebnisse. Pass 2 – Full-File-Verifizierung des Gewinners – folgt in Plan 11-03."
+        }
+      },
+      "emptyState": {
+        "title": "Noch keine Benchmarks",
+        "body": "Wähle einige Dateien aus der Bibliothek und lege eine Encoder × Preset × Qualitäts-Matrix fest. Der Benchmark encodiert 3 × 20-Sekunden-Samples pro Datei und zeigt die Pareto-Front.",
+        "cta": "Benchmark starten"
+      }
+    },
+    "form": {
+      "submit": "Benchmark starten",
+      "mode": {
+        "label": "Modus",
+        "native": "Native Sweep (rohe CRF/CQ-Werte, ~1× Kosten)",
+        "vmafAnchored": "VMAF-verankert (VMAF-Zielwerte, ~3-4× Kosten)",
+        "help": "Native Sweep ist die günstige, ehrliche Baseline. VMAF-verankert ermöglicht fairen Encoder-Vergleich.",
+        "hint": "Native Sweep encodiert einmal pro Kombination mit einem rohen Qualitätswert – schnell und günstig. VMAF-verankert tastet jedes Encoder/Preset-Paar ab, um den Qualitätswert zu finden, der deinen VMAF-Zielwert trifft (~3–4× mehr Encodes, ermöglicht aber fairen Encoder-Vergleich)."
+      },
+      "files": {
+        "label": "Datei-IDs",
+        "placeholder": "z.B. 12, 47, 102",
+        "help": "Kommagetrennt. 1-50 Dateien.",
+        "hint": "Kommagetrennte IDs aus der Bibliothek-Seite. Der Benchmark encodiert kurze Samples – wähle Dateien, die deinen typischen Inhalt repräsentieren: verschiedene Auflösungen, Bitraten und Szene-Komplexität."
+      },
+      "encoders": {
+        "label": "Encoder",
+        "help": "Mindestens 1.",
+        "hint": "libx265 – Software-CPU-Encoder, universell verfügbar. NVENC – NVIDIA GPU (deutlich schneller). QSV – Intel Quick Sync GPU. VAAPI – Linux GPU-Encoder (AMD oder Intel). Nur erkannte/installierte Encoder liefern Ergebnisse."
+      },
+      "presets": {
+        "label": "Presets",
+        "hint": "Welche x265-Presets verglichen werden sollen. Schnellere Presets tauschen Qualität gegen Geschwindigkeit ein.",
+        "groupFast": "Schnell",
+        "groupBalanced": "Ausgewogen",
+        "groupSlow": "Langsam"
+      },
+      "nativeValues": {
+        "label": "Native Qualitätswerte",
+        "placeholder": "z.B. 20, 23, 26",
+        "help": "CRF für libx265 / CQ für NVENC / global_quality für QSV / -qp für VAAPI.",
+        "hint": "Roher Qualitätsparameter direkt an den Encoder übergeben. CRF für libx265 – niedriger = bessere Qualität + größere Datei. CQ für NVENC/QSV. −qp für VAAPI. Typischer Bereich: 18–30. Jeder Wert erzeugt einen Encode pro Encoder/Preset-Kombination."
+      },
+      "vmafTargets": {
+        "label": "VMAF-Zielwerte",
+        "placeholder": "z.B. 95, 92, 88, 85",
+        "help": "Jeder Encoder wird auf jeden Zielwert eingestellt.",
+        "hint": "Der Benchmark sucht binär nach dem Qualitätsparameter, der genau diesen VMAF-Score pro Encoder/Preset-Paar erzeugt. Höher = bessere Qualität + größere Datei. Typisch: 95 (hoch), 92 (ausgewogen), 88 (klein). ~3–4× mehr Encodes als Native Sweep."
+      },
+      "disclosure": {
+        "label": "Defaults überprüfen & überschreiben",
+        "summary": {
+          "native": "Native · {encCount} Encoder · {presetCount} Presets · CRF {values}",
+          "vmaf": "VMAF · {encCount} Encoder · {presetCount} Presets · VMAF {values}"
+        }
+      },
+      "reset": {
+        "cta": "↻ Auf Defaults zurücksetzen",
+        "disabledHint": "Bereits auf Defaults"
+      },
+      "settingsLink": "→ Defaults dauerhaft in Settings",
+      "sampleSection": "Sample-Konfiguration",
+      "advanced": {
+        "label": "Erweitert",
+        "sampleCount": "Samples pro Datei",
+        "sampleDuration": "Sample-Dauer (s)",
+        "vmafModel": "VMAF-Modell"
+      },
+      "errors": {
+        "required": "Pflichtfeld",
+        "outOfRange": "Außerhalb des gültigen Bereichs",
+        "tooMany": "Zu viele — max. 50",
+        "submitFailed": "Benchmark konnte nicht eingereiht werden — siehe Toast für Details",
+        "encoderRequired": "Bitte mindestens einen Encoder auswählen",
+        "presetRequired": "Bitte mindestens ein Preset auswählen"
+      }
+    },
+    "stepper": {
+      "pass1": {
+        "label": "Schnellcheck"
+      },
+      "pass2": {
+        "label": "Vollcheck"
+      },
+      "state": {
+        "idle": "Bereit",
+        "queued": "Warteschlange",
+        "running": "Läuft",
+        "complete": "Abgeschlossen",
+        "failed": "Fehlgeschlagen",
+        "cancelled": "Abgebrochen"
+      },
+      "progressPill": "{completed} von {total} Kombinationen"
+    },
+    "progress": {
+      "heading": "Benchmark läuft…",
+      "combos": "{completed} von {total} Kombinationen",
+      "fileOf": "Datei {current} von {total}",
+      "combo": "Combo {current} von {total}",
+      "encoderLine": "{encoder} @ CRF {crf}",
+      "fileLine": "Datei {current}/{total}: {filename}",
+      "runLine": "{completed} erledigt · {pct}%",
+      "phase": {
+        "encode": "Encodierung",
+        "vmaf": "VMAF",
+        "sampleExtraction": "Sample-Extraktion",
+        "pareto": "Pareto"
+      }
+    },
+    "chart": {
+      "title": "Pareto-Front",
+      "subhead": "Blasengröße = Encode-Zeit. X-Achse ist logarithmisch.",
+      "axis": {
+        "size": "Encodierte Größe",
+        "vmaf": "VMAF",
+        "time": "Encode-Zeit"
+      },
+      "encoder": {
+        "libx265": "libx265",
+        "hevcNvenc": "NVENC",
+        "hevcQsv": "QSV",
+        "hevcVaapi": "VAAPI"
+      },
+      "paretoLine": "Pareto-Front",
+      "running": {
+        "banner": "Live — {completed} von {total} Kombinationen encodiert"
+      }
+    },
+    "top3": {
+      "size": {
+        "title": "Kleinste Größe"
+      },
+      "balanced": {
+        "title": "Ausgewogen"
+      },
+      "quality": {
+        "title": "Beste Qualität"
+      },
+      "savesPct": "spart {pct}%",
+      "worseByPct": "+{pct}% schlechter",
+      "savesBytes": "≈{bytes} auf voller Datei",
+      "noSavings": "keine Einsparung",
+      "compressionUnavailable": "Kompression: Altdaten",
+      "projectionAssumption": "Projektion nimmt gleichmäßige Komprimierbarkeit über alle Dateien an",
+      "useThis": "Auf voller Datei überprüfen",
+      "applyAsDefaults": "Als Defaults übernehmen",
+      "verifyTooltipReady": "Benchmark starten, um Pass-2 freizuschalten",
+      "noCandidate": "Kein Kandidat — Pareto-Front zu kurz",
+      "sizeLabel": "Größe",
+      "timeLabel": "Zeit",
+      "sameComboAs": "Gleiche Combo wie {roleTitle}"
+    },
+    "pass2": {
+      "heading": "Pass-2-Ergebnis (überprüft)",
+      "idle": "Bereit zur Überprüfung",
+      "running": "Überprüft…",
+      "complete": "Überprüft",
+      "failed": "Überprüfung fehlgeschlagen",
+      "cancelled": "Abgebrochen",
+      "retry": "Erneut versuchen",
+      "restart": "Neu starten",
+      "progressLabel": "Pass-2 Überprüfungs-Fortschritt",
+      "verifiedSourceFile": "Überprüfte Datei: {path}",
+      "verifyTooltipReady": "Benchmark starten, um Pass-2 freizuschalten",
+      "vmafLabel": "VMAF",
+      "sizeLabel": "Größe",
+      "timeLabel": "Zeit",
+      "deltaVsSample": "Δ {delta} vs Sample",
+      "savingsVsFull": "{pct}% gespart vs volle Quelle",
+      "cancelCta": "Überprüfung abbrechen"
+    },
+    "apply": {
+      "dialogTitle": "Als neue Encoder-Defaults übernehmen?",
+      "dialogBody": "Diese Werte werden als globale Encoder-Defaults gespeichert. Pipeline V2 liest sie beim Encode-Start.",
+      "currentLabel": "Aktuell",
+      "newLabel": "Neu",
+      "cancelCta": "Abbrechen",
+      "keepCurrentCta": "Aktuell behalten",
+      "applyCta": "Übernehmen",
+      "success": "Defaults aktualisiert",
+      "idempotentSuccess": "Defaults stimmen bereits überein — keine Änderung",
+      "errorValidation": "Übernahme nicht möglich: Combo nicht überprüft",
+      "errorNetwork": "Defaults konnten nicht geschrieben werden — Verbindung prüfen und erneut versuchen",
+      "errorUnauthorized": "Anmeldung erforderlich, um Defaults zu übernehmen",
+      "undoToast": "Standards übernommen für {encoder} ({crf}/{preset}) — Rückgängig?",
+      "noChange": "Standards bereits identisch",
+      "undo": {
+        "success": "Vorherige Einstellungen wiederhergestellt",
+        "error": "Wiederherstellen fehlgeschlagen — bitte manuell in den Einstellungen prüfen"
+      }
+    },
+    "terminal": {
+      "failed": {
+        "title": "Durchlauf fehlgeschlagen",
+        "body": "{errorReason}"
+      },
+      "cancelled": {
+        "title": "Durchlauf abgebrochen",
+        "body": "Abgebrochen um {when}"
+      },
+      "newRun": "Neuen Durchlauf starten"
+    },
+    "cancel": {
+      "button": "Lauf abbrechen",
+      "toast": {
+        "success": "Lauf abgebrochen",
+        "error": "Abbruch fehlgeschlagen — bitte erneut versuchen"
+      },
+      "undo": {
+        "toastBody": "Abbruch geplant — Rückgängig?"
+      }
+    },
+    "errors": {
+      "runNotFound": "Benchmark-Lauf nicht gefunden"
+    },
+    "settings": {
+      "title": "Benchmark-Standardwerte",
+      "section": {
+        "sampling": "Sampling",
+        "matrix": "Standard-Matrix",
+        "vmaf": "VMAF"
+      },
+      "sampleCount": {
+        "label": "Samples pro Datei",
+        "help": "3 ist der Sweetspot laut ab-av1-Forschung."
+      },
+      "sampleDurationSeconds": {
+        "label": "Sample-Dauer (s)",
+        "help": "20 Sekunden pro Sample ist der veröffentlichte Sweetspot."
+      },
+      "mode": {
+        "label": "Standard-Modus",
+        "help": "Initialer Modus im Enqueue-Formular. Operator kann pro Lauf überschreiben.",
+        "native": "Native Sweep",
+        "vmafAnchored": "VMAF-anchored"
+      },
+      "encoders": {
+        "label": "Standard-Encoder",
+        "help": "Vor-ausgewählte Encoder. Mindestens einer erforderlich."
+      },
+      "presets": {
+        "label": "Standard-Presets",
+        "help": "Vor-ausgewählte Presets über Speed-Gruppen.",
+        "groupFast": "Schnell",
+        "groupBalanced": "Ausgewogen",
+        "groupSlow": "Langsam"
+      },
+      "nativeValues": {
+        "label": "Standard-Nativwerte",
+        "help": "CRF- oder QP-Werte zum Sweepen, komma-separiert. Beispiel: 23,28"
+      },
+      "vmafModel": {
+        "label": "VMAF-Modell",
+        "help": "Standard libvmaf 2.x Modell. Verwende vmaf_v0.6.1_neg, um NVENC-Vorfilterung zu bestrafen."
+      },
+      "vmafBuckets": {
+        "label": "VMAF-Pareto-Buckets",
+        "help": "Drei VMAF-Schwellen für Pareto-Bucketing. Beispiel: 95,92,88",
+        "bucket1": {
+          "label": "Bucket 1 (höchste Qualität)"
+        },
+        "bucket2": {
+          "label": "Bucket 2"
+        },
+        "bucket3": {
+          "label": "Bucket 3"
+        },
+        "errors": {
+          "outOfRange": "Wert muss zwischen 0 und 100 liegen",
+          "notDescending": "Werte müssen strikt absteigend sein"
+        },
+        "legacyFormatRecovered": "Vorhandene VMAF-Buckets ungültig — Standardwerte (95/92/88) geladen. Bitte überprüfen oder anpassen.",
+        "dismissLegacyNotice": "Hinweis ausblenden",
+        "dismissAction": "Schließen"
+      },
+      "save": "Standardwerte speichern",
+      "saved": "Benchmark-Standardwerte gespeichert",
+      "saveFailed": "Speichern der Benchmark-Standardwerte fehlgeschlagen",
+      "errors": {
+        "vmafBuckets": "VMAF-Buckets müssen genau 3 streng absteigende Werte 0–100 sein (z.B. 95,92,88)."
+      }
+    },
+    "compareTable": {
+      "heading": "Pass-2-Vergleich",
+      "notVerified": "Nicht verifiziert",
+      "awaitingVerify": "Verifizierung ausstehend",
+      "vmafLabel": "VMAF",
+      "sizeLabel": "Größe",
+      "timeLabel": "Zeit",
+      "sameComboAs": "Gleiche Combo wie {roleTitle}"
+    },
+    "tabs": {
+      "active": "Aktiv",
+      "history": "Verlauf"
+    },
+    "history": {
+      "title": "Run-Verlauf",
+      "searchPlaceholder": "Nach Encoder filtern…",
+      "emptyTotal": "Noch keine Bench-Runs",
+      "emptyFiltered": "Keine Runs entsprechen diesem Filter",
+      "col": {
+        "created": "Erstellt",
+        "mode": "Modus",
+        "encoders": "Encoder",
+        "topCombo": "Top-Kombo",
+        "status": "Status",
+        "actions": "Aktionen"
+      },
+      "loadMore": "Mehr laden",
+      "compareCta": "{count, plural, =0 {Runs zum Vergleichen wählen} =1 {Einen weiteren wählen} other {Vergleichen (#)}}",
+      "compareLimit": "Maximal 3 Runs",
+      "clearSelection": "Zurücksetzen"
+    },
+    "runDetail": {
+      "backToHistory": "← Zurück zum Verlauf",
+      "notFound": "Run nicht gefunden",
+      "copyLink": "Link kopieren",
+      "copied": "Link kopiert",
+      "runPass2Cta": "Vollcheck starten",
+      "runPass2Disabled": "Ein anderer Bench-Run ist aktuell aktiv"
+    },
+    "compare": {
+      "title": "Runs vergleichen",
+      "legend": {
+        "show": "Anzeigen",
+        "hide": "Ausblenden"
+      },
+      "missingIds": "{count, plural, one {Run #{ids} nicht gefunden} other {Runs #{ids} nicht gefunden}}"
+    }
+  },
+  "bulk": {
+    "encode": {
+      "success": "{count, plural, one {# Datei zur Kodierung eingereiht} other {# Dateien zur Kodierung eingereiht}}",
+      "all_failed": "{count, plural, one {# Datei fehlgeschlagen} other {# Dateien fehlgeschlagen}}",
+      "partial": "{ok} eingereiht, {fail} fehlgeschlagen"
+    },
+    "blocklist": {
+      "success": "{count, plural, one {# Datei zur Blockliste hinzugefügt} other {# Dateien zur Blockliste hinzugefügt}}",
+      "all_failed": "{count, plural, one {# Datei fehlgeschlagen} other {# Dateien fehlgeschlagen}}",
+      "partial": "{ok} hinzugefügt, {fail} fehlgeschlagen"
+    },
+    "retry": {
+      "success": "{count, plural, one {# Datei erneut eingereiht} other {# Dateien erneut eingereiht}}",
+      "all_failed": "{count, plural, one {# Datei fehlgeschlagen} other {# Dateien fehlgeschlagen}}",
+      "partial": "{ok} erneut eingereiht, {fail} fehlgeschlagen"
+    },
+    "restore": {
+      "success": "{count, plural, one {# Datei wiederhergestellt} other {# Dateien wiederhergestellt}}",
+      "all_failed": "{count, plural, one {# Datei konnte nicht wiederhergestellt werden} other {# Dateien konnten nicht wiederhergestellt werden}}",
+      "partial": "{ok} wiederhergestellt, {fail} fehlgeschlagen"
+    },
+    "delete": {
+      "success": "{count, plural, one {# Datei endgültig gelöscht} other {# Dateien endgültig gelöscht}}",
+      "all_failed": "{count, plural, one {# Datei konnte nicht gelöscht werden} other {# Dateien konnten nicht gelöscht werden}}",
+      "partial": "{ok} gelöscht, {fail} fehlgeschlagen"
+    },
+    "forget": {
+      "success": "{count, plural, one {# Eintrag vergessen — Datei auf der Festplatte unberührt} other {# Einträge vergessen — Dateien auf der Festplatte unberührt}}",
+      "all_failed": "{count, plural, one {# Eintrag fehlgeschlagen} other {# Einträge fehlgeschlagen}}",
+      "partial": "{ok} vergessen, {fail} fehlgeschlagen"
+    },
+    "failed": {
+      "not_found": "Nicht gefunden",
+      "not_eligible": "Nicht zulässig",
+      "already_blocked": "Bereits geblockt",
+      "already_restored": "Bereits wiederhergestellt",
+      "already_deleted": "Bereits gelöscht",
+      "active_job": "Aktiver Job — nicht löschbar",
+      "bench_reference": "Von einem Benchmark-Lauf genutzt",
+      "fs_orphan": "Verwaiste Datei (DB-Eintrag entfernt; Dateisystem manuell prüfen)",
+      "already_queued": "Bereits in Warteschlange",
+      "blocklisted": "Blockiert",
+      "version_conflict": "Seit Auswahl geändert",
+      "internal_error": "Interner Fehler",
+      "more": "+{count} weitere"
+    }
+  },
+  "palette": {
+    "title": "Schnellnavigation",
+    "placeholder": "Seite suchen…",
+    "empty": "Keine Treffer",
+    "trigger_aria": "Schnellnavigation öffnen",
+    "kbd_hint": "Strg K",
+    "close_aria": "Schnellnavigation schließen"
+  },
+  "scan": {
+    "estimate": {
+      "title": "Scan · Schätzmodus",
+      "subhead": "Encode-Ersparnis vorab abschätzen — ohne Schreibzugriff.",
+      "form": {
+        "path": "Pfad",
+        "extensions": "Erweiterungen",
+        "minSize": "Mindestgröße (MB)",
+        "maxDepth": "Maximale Tiefe",
+        "submit": "Schätzen",
+        "submitting": "Schätzung läuft…"
+      },
+      "result": {
+        "savings": {
+          "title": "Geschätzte Ersparnis",
+          "of": "{percent}% von {total}",
+          "source": {
+            "benchAugmented": "Bench-Lauf #{runId}",
+            "naive": "Grobschätzung (keine Bench-Daten)"
+          }
+        },
+        "encodeTime": {
+          "title": "Geschätzte Encode-Dauer",
+          "files": "{count} qualifizierte Dateien",
+          "unknown": "Unbekannt (keine Dauer-Daten)"
+        },
+        "skipBuckets": {
+          "title": "Skip-Aufschlüsselung",
+          "sidecar": "Bereits encodiert (Sidecar-Treffer)",
+          "blocklist": "Blockiert",
+          "eligible": "Encode-fähig",
+          "scanned": "Insgesamt gescannt"
+        },
+        "computedIn": "Berechnet in {seconds}s · nur lesend · kein DB-Schreibvorgang"
+      },
+      "empty": {
+        "title": "Keine passenden Dateien",
+        "body": "Keine Dateien in diesem Ordner entsprachen den Filterkriterien."
+      },
+      "errors": {
+        "scanInProgress": "Ein Scan läuft gerade — bitte gleich erneut versuchen.",
+        "rootNotFound": "Pfad nicht gefunden.",
+        "rootNotDirectory": "Pfad existiert, ist aber kein Verzeichnis.",
+        "rootOutsideScope": "Pfad liegt außerhalb des konfigurierten Scan-Roots.",
+        "invalidBody": "Request-Body ist ungültig oder unvollständig.",
+        "unsupportedMediaType": "Content-Type muss application/json sein.",
+        "truncated": "Ergebnis bei {cap} Dateien gekürzt — schränke den Pfad ein, um eine Teilmenge zu scannen.",
+        "internal": "Schätzung fehlgeschlagen — siehe Logs."
+      }
+    }
+  }
+}
