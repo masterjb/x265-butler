@@ -1,0 +1,9 @@
+# AUTHORED-FROM-CANONICAL: libva manpage edge-case
+Trying display: drm
+libva info: VA-API version 1.20.0
+libva info: User environment variable requested driver 'iHD'
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
+libva info: Found init function __vaDriverInit_1_20
+libva info: va_openDriver() returns 0
+vainfo: VAEntrypointVLD entrypoints: 0
+vainfo: No supported profile/entrypoint combinations
