@@ -1,0 +1,21 @@
+# AUTHORED-FROM-CANONICAL: intel-media-driver upstream tests / Arc-Battlemage canonical output
+Trying display: drm
+libva info: VA-API version 1.20.0
+libva info: User environment variable requested driver 'iHD'
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
+libva info: Found init function __vaDriverInit_1_20
+libva info: va_openDriver() returns 0
+vainfo: VA-API version: 1.20 (libva 2.20.0)
+vainfo: Driver version: Intel iHD driver for Intel(R) Gen Graphics - 23.4.3 ()
+vainfo: Supported profile and entrypoints
+      VAProfileNone                   : VAEntrypointVideoProc
+      VAProfileH264Main               : VAEntrypointVLD
+      VAProfileH264Main               : VAEntrypointEncSlice
+      VAProfileH264High               : VAEntrypointVLD
+      VAProfileH264High               : VAEntrypointEncSlice
+      VAProfileHEVCMain               : VAEntrypointVLD
+      VAProfileHEVCMain               : VAEntrypointEncSlice
+      VAProfileHEVCMain10             : VAEntrypointVLD
+      VAProfileHEVCMain10             : VAEntrypointEncSlice
+      VAProfileAV1Profile0            : VAEntrypointVLD
+      VAProfileAV1Profile0            : VAEntrypointEncSlice
