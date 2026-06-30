@@ -1,0 +1,19 @@
+# AUTHORED-FROM-CANONICAL: mesa-va-drivers upstream / Polaris reference output
+Trying display: drm
+libva info: VA-API version 1.17.0
+libva info: User environment variable requested driver 'radeonsi'
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so
+libva info: Found init function __vaDriverInit_1_17
+libva info: va_openDriver() returns 0
+vainfo: VA-API version: 1.17 (libva 2.12.0)
+vainfo: Driver version: Mesa Gallium driver 22.3.6 for AMD Radeon RX 580 Series (polaris10, LLVM 15.0.6, DRM 3.49, 6.1.0-13-amd64)
+vainfo: Supported profile and entrypoints
+      VAProfileMPEG2Simple            : VAEntrypointVLD
+      VAProfileMPEG2Main              : VAEntrypointVLD
+      VAProfileH264ConstrainedBaseline: VAEntrypointVLD
+      VAProfileH264Main               : VAEntrypointVLD
+      VAProfileH264High               : VAEntrypointVLD
+      VAProfileHEVCMain               : VAEntrypointVLD
+      VAProfileHEVCMain               : VAEntrypointEncSlice
+      VAProfileHEVCMain10             : VAEntrypointVLD
+      VAProfileNone                   : VAEntrypointVideoProc
