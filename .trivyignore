@@ -1,0 +1,29 @@
+# Trivy waiver-list — bifurcated supply-chain policy
+#
+# Policy (PROJECT.md row 55, AC-9 LAN-only threat-model carry-forward from 05-20):
+#   - APP-CODE CRITICAL → ALWAYS BLOCK (source: package.json deps + our own code)
+#   - OS-BASE CRITICAL  → WAIVABLE (source: node:22-bookworm-slim distro packages),
+#     justified by deployment posture: x265-butler is LAN-only, never internet-exposed
+#     per "Optional auth, off by default" decision (PROJECT.md 2026-04-24).
+#
+# Review cadence: every 6 months OR on Node-LTS bump (whichever first).
+# Next review: 2026-11-07.
+#
+# Format: one CVE ID per line; inline `# pkg: <name>; reason: <why-LAN-only-mitigates>`.
+# Do NOT add app-code CVEs here — those must be fixed in npm deps.
+
+# === BEGIN WAIVER-LIST (OS-base only; populated from `trivy image` output at APPLY-time 2026-05-07) ===
+
+CVE-2026-40962 # pkg: ffmpeg/libavcodec59/libavutil57/libavformat59/libavfilter8/libavdevice59/libpostproc56/libswresample4/libswscale6; reason: ffmpeg distro packages exploitable only via malicious media input on attacker-controlled network path; LAN-only deployment with trusted operator-supplied media eliminates this attack vector
+CVE-2023-6879  # pkg: libaom3; reason: AV1 codec heap overflow via crafted video; operator-supplied media on LAN only; no remote attacker can supply input
+CVE-2026-40393 # pkg: libgbm1/libgl1-mesa-dri/libglapi-mesa/libglx-mesa0; reason: Mesa GPU/DRM driver packages; x265-butler runs headless without GPU display; attack surface requires local GPU access which is absent in container deployment
+CVE-2026-33845 # pkg: libgnutls30; reason: GnuTLS TLS vulnerability; x265-butler does not initiate or terminate TLS via libgnutls (Node.js uses its own TLS stack); LAN-only removes network-origin attack path
+CVE-2025-47917 # pkg: libmbedcrypto7; reason: Mbed TLS crypto library; not invoked by x265-butler application code; only ffmpeg distro dep; LAN-only removes remote crypto exploitation path
+CVE-2026-34873 # pkg: libmbedcrypto7; reason: Mbed TLS crypto library; same rationale as CVE-2025-47917
+CVE-2026-34875 # pkg: libmbedcrypto7; reason: Mbed TLS crypto library; same rationale as CVE-2025-47917
+CVE-2023-45853 # pkg: zlib1g; reason: zlib integer overflow via large gzip header; exploitable only via attacker-controlled compressed stream; LAN-only operator-supplied files eliminate remote trigger path
+CVE-2026-42010 # pkg: libgnutls30; reason: GnuTLS auth-bypass via NUL char in username field; x265-butler does not invoke libgnutls auth flows (Node.js uses its own TLS stack + bcrypt for app-auth); LAN-only removes network-origin attack path; no upstream Debian fix available as of 2026-05-15
+CVE-2026-42496 # pkg: perl-base; reason: Archive::Tar (<3.08) extracts symlinks with attacker-controlled paths; perl-base is a Debian-base transitive package, not invoked by x265-butler app-code; runtime path performs no tar-extraction of untrusted archives; LAN-only operator-supplied input; no upstream Debian fix as of 2026-05-30
+CVE-2026-8376  # pkg: perl-base; reason: Perl heap buffer overflow compiling crafted regex; perl-base is Debian-base transitive, x265-butler executes no operator-untrusted Perl; LAN-only removes remote trigger path; no upstream Debian fix as of 2026-05-30
+
+# === END WAIVER-LIST ===
