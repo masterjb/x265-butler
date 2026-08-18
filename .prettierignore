@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.next/
+coverage/
+.git/
+design-system/MASTER.md
+README.md
+docs/release-notes/v2.19.0-forum-post.md
+package-lock.json
+messages/
+components/ui/
