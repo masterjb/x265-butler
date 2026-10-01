@@ -25,7 +25,7 @@ import type { FileRow, JobRow } from '../db/schema';
 import type { FileRepo } from '../db/repos/file';
 import type { JobRepo } from '../db/repos/job';
 import type { SettingRepo } from '../db/repos/setting';
-import type { TrashRepo } from '../db/repos/trash';
+import { computeExpiresAt, type TrashRepo } from '../db/repos/trash';
 import {
   ffprobe as defaultFfprobe,
   // 50-01: the `-count_packets` demux of the STAGED output — the only number
@@ -2145,6 +2145,11 @@ async function commitEncodeResult(
 
   try {
     if (verdict === 'done-smaller') {
+      // Bad retention must throw before anything moves.
+      if (effectiveMode === 'replace' || !settings.deleteOriginalAfterEncode) {
+        computeExpiresAt(deps.now(), settings.retentionDays);
+      }
+
       // 31-02: capture the source {atime,mtime} HERE — at the TOP of done-smaller,
       // BEFORE any trash/rename. Replace trashes the original FIRST (see below), so
       // a late capture would stat a vanished file. The captured stamps are applied

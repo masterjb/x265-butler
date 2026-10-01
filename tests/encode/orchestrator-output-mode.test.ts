@@ -447,6 +447,29 @@ describe('orchestrator — output_mode=replace (26-02 F5)', () => {
     expect(fileRepo.getById(fileId)?.status).toBe('failed');
     expect(unlinkSyncSpy).not.toHaveBeenCalled();
   });
+
+  it('test_replace_when_retention_invalid_then_nothing_moves', async () => {
+    const { jobId, sourcePath } = setupReplace({ filename: 'movie.mkv' });
+    settingRepo.set('trash_retention_days', '0');
+    await loopOnce();
+
+    expect(callOrder).toEqual([]);
+    expect(fs.existsSync(sourcePath)).toBe(true);
+    const job = db.prepare('SELECT status FROM job WHERE id = ?').get(jobId) as { status: string };
+    expect(job.status).toBe('failed');
+  });
+
+  it('test_suffix_when_retention_invalid_then_nothing_moves', async () => {
+    const { jobId, sourcePath } = setupReplace({ filename: 'movie.mkv', outputMode: 'suffix' });
+    settingRepo.set('trash_retention_days', '0');
+    await loopOnce();
+
+    expect(callOrder).toEqual([]);
+    expect(fs.existsSync(sourcePath)).toBe(true);
+    expect(fs.existsSync(path.join(mediaRoot, 'movie-x265.mkv'))).toBe(false);
+    const job = db.prepare('SELECT status FROM job WHERE id = ?').get(jobId) as { status: string };
+    expect(job.status).toBe('failed');
+  });
 });
 
 // S2: the default deps.staging must expose replaceOutputPathFor (else processOne
