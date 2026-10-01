@@ -334,7 +334,7 @@ describe('POST /api/diagnostics/test-encode', () => {
         '-i',
         // 50-06: the lavfi graph now converts to 4:2:0 — without it libx265
         // ENCODED gbrp (RGB 4:4:4), a format no real source ever has.
-        'testsrc=size=320x240:rate=1:duration=5,format=yuv420p',
+        'testsrc=size=640x480:rate=1:duration=5,format=yuv420p',
         '-c:v',
         'libx265',
         '-f',

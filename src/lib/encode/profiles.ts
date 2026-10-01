@@ -94,14 +94,14 @@ export function __forTests_resetX265PoolsCache(): void {
 }
 
 // 29-01: single source of truth for the HW-safe probe/test-encode frame size.
-// 320x240 is the 21-02 NVENC-minimum-safe value (well above QSV/VAAPI HEVC min
-// frame dims too). 16x16 — the pre-29-01 detection probe size — is BELOW the
+// 640x480: AMD RDNA4 VAAPI rejects widths <= 320; also above NVENC/QSV minimums.
+// 16x16 — the pre-29-01 detection probe size — is BELOW the
 // QSV/VAAPI/NVENC minimum → "Could not open encoder before EOF" / exit -22 →
 // false `compiled-in-broken` → HW encoder gated out of detected[] → libx265
 // fallback on good HW. Both buildProbeEncodeArgs (detection) and
 // buildTestEncodeArgs (diagnostics) consume THIS const so the two arg-builders
 // can never drift apart again (the drift WAS this bug).
-export const PROBE_FRAME_SIZE = '320x240';
+export const PROBE_FRAME_SIZE = '640x480';
 
 // 49-03: the pixel format both SYNTHETIC arg-builders pin their probe input to.
 // Same 29-01 reasoning as PROBE_FRAME_SIZE right above: a value shared by

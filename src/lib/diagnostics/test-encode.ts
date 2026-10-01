@@ -101,7 +101,7 @@ export function mapEncoderIdToFfmpegCodec(id: EncoderId): string {
 // The original 21-01 hand-built argv emitted only `-c:v hevc_vaapi`, causing a
 // false ffmpeg `-38` on perfectly-good VAAPI hardware.
 //
-// The test envelope (testsrc 320x240 per the 21-02 NVENC-minimum boundary-deviation,
+// The test envelope (testsrc 640x480 per the 21-02 NVENC-minimum boundary-deviation,
 // 5s, `-t 5`, `-f null /dev/null`) is preserved.
 // devicePath is threaded to buildCodecBlock so the operator test-encode probes
 // the SAME discovered /dev/dri/renderD* node as the boot-probe + production
@@ -168,7 +168,7 @@ export function buildTestEncodeArgs(input: TestEncodeArgsInput): string[] {
     '-i',
     // 21-02 UAT-finding: 128x72 < hevc_nvenc minimum frame dimensions (NVENC HEVC
     // requires >=144x144 on Maxwell+, >=256x256 on older GPUs per NVENC SDK docs).
-    // Bumped to 320x240 — safely above all NVENC minimums, still no PII, multiple-of-2
+    // 640x480 (PROBE_FRAME_SIZE) — above NVENC, QSV and RDNA4 minimums, still no PII, multiple-of-2
     // width+height, classic test-pattern aspect-ratio. Boundary-deviation 21-02.
     // 29-01: the value now lives in the shared PROBE_FRAME_SIZE const (profiles.ts),
     // also consumed by the detection boot-probe so the two can never drift apart.

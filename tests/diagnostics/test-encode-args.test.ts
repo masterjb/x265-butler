@@ -7,7 +7,7 @@
 //
 // This file asserts buildTestEncodeArgs reuses buildCodecBlock so the VAAPI init
 // chain flows in automatically, while non-VAAPI encoders stay byte-identical in
-// the codec block and the test envelope (testsrc 320x240, 5s, -f null /dev/null)
+// the codec block and the test envelope (testsrc 640x480, 5s, -f null /dev/null)
 // is preserved. NO mocking of buildCodecBlock — assert against the REAL shared
 // builder so this stays a faithful regression sentinel.
 //
@@ -88,9 +88,9 @@ describe('buildTestEncodeArgs', () => {
 
   describe('test envelope preserved for every encoder', () => {
     for (const encoder of ALL) {
-      it(`${encoder}: testsrc 320x240, -t 5, -f null /dev/null`, () => {
+      it(`${encoder}: testsrc 640x480, -t 5, -f null /dev/null`, () => {
         const argv = argvFor(encoder);
-        expect(argv.some((t) => t.startsWith('testsrc=size=320x240:rate=1:duration=5'))).toBe(true);
+        expect(argv.some((t) => t.startsWith('testsrc=size=640x480:rate=1:duration=5'))).toBe(true);
         expect(adjacentIndex(argv, '-t', '5')).toBeGreaterThanOrEqual(0);
         expect(adjacentIndex(argv, '-f', 'null')).toBeGreaterThanOrEqual(0);
         expect(argv[argv.length - 1]).toBe('/dev/null');
@@ -167,7 +167,7 @@ describe('50-06 AC-1/AC-3/AC-4: 4:2:0 input, untouched filter chains, untouched 
   it('AC-1: every encoder feeds testsrc through format=yuv420p', () => {
     for (const encoder of ALL) {
       expect(lavfiToken(argvFor(encoder))).toBe(
-        `testsrc=size=320x240:rate=1:duration=5,format=${SYNTHETIC_INPUT_PIX_FMT}`,
+        `testsrc=size=640x480:rate=1:duration=5,format=${SYNTHETIC_INPUT_PIX_FMT}`,
       );
     }
     expect(SYNTHETIC_INPUT_PIX_FMT).toBe('yuv420p');

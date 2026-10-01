@@ -782,15 +782,15 @@ describe('detection — 34-01 gpu_device override resolution', () => {
 // dims (QSV/VAAPI/NVENC) → ffmpeg exit -22 / "Could not open encoder before EOF"
 // → probeEncodeFunctional returns `compiled-in-broken` → encoder gated OUT of
 // detected[] → libx265 fallback on perfectly-good HW (rasalf qsv / Urbies vaapi
-// on v2.24.0). Fix = shared PROBE_FRAME_SIZE='320x240' const consumed by BOTH
+// on v2.24.0). Fix = shared PROBE_FRAME_SIZE='640x480' const consumed by BOTH
 // arg-builders so the detection probe + the test-encode can never drift again.
 describe('29-01: buildProbeEncodeArgs HW-safe frame size + no drift', () => {
   // AC-1: probe frame size is HW-safe (no 16x16)
-  it('emits size=320x240 and never 16x16 for any encoder', () => {
+  it('emits size=640x480 and never 16x16 for any encoder', () => {
     for (const encoder of ENCODER_IDS) {
       const argv = __forTests_buildProbeEncodeArgs(encoder);
       const joined = argv.join(' ');
-      expect(joined).toContain('size=320x240');
+      expect(joined).toContain('size=640x480');
       expect(joined).not.toContain('16x16');
     }
   });
@@ -816,7 +816,7 @@ describe('29-01: buildProbeEncodeArgs HW-safe frame size + no drift', () => {
 
   // AC-2: single shared source of truth — both builders emit the SAME size token
   it('buildProbeEncodeArgs and buildTestEncodeArgs share PROBE_FRAME_SIZE (no drift)', () => {
-    expect(PROBE_FRAME_SIZE).toBe('320x240');
+    expect(PROBE_FRAME_SIZE).toBe('640x480');
     const probe = __forTests_buildProbeEncodeArgs('qsv').join(' ');
     const test = buildTestEncodeArgs({ encoder: 'qsv', crf: 28, preset: 'slow' }).join(' ');
     expect(probe).toContain(`size=${PROBE_FRAME_SIZE}`);

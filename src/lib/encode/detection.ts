@@ -1191,7 +1191,7 @@ export function __forTests_resetEncoderCache(): void {
 
 // 29-01 test-only escape hatch — never exported via the barrel. Exposes the
 // module-private buildProbeEncodeArgs so the probe-frame-size regression
-// (size=320x240, no 16x16, 1-frame, vaapi hwupload chain) can be asserted on the
+// (size=640x480, no 16x16, 1-frame, vaapi hwupload chain) can be asserted on the
 // real argv. Mirrors __forTests_resetEncoderCache above (barrel-excluded idiom).
 // 30-01 (audit MH-2): forwards the qsvRateControl so detection.test.ts can
 // assert the REAL ICQ-full (`-low_power 0`/`-global_quality`) vs CQP (`-q:v`)
