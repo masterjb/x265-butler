@@ -712,6 +712,15 @@ describe('detection — 34-01 gpu_device override resolution', () => {
     expect(r.warnings.map((w) => w.code)).not.toContain('gpu_device_not_found');
   });
 
+  it('test_detectEncoders_when_override_present_then_vainfo_probes_override', async () => {
+    mockProbeNonzero();
+    readdirMock.mockResolvedValueOnce(['renderD128', 'renderD129']);
+    mockProbeOk('VAEntrypointEncSlice\n');
+    await detectEncoders({ gpuDevice: '/dev/dri/renderD129' });
+    const call = spawnMock.mock.calls.find((c) => c[0] === 'vainfo');
+    expect(call?.[1]).toEqual(['--display', 'drm', '--device', '/dev/dri/renderD129']);
+  });
+
   // AC-3: override set-but-absent → first-node fallback + gpu_device_not_found warn.
   it('test_detectEncoders_when_override_absent_then_first_node_fallback_and_warn', async () => {
     mockProbeNonzero();

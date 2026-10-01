@@ -778,8 +778,8 @@ export function classifyVaInfo(stdout: string, driPresent: boolean): VaInfoProbe
   return { qsv, vaapi };
 }
 
-async function probeVaInfo(driPresent: boolean): Promise<VaInfoProbeResult> {
-  const r = await runProbe('vainfo', ['--display', 'drm']);
+async function probeVaInfo(driPresent: boolean, device: string): Promise<VaInfoProbeResult> {
+  const r = await runProbe('vainfo', ['--display', 'drm', '--device', device]);
   if (!r.ok) {
     logger.warn(
       { action: 'encoder_probe_failed', probe: 'vainfo', cause: r.cause, err: r.err },
@@ -888,7 +888,7 @@ async function resolveVaapi(gpuDevice?: string): Promise<{
 }> {
   const vaapiDevice = await findRenderDDevice(gpuDevice);
   if (vaapiDevice === undefined) return { vaapiDevice, qsv: false, vaapi: false };
-  const probe = await probeVaInfo(true);
+  const probe = await probeVaInfo(true, vaapiDevice);
   // 34-01 (SR-2): not-found iff an override was requested AND the resolved node
   // differs from it (= wanted absent → first-node fallback). Nodes exist here
   // (vaapiDevice !== undefined), so this never fires on the no-DRI edge.
