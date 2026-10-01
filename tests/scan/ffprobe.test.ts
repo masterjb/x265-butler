@@ -704,6 +704,15 @@ describe('countVideoPackets (50-01, AC-12)', () => {
     await expect(promise).resolves.toBe(17);
   });
 
+  it('test_count_video_packets_when_trailing_csv_field_then_returns_packet_count', async () => {
+    const child = new FakeChild();
+    spawnMock.mockReturnValueOnce(child);
+    const promise = countVideoPackets('/stage/out.mkv');
+    child.stdout.emit('data', Buffer.from('149507,\n'));
+    child.emit('close', 0);
+    await expect(promise).resolves.toBe(149507);
+  });
+
   it('test_count_video_packets_when_called_then_argv_is_exact', async () => {
     const child = new FakeChild();
     spawnMock.mockReturnValueOnce(child);

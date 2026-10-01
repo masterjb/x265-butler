@@ -662,7 +662,8 @@ export async function countVideoPackets(
         return;
       }
 
-      const raw = Buffer.concat(stdoutChunks).toString('utf8').trim();
+      // HDR side data adds empty fields: "149507,".
+      const raw = Buffer.concat(stdoutChunks).toString('utf8').trim().split(',')[0].trim();
       // `csv=p=0` prints the bare value; an empty stream list prints nothing.
       const n = Number(raw);
       if (raw === '' || !Number.isInteger(n) || n < 0) {
