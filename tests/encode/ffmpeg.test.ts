@@ -739,6 +739,39 @@ describe('runEncode — 05-14 outputContainer + subtitle drop', () => {
     warnSpy.mockRestore();
   });
 
+  it('test_runEncode_when_mkv_and_subtitleSrtOrdinals_then_converts_those_to_srt', async () => {
+    const child = new FakeChild();
+    spawnMock.mockReturnValueOnce(child);
+    const p = runEncode({
+      input: '/i',
+      output: '/o.x265.mkv',
+      crf: 23,
+      outputContainer: 'mkv',
+      subtitleSrtOrdinals: [1],
+    });
+    child.emit('close', 0);
+    await p;
+    const [, args] = spawnMock.mock.calls[0];
+    const i = args.indexOf('-c:s');
+    expect(args.slice(i, i + 4)).toEqual(['-c:s', 'copy', '-c:s:1', 'srt']);
+  });
+
+  it('test_runEncode_when_mp4_and_subtitleSrtOrdinals_then_ignored', async () => {
+    const child = new FakeChild();
+    spawnMock.mockReturnValueOnce(child);
+    const p = runEncode({
+      input: '/i',
+      output: '/o.x265.mp4',
+      crf: 23,
+      outputContainer: 'mp4',
+      subtitleSrtOrdinals: [1],
+    });
+    child.emit('close', 0);
+    await p;
+    const [, args] = spawnMock.mock.calls[0];
+    expect(args).not.toContain('-c:s:1');
+  });
+
   // 41-01: MKV `-map` whitelist (drops data/unknown by omission) + warn.
   it('test_runEncode_when_outputContainer_mkv_then_argv_has_avst_whitelist_NOT_bare_map_0', async () => {
     const child = new FakeChild();

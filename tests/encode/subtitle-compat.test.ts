@@ -7,6 +7,7 @@ import {
   MP4_INCOMPATIBLE_SUBTITLE_CODECS,
   analyzeStreams,
   incompatibleSubtitleCodecsFor,
+  movTextSubtitleOrdinals,
 } from '@/src/lib/encode/subtitle-compat';
 import type { ProbeResult } from '@/src/lib/scan/ffprobe';
 
@@ -156,5 +157,24 @@ describe('analyzeStreams', () => {
   it('test_analyzeStreams_result_is_frozen_via_Object_isFrozen', () => {
     const result = analyzeStreams(makeProbe([]), 'mp4');
     expect(Object.isFrozen(result)).toBe(true);
+  });
+});
+
+describe('movTextSubtitleOrdinals', () => {
+  it('test_movTextSubtitleOrdinals_when_mixed_streams_then_subtitle_ordinals_of_mov_text', () => {
+    const result = movTextSubtitleOrdinals(
+      makeProbe([
+        { attachedPic: false, index: 0, codec_type: 'video', codec_name: 'h264' },
+        { attachedPic: false, index: 1, codec_type: 'subtitle', codec_name: 'subrip' },
+        { attachedPic: false, index: 2, codec_type: 'audio', codec_name: 'aac' },
+        { attachedPic: false, index: 3, codec_type: 'subtitle', codec_name: 'mov_text' },
+        { attachedPic: false, index: 4, codec_type: 'subtitle', codec_name: 'mov_text' },
+      ]),
+    );
+    expect(result).toEqual([1, 2]);
+  });
+
+  it('test_movTextSubtitleOrdinals_when_no_mov_text_then_empty', () => {
+    expect(movTextSubtitleOrdinals(makeProbe([]))).toEqual([]);
   });
 });

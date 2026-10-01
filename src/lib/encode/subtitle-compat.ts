@@ -69,6 +69,18 @@ export function analyzeStreams(probe: ProbeResult, container: OutputContainer): 
   });
 }
 
+// Subtitle ordinals carrying mov_text (MP4-only; matroska rejects it).
+export function movTextSubtitleOrdinals(probe: ProbeResult): number[] {
+  const ordinals: number[] = [];
+  let ordinal = 0;
+  for (const s of probe.streams ?? []) {
+    if (s.codec_type !== 'subtitle') continue;
+    if (s.codec_name === 'mov_text') ordinals.push(ordinal);
+    ordinal++;
+  }
+  return ordinals;
+}
+
 function assertNever(x: never): never {
   throw new Error(`unreachable container value: ${String(x)}`);
 }

@@ -54,7 +54,7 @@ import {
 } from './output-container';
 // 26-02 (F5): output-mode helper (suffix-sibling vs in-place replace).
 import { isOutputMode, type OutputMode } from './output-mode';
-import { analyzeStreams } from './subtitle-compat';
+import { analyzeStreams, movTextSubtitleOrdinals } from './subtitle-compat';
 import { analyzeIncompatibleStreams } from './stream-compat';
 // 50-01 (audit MH-2): isAttachedPictureStream is the ONE cover-art decision in
 // the codebase; the frame gate USES it instead of growing a second heuristic.
@@ -1312,6 +1312,7 @@ interface ContainerCompat {
   // Feeds the `incompatible_streams_dropped` audit warn ONLY (observability).
   droppedIncompatibleStreamCount: number | undefined;
   droppedIncompatibleStreamDescriptors: ReadonlyArray<string> | undefined;
+  subtitleSrtOrdinals: ReadonlyArray<number> | undefined;
   // 49-01: embedded cover-art video ordinals (copy set) + their complement
   // (filter set). Extracted from whichever probe already ran — the SAME dual-path
   // seam as sourceColor (mp4 sourceProbe OR mkv mkvSourceProbe), NEVER from
@@ -1399,6 +1400,7 @@ async function resolveContainerAndCompat(
   // 41-01: MKV-incompatible (data/unknown) dropped-stream count + descriptors.
   let droppedIncompatibleStreamCount: number | undefined;
   let droppedIncompatibleStreamDescriptors: ReadonlyArray<string> | undefined;
+  let subtitleSrtOrdinals: ReadonlyArray<number> | undefined;
   // 49-01: cover-art ordinals. Set at BOTH seams below (mp4 + mkv) — the two
   // blocks are consecutive top-level `if`s (NOT else-if, see 41-01 D5/D6) and the
   // mp4 block can flip effectiveContainer to 'mkv'. A single assignment point
@@ -1599,6 +1601,8 @@ async function resolveContainerAndCompat(
         droppedIncompatibleStreamCount = incompat.incompatibleStreamIndices.length;
         droppedIncompatibleStreamDescriptors = incompat.droppedDescriptors;
       }
+      const movText = movTextSubtitleOrdinals(mkvSourceProbe);
+      if (movText.length > 0) subtitleSrtOrdinals = movText;
       // 43-03 (AC-7): the pure-MKV passthrough seam — read color from the
       // mkv-path probe (a LOCAL var), NOT from preflightSourceProbe (null on
       // pure-MKV by MH-2 design). On a mp4→mkv fallback this re-reads the same
@@ -1634,6 +1638,7 @@ async function resolveContainerAndCompat(
     droppedSubtitleCodecs,
     droppedIncompatibleStreamCount,
     droppedIncompatibleStreamDescriptors,
+    subtitleSrtOrdinals,
     attachedPicVideoOrdinals,
     encodedVideoOrdinals,
     coverStreams,
@@ -1800,6 +1805,7 @@ async function processOne(
     droppedSubtitleCodecs,
     droppedIncompatibleStreamCount,
     droppedIncompatibleStreamDescriptors,
+    subtitleSrtOrdinals,
     attachedPicVideoOrdinals,
     encodedVideoOrdinals,
     coverStreams,
@@ -1850,6 +1856,7 @@ async function processOne(
     droppedSubtitleCodecs,
     droppedIncompatibleStreamCount,
     droppedIncompatibleStreamDescriptors,
+    subtitleSrtOrdinals,
     // 49-01: cover-art copy set + its encoded complement (both or neither).
     attachedPicVideoOrdinals,
     encodedVideoOrdinals,
@@ -2705,6 +2712,7 @@ interface RunEncodeStageCtx {
   // 41-01: MKV incompatible-stream drop count + descriptors → buildArgs warn.
   droppedIncompatibleStreamCount: number | undefined;
   droppedIncompatibleStreamDescriptors: ReadonlyArray<string> | undefined;
+  subtitleSrtOrdinals: ReadonlyArray<number> | undefined;
   // 49-01: cover-art video ordinals → EncodeOptions.attachedPicVideoOrdinals
   // (`-c:v:N copy`) and their complement → EncodeOptions.encodedVideoOrdinals
   // (the `-filter:v:<n>` narrowing). Both undefined → byte-identical to pre-49.
@@ -2762,6 +2770,7 @@ async function runEncodeStage(
     droppedSubtitleCodecs,
     droppedIncompatibleStreamCount,
     droppedIncompatibleStreamDescriptors,
+    subtitleSrtOrdinals,
     attachedPicVideoOrdinals,
     encodedVideoOrdinals,
     coverStreams,
@@ -3058,6 +3067,7 @@ async function runEncodeStage(
       // 41-01: MKV incompatible-stream warn metadata (count-gated in buildArgs).
       droppedIncompatibleStreamCount,
       droppedIncompatibleStreamDescriptors,
+      subtitleSrtOrdinals,
       // 49-01: embedded cover art — copy set + encoded complement. Set together
       // or not at all; both undefined → argv byte-identical to pre-49.
       attachedPicVideoOrdinals,

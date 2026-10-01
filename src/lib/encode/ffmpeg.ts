@@ -106,6 +106,8 @@ export type EncodeOptions = {
   // absent (undefined → no warn → byte-identical to pre-41 on the warn path).
   droppedIncompatibleStreamCount?: number;
   droppedIncompatibleStreamDescriptors?: ReadonlyArray<string>;
+  // mov_text subtitle ordinals to convert to srt (mkv only).
+  subtitleSrtOrdinals?: ReadonlyArray<number>;
   // 49-01 (additive): embedded cover art. `attachedPicVideoOrdinals` lists the
   // VIDEO ORDINALS (position among video streams, NOT source indices) that carry
   // cover art and must be stream-copied; `encodedVideoOrdinals` is the exact
@@ -588,6 +590,9 @@ export function buildArgs(opts: EncodeOptions): string[] {
     ...colorArgs,
     ...audioArgs,
     ...(includeSubtitleCodecCopy ? ['-c:s', 'copy'] : []),
+    ...(includeSubtitleCodecCopy && container === 'mkv'
+      ? (opts.subtitleSrtOrdinals ?? []).flatMap((n) => [`-c:s:${n}`, 'srt'])
+      : []),
     ...mapArgs,
     '-map_metadata',
     '0',
