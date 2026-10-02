@@ -15,7 +15,18 @@ const enqueueSchema = z
   .object({
     mode: z.enum(['native-sweep', 'vmaf-anchored']),
     fileIds: z.array(z.number().int().positive()).min(1).max(50),
-    matrix: z.record(z.string(), z.unknown()),
+    // Empty axes expand to 0 combos.
+    matrix: z
+      .object({
+        encoders: z.array(z.string()).min(1),
+        presets: z.array(z.string()).min(1),
+        nativeValues: z.array(z.number()).min(1).optional(),
+        vmafTargets: z.array(z.number()).min(1).optional(),
+      })
+      .passthrough()
+      .refine((m) => m.nativeValues !== undefined || m.vmafTargets !== undefined, {
+        message: 'nativeValues or vmafTargets required',
+      }),
     sampleCount: z.number().int().min(1).max(10).optional(),
     sampleDurationSeconds: z.number().int().min(5).max(60).optional(),
     vmafModel: z.string().max(64).optional(),

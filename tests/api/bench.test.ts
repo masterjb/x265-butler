@@ -184,6 +184,16 @@ describe('POST /api/bench', () => {
     expect(res.status).toBe(400);
   });
 
+  it.each([
+    ['wrong shape', { encoder: 'libx265', preset: 'medium', crf: 28 }],
+    ['empty encoders', { encoders: [], presets: ['medium'], nativeValues: [28] }],
+    ['no values', { encoders: ['libx265'], presets: ['medium'] }],
+  ])('matrix %s → 400, no run', async (_name, matrix) => {
+    const res = await POST(jsonPostReq({ mode: 'native-sweep', fileIds: [1], matrix }));
+    expect(res.status).toBe(400);
+    expect(mockEnqueueRun).not.toHaveBeenCalled();
+  });
+
   it('wrong content-type → 415', async () => {
     const res = await POST(
       new Request('http://localhost/api/bench', {
