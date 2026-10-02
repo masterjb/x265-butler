@@ -4,7 +4,7 @@
 
 import { spawn } from 'node:child_process';
 import fs from 'node:fs/promises';
-import { ffmpegBinary } from '../encode/ffmpeg-binary';
+import { ffmpegBinary, ffmpegBinaryFor } from '../encode/ffmpeg-binary';
 import { buildCodecBlock, DEFAULT_PRESET_BY_ENCODER, type EncoderId } from '../encode/profiles';
 // 30-01: bench-verify reads the SAME validated qsv variant as production buildArgs
 // so the two codepaths stay byte-identical (11-03 SR3). detection.ts is acyclic here.
@@ -214,7 +214,7 @@ export async function encodeForBench(opts: {
     const stdio: ['ignore', 'pipe' | 'ignore', 'pipe'] = opts.onProgress
       ? ['ignore', 'pipe', 'pipe']
       : ['ignore', 'ignore', 'pipe'];
-    const child = spawn(ffmpegBinary(), args, {
+    const child = spawn(ffmpegBinaryFor(encoder), args, {
       stdio,
       signal: opts.signal,
     });

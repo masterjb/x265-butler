@@ -234,6 +234,24 @@ describe('encodeForBench', () => {
     expect(args).toContain('26');
   });
 
+  it('test_encodeForBench_when_nvenc_then_spawns_nvenc_binary', async () => {
+    const saved = process.env.FFMPEG_NVENC_PATH;
+    delete process.env.FFMPEG_NVENC_PATH;
+    mockSpawn.mockReturnValue(makeChild({}) as ReturnType<typeof spawn>);
+    mockFs.stat.mockResolvedValue({ size: 100_000 } as import('node:fs').Stats);
+    try {
+      await encodeForBench({
+        inputPath: '/in.mkv',
+        outputPath: '/out.mkv',
+        encoder: 'nvenc',
+        crf: 26,
+      });
+    } finally {
+      if (saved !== undefined) process.env.FFMPEG_NVENC_PATH = saved;
+    }
+    expect(mockSpawn.mock.calls[0]?.[0]).toBe('ffmpeg-nvenc');
+  });
+
   // 35-01 AC-6: the bench path NEVER threads a crop (no crop param on
   // encodeForBench → buildCodecBlock crop undefined) so the bench-encode argv is
   // byte-identical to pre-35 and computeVmaf compares like-for-like frames. This
