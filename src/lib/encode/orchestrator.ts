@@ -2211,7 +2211,7 @@ async function commitEncodeResult(
             },
             'replace mode: source became hardlinked during encode — committing to suffix path + leaving original intact instead of rename-over',
           );
-          deps.staging.commitOutput(stageOut, suffixPath);
+          await deps.staging.commitOutput(stageOut, suffixPath);
           // Downstream sidecar + forensic logs follow the ACTUAL committed path
           // + mode (the job degraded to suffix — report the truth, not 'replace').
           // replaceHardlinkFallback → the suffix else-branch leaves the original
@@ -2238,7 +2238,7 @@ async function commitEncodeResult(
           // catch. Replace-mode trashes FIRST, so a rename failure here leaves
           // the original intact (trash-FIRST ordering).
           try {
-            deps.staging.trashOriginal(file.path, trashPath);
+            await deps.staging.trashOriginal(file.path, trashPath);
           } catch (trashErr) {
             deps.logger.error(
               {
@@ -2264,7 +2264,7 @@ async function commitEncodeResult(
             // commitOutput's internal existsSync guard now passes (slot freed by
             // the trash-rename). Same-ext: renames into the exact original path;
             // diff-ext: into the sibling basename.
-            deps.staging.commitOutput(stageOut, finalOutputPath);
+            await deps.staging.commitOutput(stageOut, finalOutputPath);
           } catch (commitErr) {
             // M1/AC-12: commit failed AFTER the original was trashed (ENOSPC /
             // EROFS / EXDEV-copy failure on the destination). The trash row is
@@ -2294,7 +2294,7 @@ async function commitEncodeResult(
         // 26-02 SUFFIX path (effectiveMode !== 'replace') — BYTE-IDENTICAL to
         // pre-26-02 (AC-1 sentinel). commitOutput → delete_original_after_encode
         // ? unlink : trash. This is the ONLY branch containing fs.unlinkSync.
-        deps.staging.commitOutput(stageOut, finalOutputPath);
+        await deps.staging.commitOutput(stageOut, finalOutputPath);
         // 26-02 (F5, AC-5): a replace job that degraded to suffix because the
         // source is HARDLINKED leaves the original UNTOUCHED — neither trashed
         // nor unlinked — so the other link survives intact. The '-x265' sibling
@@ -2354,7 +2354,7 @@ async function commitEncodeResult(
           // 33-02 (SR-1/AC-9): dedicated trash-move diagnostic — see the
           // replace-mode site above for rationale.
           try {
-            deps.staging.trashOriginal(file.path, trashPath);
+            await deps.staging.trashOriginal(file.path, trashPath);
           } catch (trashErr) {
             deps.logger.error(
               {

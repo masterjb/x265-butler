@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import fs from 'node:fs';
+import fsp from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {
@@ -164,140 +165,85 @@ describe('staging — stageInputSymlink (audit S10 source-exists guard)', () => 
   });
 });
 
-describe('staging — commitOutput (rename + EXDEV fallback + audit M3 + S8)', () => {
-  it('test_commitOutput_when_same_filesystem_then_uses_rename', () => {
+// EXDEV copy/fsync/debris/cleanup semantics: tests/fs-helpers.test.ts.
+function failFirstRenameWithExdev(): () => void {
+  vi.spyOn(fs, 'renameSync').mockImplementationOnce(() => {
+    throw Object.assign(new Error('exdev'), { code: 'EXDEV' });
+  });
+  const realRename = fsp.rename;
+  let calls = 0;
+  fsp.rename = (async (from: string, to: string) => {
+    calls += 1;
+    if (calls === 1) throw Object.assign(new Error('exdev'), { code: 'EXDEV' });
+    return realRename(from, to);
+  }) as typeof fsp.rename;
+  return () => {
+    fsp.rename = realRename;
+  };
+}
+
+describe('staging — commitOutput (rename + EXDEV fallback)', () => {
+  it('test_commitOutput_when_same_filesystem_then_uses_rename', async () => {
     const stageOut = path.join(stageRoot, 'output.x265.mkv');
-    const finalOut = path.join(mediaRoot, 'final.x265.mkv');
+    const finalOut = path.join(stageRoot, 'committed.x265.mkv');
     fs.writeFileSync(stageOut, 'encoded');
-    // Force same-FS by using one tmpdir tree (mkdtemp in same /tmp).
-    const sameFsFinal = path.join(stageRoot, 'committed.x265.mkv');
-    commitOutput(stageOut, sameFsFinal);
+    await commitOutput(stageOut, finalOut);
     expect(fs.existsSync(stageOut)).toBe(false);
-    expect(fs.readFileSync(sameFsFinal, 'utf8')).toBe('encoded');
-    // Suppress unused.
-    void finalOut;
+    expect(fs.readFileSync(finalOut, 'utf8')).toBe('encoded');
   });
 
-  it('test_commitOutput_when_finalPath_exists_then_throws_output_path_exists', () => {
+  it('test_commitOutput_when_finalPath_exists_then_throws_output_path_exists', async () => {
     const stageOut = path.join(stageRoot, 'output.x265.mkv');
     const finalOut = path.join(stageRoot, 'final.x265.mkv');
     fs.writeFileSync(stageOut, 'new');
     fs.writeFileSync(finalOut, 'existing');
-    expect(() => commitOutput(stageOut, finalOut)).toThrow(/output_path_exists/);
+    await expect(commitOutput(stageOut, finalOut)).rejects.toThrow(/output_path_exists/);
     // Stage and final both still exist.
     expect(fs.readFileSync(stageOut, 'utf8')).toBe('new');
     expect(fs.readFileSync(finalOut, 'utf8')).toBe('existing');
   });
 
-  it('test_commitOutput_when_EXDEV_then_falls_back_to_copy_fsync_rename', () => {
+  it('test_commitOutput_when_EXDEV_then_copies_without_blocking_sync_io', async () => {
     const stageOut = path.join(stageRoot, 'output.x265.mkv');
     const finalOut = path.join(stageRoot, 'final.x265.mkv');
     fs.writeFileSync(stageOut, 'encoded');
-    // Spy: throw EXDEV on FIRST renameSync (the stage→final), succeed on SECOND
-    // (the tmp→final inside the EXDEV fallback).
-    const realRename = fs.renameSync.bind(fs);
-    const renameSpy = vi.spyOn(fs, 'renameSync');
-    let callCount = 0;
-    renameSpy.mockImplementation((src, dest) => {
-      callCount++;
-      if (callCount === 1) {
-        const e = Object.assign(new Error('cross-device link'), { code: 'EXDEV' });
-        throw e;
-      }
-      return realRename(src, dest);
-    });
-    commitOutput(stageOut, finalOut);
-    renameSpy.mockRestore();
+    const copySyncSpy = vi.spyOn(fs, 'copyFileSync');
+    const restore = failFirstRenameWithExdev();
+    try {
+      await commitOutput(stageOut, finalOut);
+    } finally {
+      restore();
+    }
     expect(fs.existsSync(stageOut)).toBe(false);
     expect(fs.readFileSync(finalOut, 'utf8')).toBe('encoded');
-  });
-
-  it('test_commitOutput_when_EXDEV_then_fsync_uses_explicit_fd_pattern', () => {
-    const stageOut = path.join(stageRoot, 'output.x265.mkv');
-    const finalOut = path.join(stageRoot, 'final.x265.mkv');
-    fs.writeFileSync(stageOut, 'data');
-    // Force EXDEV path.
-    const realRename = fs.renameSync.bind(fs);
-    let callCount = 0;
-    vi.spyOn(fs, 'renameSync').mockImplementation((src, dest) => {
-      callCount++;
-      if (callCount === 1) {
-        throw Object.assign(new Error('exdev'), { code: 'EXDEV' });
-      }
-      return realRename(src, dest);
-    });
-    const openSpy = vi.spyOn(fs, 'openSync');
-    const fsyncSpy = vi.spyOn(fs, 'fsyncSync');
-    const closeSpy = vi.spyOn(fs, 'closeSync');
-    commitOutput(stageOut, finalOut);
-    expect(openSpy).toHaveBeenCalledWith(expect.stringMatching(/\.x265-butler\.tmp$/), 'r');
-    const fdReturned = openSpy.mock.results[0].value;
-    expect(typeof fdReturned).toBe('number');
-    expect(fsyncSpy).toHaveBeenCalledWith(fdReturned);
-    expect(closeSpy).toHaveBeenCalledWith(fdReturned);
-    // Order: open BEFORE fsync BEFORE close.
-    expect(openSpy.mock.invocationCallOrder[0]).toBeLessThan(fsyncSpy.mock.invocationCallOrder[0]);
-    expect(fsyncSpy.mock.invocationCallOrder[0]).toBeLessThan(closeSpy.mock.invocationCallOrder[0]);
-  });
-
-  it('test_commitOutput_when_EXDEV_and_prior_tmp_exists_then_unlinks_first', () => {
-    const stageOut = path.join(stageRoot, 'output.x265.mkv');
-    const finalOut = path.join(stageRoot, 'final.x265.mkv');
-    const priorTmp = `${finalOut}.x265-butler.tmp`;
-    fs.writeFileSync(stageOut, 'fresh');
-    fs.writeFileSync(priorTmp, 'stale-debris');
-    const realRename = fs.renameSync.bind(fs);
-    let callCount = 0;
-    vi.spyOn(fs, 'renameSync').mockImplementation((src, dest) => {
-      callCount++;
-      if (callCount === 1) throw Object.assign(new Error('exdev'), { code: 'EXDEV' });
-      return realRename(src, dest);
-    });
-    commitOutput(stageOut, finalOut);
-    expect(fs.readFileSync(finalOut, 'utf8')).toBe('fresh');
-    expect(fs.existsSync(priorTmp)).toBe(false);
-  });
-
-  it('test_commitOutput_when_copy_fails_mid_EXDEV_then_cleans_up_tmp_file', () => {
-    const stageOut = path.join(stageRoot, 'output.x265.mkv');
-    const finalOut = path.join(stageRoot, 'final.x265.mkv');
-    fs.writeFileSync(stageOut, 'data');
-    vi.spyOn(fs, 'renameSync').mockImplementationOnce(() => {
-      throw Object.assign(new Error('exdev'), { code: 'EXDEV' });
-    });
-    vi.spyOn(fs, 'copyFileSync').mockImplementationOnce(() => {
-      throw new Error('disk full');
-    });
-    expect(() => commitOutput(stageOut, finalOut)).toThrow(/disk full/);
-    const tmp = `${finalOut}.x265-butler.tmp`;
-    expect(fs.existsSync(tmp)).toBe(false);
+    expect(copySyncSpy).not.toHaveBeenCalled();
   });
 });
 
 describe('staging — trashOriginal', () => {
-  it('test_trashOriginal_creates_parent_dir_and_moves', () => {
+  it('test_trashOriginal_creates_parent_dir_and_moves', async () => {
     const src = path.join(mediaRoot, 'orig.mp4');
     fs.writeFileSync(src, 'orig-data');
     const trashTarget = path.join(stageRoot, 'trash', '7-20250101000000', 'orig.mp4');
-    trashOriginal(src, trashTarget);
+    await trashOriginal(src, trashTarget);
     expect(fs.existsSync(src)).toBe(false);
     expect(fs.readFileSync(trashTarget, 'utf8')).toBe('orig-data');
   });
 
-  it('test_trashOriginal_handles_EXDEV_fallback', () => {
+  it('test_trashOriginal_when_EXDEV_then_copies_without_blocking_sync_io', async () => {
     const src = path.join(mediaRoot, 'orig.mp4');
     fs.writeFileSync(src, 'orig');
     const trashTarget = path.join(stageRoot, 'trash', '8-20250101000000', 'orig.mp4');
-    const realRename = fs.renameSync.bind(fs);
-    let callCount = 0;
-    vi.spyOn(fs, 'renameSync').mockImplementation((s, d) => {
-      callCount++;
-      if (callCount === 1) throw Object.assign(new Error('exdev'), { code: 'EXDEV' });
-      return realRename(s, d);
-    });
-    trashOriginal(src, trashTarget);
+    const copySyncSpy = vi.spyOn(fs, 'copyFileSync');
+    const restore = failFirstRenameWithExdev();
+    try {
+      await trashOriginal(src, trashTarget);
+    } finally {
+      restore();
+    }
     expect(fs.existsSync(src)).toBe(false);
     expect(fs.readFileSync(trashTarget, 'utf8')).toBe('orig');
+    expect(copySyncSpy).not.toHaveBeenCalled();
   });
 });
 
