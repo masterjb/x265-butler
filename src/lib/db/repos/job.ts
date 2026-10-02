@@ -387,9 +387,11 @@ export function makeJobRepo(db: Db, deps?: JobRepoDeps): JobRepo {
       return { rows, total };
     }
     const placeholders = statuses.map(() => '?').join(',');
+    // Finished lists: newest finish first, not queue order.
+    const orderBy = group === 'active' ? 'created_at' : 'COALESCE(finished_at, created_at)';
     const rowStmt = db.prepare<unknown[], JobRow>(
       `SELECT * FROM job WHERE status IN (${placeholders})
-       ORDER BY created_at DESC, id DESC LIMIT ? OFFSET ?`,
+       ORDER BY ${orderBy} DESC, id DESC LIMIT ? OFFSET ?`,
     );
     const countStmt = db.prepare<unknown[], { n: number }>(
       `SELECT COUNT(*) as n FROM job WHERE status IN (${placeholders})`,

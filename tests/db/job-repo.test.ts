@@ -592,6 +592,26 @@ describe('makeJobRepo', () => {
     expect(p2.rows.every((r) => !p1Ids.has(r.id))).toBe(true);
   });
 
+  it('test_listRecentPaginated_when_completed_group_then_newest_finish_first', () => {
+    const a = jobRepo.create({
+      file_id: seedFile(fileRepo, '/media/a.mp4', 'a'.repeat(64)).id,
+      encoder: 'libx265',
+      crf: null,
+    });
+    const b = jobRepo.create({
+      file_id: seedFile(fileRepo, '/media/b.mp4', 'b'.repeat(64)).id,
+      encoder: 'libx265',
+      crf: null,
+    });
+    jobRepo.markCancelled(a!.id);
+    jobRepo.markCancelled(b!.id);
+    // a queued first but finished last.
+    db.prepare('UPDATE job SET created_at = ?, finished_at = ? WHERE id = ?').run(100, 900, a!.id);
+    db.prepare('UPDATE job SET created_at = ?, finished_at = ? WHERE id = ?').run(200, 300, b!.id);
+    const { rows } = jobRepo.listRecentPaginated({ page: 1, size: 10, statusGroup: 'completed' });
+    expect(rows.map((r) => r.id)).toEqual([a!.id, b!.id]);
+  });
+
   it('test_listRecentPaginated_when_size_clamped_to_1000_then_no_throw', () => {
     expect(() => jobRepo.listRecentPaginated({ page: 1, size: 99999 })).not.toThrow();
   });
