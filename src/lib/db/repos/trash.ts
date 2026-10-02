@@ -50,7 +50,7 @@ export interface TrashRepo {
   list(opts: TrashListOptions): TrashListResult;
   restore(id: number): boolean;
   // audit-added S4: bounded delete; default 1000 / max 10_000.
-  deleteExpired(now: number, batchSize?: number): number;
+  deleteExpired(now: number, batchSize?: number): string[];
   // 02-03 additive: total trash entry count for paginated /api/trash response.
   // The existing `list` method already returns `total` but `count` is needed
   // separately by callers that don't want a row payload.
@@ -95,14 +95,15 @@ export function makeTrashRepo(db: Db): TrashRepo {
   // audit-added S4: bounded delete via id-IN subquery (better-sqlite3 build
   // does not include SQLITE_ENABLE_UPDATE_DELETE_LIMIT, so direct
   // DELETE...LIMIT is unavailable; the IN-subquery pattern is portable).
-  const deleteExpiredStmt = db.prepare(
+  const deleteExpiredStmt = db.prepare<[number, number], { trash_path: string }>(
     `DELETE FROM trash_entry
      WHERE id IN (
        SELECT id FROM trash_entry
        WHERE expires_at <= ? AND restored_at IS NULL
        ORDER BY expires_at ASC, id ASC
        LIMIT ?
-     )`,
+     )
+     RETURNING trash_path`,
   );
   // 02-04 additive: aggregate for CumulativeSavingsPill — count + sum of active
   // (not yet restored) trash entries. COALESCE ensures 0 not NULL on empty table.
@@ -153,10 +154,9 @@ export function makeTrashRepo(db: Db): TrashRepo {
       return result.changes === 1;
     },
 
-    deleteExpired(now: number, batchSize: number = DEFAULT_DELETE_BATCH): number {
+    deleteExpired(now: number, batchSize: number = DEFAULT_DELETE_BATCH): string[] {
       const safeBatch = Math.min(Math.max(1, Math.floor(batchSize)), MAX_DELETE_BATCH);
-      const result = deleteExpiredStmt.run(now, safeBatch);
-      return result.changes;
+      return deleteExpiredStmt.all(now, safeBatch).map((r) => r.trash_path);
     },
 
     count(includeRestored?: boolean): number {

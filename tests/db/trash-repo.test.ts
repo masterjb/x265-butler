@@ -215,8 +215,7 @@ describe('makeTrashRepo', () => {
       size_bytes: 100,
       retention_days: 30,
     });
-    const deleted = trashRepo.deleteExpired(1000);
-    expect(deleted).toBe(1);
+    expect(trashRepo.deleteExpired(1000)).toEqual(['/c/past.mp4']);
     expect(db.prepare('SELECT id FROM trash_entry').all()).toEqual([{ id: future.id }]);
   });
 
@@ -231,7 +230,7 @@ describe('makeTrashRepo', () => {
     });
     db.prepare('UPDATE trash_entry SET expires_at = 100 WHERE id = ?').run(e.id);
     trashRepo.restore(e.id);
-    expect(trashRepo.deleteExpired(1000)).toBe(0);
+    expect(trashRepo.deleteExpired(1000)).toEqual([]);
     expect((db.prepare('SELECT COUNT(*) AS c FROM trash_entry').get() as { c: number }).c).toBe(1);
   });
 
@@ -248,11 +247,11 @@ describe('makeTrashRepo', () => {
       });
       db.prepare('UPDATE trash_entry SET expires_at = 100 WHERE id = ?').run(e.id);
     }
-    expect(trashRepo.deleteExpired(1000, 10)).toBe(10);
+    expect(trashRepo.deleteExpired(1000, 10)).toHaveLength(10);
     expect((db.prepare('SELECT COUNT(*) AS c FROM trash_entry').get() as { c: number }).c).toBe(40);
     let drained = 0;
     while (true) {
-      const n = trashRepo.deleteExpired(1000, 10);
+      const n = trashRepo.deleteExpired(1000, 10).length;
       drained += n;
       if (n === 0) break;
     }
@@ -271,7 +270,7 @@ describe('makeTrashRepo', () => {
     });
     db.prepare('UPDATE trash_entry SET expires_at = 100 WHERE id = ?').run(e.id);
     // Pathological huge batch — should still complete (clamp prevents overflow / massive bind).
-    expect(trashRepo.deleteExpired(1000, 99_999_999)).toBe(1);
+    expect(trashRepo.deleteExpired(1000, 99_999_999)).toHaveLength(1);
   });
 
   it('test_deleteExpired_when_batchSize_zero_or_negative_then_clamped_to_at_least_1', () => {
@@ -284,7 +283,7 @@ describe('makeTrashRepo', () => {
       retention_days: 30,
     });
     db.prepare('UPDATE trash_entry SET expires_at = 100 WHERE id = ?').run(e.id);
-    expect(trashRepo.deleteExpired(1000, 0)).toBe(1);
+    expect(trashRepo.deleteExpired(1000, 0)).toHaveLength(1);
   });
 
   // M3 FK SET NULL

@@ -9,7 +9,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 // Mock heavy modules so the HMR test only exercises the singleton-guard path.
 vi.mock('@/src/lib/db', () => ({
   settingRepo: () => ({ get: () => undefined, set: vi.fn(), getAll: () => ({}) }),
-  trashRepo: () => ({ deleteExpired: () => 0 }),
+  trashRepo: () => ({ deleteExpired: () => [] }),
   jobRepo: () => ({ countByStatus: () => 0, listActive: () => [] }),
   benchRunRepo: () => ({ resetStuckRunningToFailed: () => 0 }),
   fileRepo: () => ({}),

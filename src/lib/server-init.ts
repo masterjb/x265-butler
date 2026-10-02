@@ -9,6 +9,7 @@
 // setting nor calls setPaused. Skip / Cancel-All-Queued operate via in-memory
 // _activeControllers abort, not via a persisted pause flag.
 
+import fs from 'node:fs/promises';
 import { logger } from './logger';
 import { settingRepo, trashRepo, jobRepo, benchRunRepo } from './db';
 import { startEncoderLoop, stopEncoderLoop, probeFfmpegVersionAtBoot } from './encode';
@@ -135,8 +136,9 @@ export function ensureServerInit(): void {
       let total = 0;
       for (let i = 0; i < SWEEP_MAX_BATCHES_PER_TICK; i++) {
         const deleted = trashRepo().deleteExpired(now, SWEEP_BATCH_SIZE);
-        total += deleted;
-        if (deleted < SWEEP_BATCH_SIZE) break;
+        total += deleted.length;
+        void unlinkTrashFiles(deleted);
+        if (deleted.length < SWEEP_BATCH_SIZE) break;
       }
       if (total > 0) {
         logger.info({ action: 'retention_sweep', deleted: total }, 'retention sweep complete');
@@ -171,6 +173,25 @@ export function ensureServerInit(): void {
       }
     })();
   }, SWEEP_INTERVAL_MS);
+}
+
+// Expired rows are gone; remove their files too. ENOENT = already gone.
+async function unlinkTrashFiles(paths: string[]): Promise<void> {
+  for (const p of paths) {
+    try {
+      await fs.unlink(p);
+    } catch (err) {
+      if ((err as { code?: unknown }).code === 'ENOENT') continue;
+      logger.warn(
+        {
+          action: 'retention_unlink_failed',
+          path: p,
+          err: err instanceof Error ? err.message : String(err),
+        },
+        'retention sweep: trash file unlink failed',
+      );
+    }
+  }
 }
 
 export async function teardownServerInit(): Promise<void> {

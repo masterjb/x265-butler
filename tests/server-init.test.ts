@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 
 const {
@@ -14,7 +17,7 @@ const {
   mockSettingGet: vi.fn<(key: string) => string | undefined>(),
   mockStartEncoderLoop: vi.fn(),
   mockStopEncoderLoop: vi.fn<() => Promise<void>>(),
-  mockDeleteExpired: vi.fn<(now: number, batchSize: number) => number>(),
+  mockDeleteExpired: vi.fn<(now: number, batchSize: number) => string[]>(),
   // 03-04 audit M3
   mockProbeFfmpegVersionAtBoot: vi.fn(),
   // ISS-001: prove the log-retention sweep routes through the resolver.
@@ -75,6 +78,7 @@ import {
   __forTests_resetServerInit,
 } from '@/src/lib/server-init';
 
+const FULL_BATCH = Array.from({ length: 1000 }, (_, i) => `/nonexistent/trash/${i}.mkv`);
 describe('server-init', () => {
   let originalNextPhase: string | undefined;
 
@@ -92,7 +96,7 @@ describe('server-init', () => {
     mockStopCpuAttributionSampler.mockReset();
     mockStopEncoderLoop.mockResolvedValue(undefined);
     mockSettingGet.mockReturnValue(undefined);
-    mockDeleteExpired.mockReturnValue(0);
+    mockDeleteExpired.mockReturnValue([]);
     mockSweepJobLogs.mockResolvedValue(undefined);
     // Default: resolver behaves like the DC-B config-fallback (cache_pool_path unset).
     mockResolveEffectiveCachePath.mockReturnValue({
@@ -188,7 +192,7 @@ describe('server-init', () => {
   it('test_retention_sweep_when_returns_1000_then_loops_again_until_under_batch', () => {
     vi.useFakeTimers();
     // First call returns 1000 (full batch), second returns 0 (drained)
-    mockDeleteExpired.mockReturnValueOnce(1000).mockReturnValueOnce(0);
+    mockDeleteExpired.mockReturnValueOnce(FULL_BATCH).mockReturnValueOnce([]);
     ensureServerInit();
     vi.advanceTimersByTime(60 * 60 * 1000);
     expect(mockDeleteExpired).toHaveBeenCalledTimes(2);
@@ -197,7 +201,7 @@ describe('server-init', () => {
 
   it('test_retention_sweep_when_returns_1000_ten_times_then_caps_at_10_iterations', () => {
     vi.useFakeTimers();
-    mockDeleteExpired.mockReturnValue(1000); // always full batch
+    mockDeleteExpired.mockReturnValue(FULL_BATCH); // always full batch
     ensureServerInit();
     vi.advanceTimersByTime(60 * 60 * 1000);
     expect(mockDeleteExpired).toHaveBeenCalledTimes(10); // bounded at 10×1000
@@ -214,10 +218,26 @@ describe('server-init', () => {
     expect(mockDeleteExpired).toHaveBeenCalledTimes(1);
 
     // Second tick: throw cleared, normal call proceeds
-    mockDeleteExpired.mockReturnValueOnce(0);
+    mockDeleteExpired.mockReturnValueOnce([]);
     vi.advanceTimersByTime(60 * 60 * 1000);
     expect(mockDeleteExpired).toHaveBeenCalledTimes(2);
     vi.useRealTimers();
+  });
+
+  it('test_retention_sweep_when_rows_expire_then_trash_files_unlinked', async () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'x265-sweep-'));
+    const file = path.join(dir, 'movie.mkv');
+    fs.writeFileSync(file, 'x');
+    try {
+      vi.useFakeTimers();
+      mockDeleteExpired.mockReturnValueOnce([file, path.join(dir, 'gone.mkv')]);
+      ensureServerInit();
+      vi.advanceTimersByTime(60 * 60 * 1000);
+      vi.useRealTimers();
+      await vi.waitFor(() => expect(fs.existsSync(file)).toBe(false));
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   });
 
   it('test_teardownServerInit_when_sweep_active_then_clearInterval_called', async () => {
