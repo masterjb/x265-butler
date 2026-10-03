@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.next/
+coverage/
+.git/
+design-system/MASTER.md
+README.md
+docs/release-notes/v2.19.0-forum-post.md
+package-lock.json
+messages/
+components/ui/
+.cache/
+
+# 52-07: generated Bruno collection and the tool lockfile
+api/bruno/
+api/tools/package-lock.json

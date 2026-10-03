@@ -1,0 +1,37 @@
+node_modules/
+dist/
+coverage/
+.next/
+.buildx-cache/
+.buildx-cache-new/
+next-env.d.ts
+.env
+.env.local
+data/
+.data/
+*.log
+*.tsbuildinfo
+
+# 51-03: eslint/prettier content caches (restored by the CI lint job)
+.cache/
+
+# 01-03: deterministic test fixtures generated at runtime — never commit
+tests/fixtures/scan/*.bin
+
+# User-local tool state (per-workstation, not shared)
+
+dev.db
+.local-bin/
+
+# Plan 19-01: phase-close-merge.sh audit-trail logs
+scripts/.logs/
+
+# PAUL tooling dir — stop tracking ahead of public release (local copy kept, untracked)
+
+
+
+# 52-06: CI job ffmpeg-smoke caches the pinned ffmpeg tarball here
+.ffmpeg-cache/
+
+# 52-07: local Bruno credentials (template: api/bruno-overlay/.env.example)
+api/bruno/.env
