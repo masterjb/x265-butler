@@ -1,0 +1,11 @@
+-- Per-file container-override allowing operator to flip
+-- specific files between mkv/mp4/match-source independent of the global
+-- output_container setting (0015). NULL = inherit global; non-NULL = override.
+--
+-- Schema-only migration (mirrors 0014 / 0009 / 0008 ALTER patterns).
+-- Runner is version-tracked (schema_migrations table in migrate.ts);
+-- re-running on already-applied DB is a no-op (skipped by runner).
+--
+-- ROLLBACK: column stays in place (best-effort backout);
+-- non-breaking because NULL = inherit-global = the behavior without this column.
+ALTER TABLE file ADD COLUMN container_override TEXT NULL;

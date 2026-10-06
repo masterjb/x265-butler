@@ -1,0 +1,57 @@
+{
+  "tag_name": "autobuild-2026-10-01-13-06",
+  "assets": [
+    {
+      "name": "checksums.sha256",
+      "browser_download_url": "https://example.invalid/checksums.sha256"
+    },
+    {
+      "name": "ffmpeg-N-127054-g9d3f0f2c58-linux64-gpl.tar.xz",
+      "browser_download_url": "https://example.invalid/1"
+    },
+    {
+      "name": "ffmpeg-N-127054-g9d3f0f2c58-linux64-gpl-shared.tar.xz",
+      "browser_download_url": "https://example.invalid/2"
+    },
+    {
+      "name": "ffmpeg-N-127054-g9d3f0f2c58-linux64-lgpl.tar.xz",
+      "browser_download_url": "https://example.invalid/3"
+    },
+    {
+      "name": "ffmpeg-N-127054-g9d3f0f2c58-linuxarm64-gpl.tar.xz",
+      "browser_download_url": "https://example.invalid/4"
+    },
+    {
+      "name": "ffmpeg-N-127054-g9d3f0f2c58-win64-gpl.zip",
+      "browser_download_url": "https://example.invalid/5"
+    },
+    {
+      "name": "ffmpeg-n8.1.3-14-g330caae0c1-linux64-gpl-8.1.tar.xz",
+      "browser_download_url": "https://example.invalid/6"
+    },
+    {
+      "name": "ffmpeg-n8.1.3-14-g330caae0c1-linux64-gpl-shared-8.1.tar.xz",
+      "browser_download_url": "https://example.invalid/7"
+    },
+    {
+      "name": "ffmpeg-n9.0.2-22-g46d8f462ee-linux64-gpl-9.0.tar.xz",
+      "browser_download_url": "https://example.invalid/8"
+    },
+    {
+      "name": "ffmpeg-n9.0.2-22-g46d8f462ee-linux64-gpl-shared-9.0.tar.xz",
+      "browser_download_url": "https://example.invalid/9"
+    },
+    {
+      "name": "ffmpeg-n9.0.2-22-g46d8f462ee-linux64-lgpl-9.0.tar.xz",
+      "browser_download_url": "https://example.invalid/10"
+    },
+    {
+      "name": "ffmpeg-n9.0.2-22-g46d8f462ee-linuxarm64-gpl-9.0.tar.xz",
+      "browser_download_url": "https://example.invalid/11"
+    },
+    {
+      "name": "ffmpeg-n9.0.2-22-g46d8f462ee-win64-gpl-9.0.zip",
+      "browser_download_url": "https://example.invalid/12"
+    }
+  ]
+}
