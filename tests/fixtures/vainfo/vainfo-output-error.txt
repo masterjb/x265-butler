@@ -1,2 +1,0 @@
-# AUTHORED-FROM-CANONICAL: libva runtime-error output
-vainfo: failed with error -1
