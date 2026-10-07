@@ -1,0 +1,19 @@
+-- Default output_suffix convention modernized from extension-replace
+-- style ('.x265.mkv') to infix-label style ('-x265'). The current sanitizer
+-- is container-aware, composing '-x265' → movie-x265.mkv / movie-x265.mp4
+-- per output_container choice.
+--
+-- Policy: UPDATE WHERE legacy-default.
+-- This MIGRATES legacy-default rows to the new default value, leaving
+-- operator-customized values untouched (rows whose value is NOT exactly
+-- '.x265.mkv' fall outside the WHERE clause and are preserved verbatim).
+--
+-- Setting-change is operator-visible post-upgrade by deliberate choice —
+-- operator-consent-bypass accepted to maintain single-source-of-display
+-- ('-x265' in Settings-Form across all installs).
+--
+-- Dual-sentinel safety-net in orchestrator.isDefaultOutputSuffix() still
+-- recognizes both '-x265' AND '.x265.mkv' as default values, covering any
+-- half-migrated edge case (cached settings reader during migration window,
+-- manual DB-edit pre-migration).
+UPDATE setting SET value = '-x265' WHERE key = 'output_suffix' AND value = '.x265.mkv';

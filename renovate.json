@@ -1,0 +1,54 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared rules come from the preset npm-dev in MisterJB/renovate-bot (schedule, groups, automerge, majors via Dependency Dashboard, Node group, useBaseBranchConfig merge). Only project rules here. Tool versions: node from .node-version, npm from packageManager in package.json (npm 11 like the lockfile author; npm 10 fails on the $postcss override reference during lockfile updates). Background: docs/dev/renovate.md.",
+  "extends": ["local>MisterJB/renovate-bot:npm-dev"],
+  "baseBranchPatterns": ["dev"],
+  "packageRules": [
+    {
+      "description": "Paused: needs vite 8, the test runner allows only up to vite 7 (ERESOLVE). Stays visible in the Dependency Dashboard; do not approve before the test runner supports vite 8, then remove this rule.",
+      "matchPackageNames": ["@vitejs/plugin-react"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Paused: typescript-eslint allows TypeScript only up to 6.0, the lockfile fails (ERESOLVE) and lint aborts. Remove this rule once typescript-eslint supports TypeScript 7.",
+      "matchPackageNames": ["typescript"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "Paused: npm 12 refuses the @tailwindcss/oxide-wasm32-wasi tarball while regenerating the lockfile (EALLOWREMOTE). packageManager stays on npm 11 until that is solved.",
+      "matchDepNames": ["npm"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "Runtime dependencies and overrides. Version +1 (third digit) when an update changes what ships in the image. scripts/renovate-bump-patch.js always writes base + 1, so several calls in one group MR still give one bump. Allowed in the bot via allowedCommands (renovate-bot config.js). Background: docs/dev/renovate.md.",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies", "overrides"],
+      "postUpgradeTasks": {
+        "commands": ["node scripts/renovate-bump-patch.js"],
+        "fileFilters": ["package.json", "package-lock.json"],
+        "executionMode": "update"
+      }
+    },
+    {
+      "description": "Base images in the Dockerfile. Version +1 (third digit) when an update changes what ships in the image. scripts/renovate-bump-patch.js always writes base + 1, so several calls in one group MR still give one bump. Allowed in the bot via allowedCommands (renovate-bot config.js). Background: docs/dev/renovate.md.",
+      "matchManagers": ["dockerfile"],
+      "postUpgradeTasks": {
+        "commands": ["node scripts/renovate-bump-patch.js"],
+        "fileFilters": ["package.json", "package-lock.json"],
+        "executionMode": "update"
+      }
+    },
+    {
+      "description": "Lockfile maintenance changes the shipped dependency tree. Version +1 (third digit) when an update changes what ships in the image. scripts/renovate-bump-patch.js always writes base + 1, so several calls in one group MR still give one bump. Allowed in the bot via allowedCommands (renovate-bot config.js). Background: docs/dev/renovate.md.",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "postUpgradeTasks": {
+        "commands": ["node scripts/renovate-bump-patch.js"],
+        "fileFilters": ["package.json", "package-lock.json"],
+        "executionMode": "update"
+      }
+    }
+  ]
+}

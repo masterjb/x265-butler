@@ -1,0 +1,12 @@
+-- Manual queue order as a flag instead of a rewritten position.
+--
+-- queue_pinned = 1 marks a queued job whose place was set by hand (dragged in
+-- the queue page) or that was put back at the front (restart, stalled encode).
+-- Pinned jobs always come first, ordered by queue_position; all other queued
+-- jobs follow the processing order setting (queue_order).
+--
+-- Existing rows get 0. With nothing pinned and the default order, the pick
+-- order is unchanged (queue_position, created_at, id). No index: the order of
+-- the unpinned jobs is an expression over a join with the file table and could
+-- not use one.
+ALTER TABLE job ADD COLUMN queue_pinned INTEGER NOT NULL DEFAULT 0 CHECK (queue_pinned IN (0, 1));
